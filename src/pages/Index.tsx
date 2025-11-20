@@ -10,6 +10,8 @@ import Testimonials from "@/components/Testimonials";
 import Education from "@/components/Education";
 import HobbyProjects from "@/components/HobbyProjects";
 import PersonalInterests from "@/components/PersonalInterests";
+import ContactForm from "@/components/ContactForm";
+import AIChatbot from "@/components/AIChatbot";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -27,7 +29,9 @@ const Index = () => {
       <Testimonials />
       <Education />
       <PersonalInterests />
+      <ContactForm />
       <Footer />
+      <AIChatbot />
     </div>
   );
 };
