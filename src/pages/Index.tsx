@@ -8,6 +8,7 @@ import ProjectCarousel from "@/components/ProjectCarousel";
 import Leadership from "@/components/Leadership";
 import Testimonials from "@/components/Testimonials";
 import Education from "@/components/Education";
+import HobbyProjects from "@/components/HobbyProjects";
 import PersonalInterests from "@/components/PersonalInterests";
 import Footer from "@/components/Footer";
 
@@ -24,6 +25,7 @@ const Index = () => {
       <Leadership />
       <Testimonials />
       <Education />
+      <HobbyProjects />
       <PersonalInterests />
       <Footer />
     </div>
