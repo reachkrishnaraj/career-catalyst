@@ -41,6 +41,19 @@ All colors MUST be HSL.
     --success: 142 71% 45%;
     --success-foreground: 0 0% 100%;
     
+    /* Gradient colors */
+    --gradient-start: 250 100% 50%;
+    --gradient-mid: 280 100% 60%;
+    --gradient-end: 310 100% 50%;
+    
+    /* Glassmorphism */
+    --glass-bg: 0 0% 100%;
+    --glass-border: 0 0% 90%;
+    
+    /* Accent variations */
+    --accent-glow: 280 100% 70%;
+    --accent-dark: 280 100% 40%;
+    
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5% 26%;
     --sidebar-primary: 240 6% 10%;
@@ -119,10 +132,22 @@ All colors MUST be HSL.
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-[hsl(var(--gradient-start))] via-[hsl(var(--gradient-mid))] to-[hsl(var(--gradient-end))] bg-clip-text text-transparent;
   }
   
   .border-gradient {
-    border-image: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent))) 1;
+    border-image: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-end))) 1;
+  }
+  
+  .glass-card {
+    @apply bg-[hsl(var(--glass-bg))]/60 backdrop-blur-xl border-[hsl(var(--glass-border))];
+  }
+  
+  .glow {
+    box-shadow: 0 0 30px hsl(var(--accent-glow) / 0.3);
+  }
+  
+  .tech-icon {
+    @apply w-8 h-8 object-contain transition-transform hover:scale-110;
   }
 }

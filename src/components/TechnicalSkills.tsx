@@ -11,6 +11,14 @@ import {
   Settings,
   Zap
 } from "lucide-react";
+import javaIcon from "@/assets/icons/java.png";
+import typescriptIcon from "@/assets/icons/typescript.png";
+import pythonIcon from "@/assets/icons/python.png";
+import reactIcon from "@/assets/icons/react.png";
+import nodejsIcon from "@/assets/icons/nodejs.png";
+import dockerIcon from "@/assets/icons/docker.png";
+import awsIcon from "@/assets/icons/aws.png";
+import kubernetesIcon from "@/assets/icons/kubernetes.png";
 
 interface SkillCategory {
   title: string;
@@ -107,22 +115,73 @@ const TechnicalSkills = () => {
   ];
 
   return (
-    <section className="container mx-auto px-6 py-12">
-      <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-        <Code2 className="h-8 w-8 text-primary" />
-        Technical Skills & Expertise
-      </h2>
+    <section className="container mx-auto px-6 py-12 bg-secondary/20">
+      <div className="mb-8">
+        <h2 className="text-3xl font-bold mb-3 flex items-center gap-3">
+          <Code2 className="h-8 w-8 text-primary" />
+          Technical Skills & Expertise
+        </h2>
+        <p className="text-muted-foreground text-lg mb-6">
+          Versatile expertise spanning Individual Contributor (IC) technical excellence and strategic leadership
+        </p>
+        
+        {/* Tech Stack Icons */}
+        <div className="flex flex-wrap justify-center gap-6 mb-8 p-6 glass-card rounded-lg">
+          <img src={javaIcon} alt="Java" className="tech-icon" title="Java" />
+          <img src={typescriptIcon} alt="TypeScript" className="tech-icon" title="TypeScript" />
+          <img src={pythonIcon} alt="Python" className="tech-icon" title="Python" />
+          <img src={reactIcon} alt="React" className="tech-icon" title="React" />
+          <img src={nodejsIcon} alt="Node.js" className="tech-icon" title="Node.js" />
+          <img src={dockerIcon} alt="Docker" className="tech-icon" title="Docker" />
+          <img src={awsIcon} alt="AWS" className="tech-icon" title="AWS" />
+          <img src={kubernetesIcon} alt="Kubernetes" className="tech-icon" title="Kubernetes" />
+        </div>
+        
+        {/* Full Stack Highlight */}
+        <Card className="p-6 bg-gradient-to-r from-success/20 to-primary/20 border-success/30 mb-8 glow">
+          <div className="flex items-center gap-3 mb-3">
+            <Layers className="h-8 w-8 text-success" />
+            <h3 className="text-2xl font-bold">Full-Stack Infrastructure Expert</h3>
+          </div>
+          <p className="text-lg mb-4">
+            <strong>Built entire tech stacks from ground up</strong> - from infrastructure provisioning to application deployment
+          </p>
+          <div className="grid md:grid-cols-3 gap-4">
+            <div className="flex items-start gap-2">
+              <span className="text-success font-bold text-xl">✓</span>
+              <div>
+                <p className="font-semibold">Infrastructure as Code</p>
+                <p className="text-sm text-muted-foreground">Terraform, CloudFormation, Kubernetes configs</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="text-success font-bold text-xl">✓</span>
+              <div>
+                <p className="font-semibold">End-to-End Configuration</p>
+                <p className="text-sm text-muted-foreground">CI/CD pipelines, monitoring, alerting, logging</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="text-success font-bold text-xl">✓</span>
+              <div>
+                <p className="font-semibold">Cloud Native Architecture</p>
+                <p className="text-sm text-muted-foreground">Microservices, containers, serverless</p>
+              </div>
+            </div>
+          </div>
+        </Card>
+      </div>
       
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {skillCategories.map((category, idx) => (
-          <Card key={idx} className="p-6 hover:shadow-lg transition-shadow">
+          <Card key={idx} className="p-6 hover:shadow-xl transition-all hover:-translate-y-1 glass-card">
             <div className="flex items-center gap-3 mb-4">
               <div className={category.color}>{category.icon}</div>
               <h3 className="font-bold text-lg">{category.title}</h3>
             </div>
             <div className="flex flex-wrap gap-2">
               {category.skills.map((skill, skillIdx) => (
-                <Badge key={skillIdx} variant="outline" className="text-xs">
+                <Badge key={skillIdx} variant="outline" className="text-xs hover:bg-primary/10 transition-colors">
                   {skill}
                 </Badge>
               ))}

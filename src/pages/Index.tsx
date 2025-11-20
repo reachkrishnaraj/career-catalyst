@@ -1,8 +1,10 @@
 import Header from "@/components/Header";
 import Summary from "@/components/Summary";
-import Experience from "@/components/Experience";
 import TechnicalSkills from "@/components/TechnicalSkills";
-import KeyProjects from "@/components/KeyProjects";
+import PaymentExpertise from "@/components/PaymentExpertise";
+import AIExpertise from "@/components/AIExpertise";
+import Experience from "@/components/Experience";
+import ProjectCarousel from "@/components/ProjectCarousel";
 import Leadership from "@/components/Leadership";
 import Testimonials from "@/components/Testimonials";
 import Education from "@/components/Education";
@@ -14,9 +16,11 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <Summary />
-      <Experience />
       <TechnicalSkills />
-      <KeyProjects />
+      <PaymentExpertise />
+      <AIExpertise />
+      <Experience />
+      <ProjectCarousel />
       <Leadership />
       <Testimonials />
       <Education />

@@ -158,11 +158,14 @@ const Experience = () => {
   ];
 
   return (
-    <section className="container mx-auto px-6 py-12 bg-secondary/30">
-      <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
+    <section className="container mx-auto px-6 py-12 bg-gradient-to-b from-background to-secondary/30">
+      <h2 className="text-3xl font-bold mb-3 flex items-center gap-3">
         <Briefcase className="h-8 w-8 text-primary" />
         Professional Experience
       </h2>
+      <p className="text-muted-foreground mb-8 text-lg">
+        19+ years of progressive experience across payments, healthcare, marketplace, and eCommerce domains
+      </p>
       
       <div className="space-y-6">
         {experiences.map((exp, idx) => (
