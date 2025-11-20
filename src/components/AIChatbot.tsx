@@ -151,12 +151,12 @@ const AIChatbot = () => {
   };
 
   return (
-    <>
+    <div className="fixed bottom-6 right-6 z-[9999]">
       {/* Chat Toggle Button with Magic Animation */}
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 bg-primary text-primary-foreground rounded-full p-4 shadow-lg hover:scale-110 transition-all z-[100] animate-pulse group relative overflow-hidden"
+          className="bg-primary text-primary-foreground rounded-full p-4 shadow-lg hover:scale-110 transition-all animate-pulse group relative overflow-hidden"
         >
           {/* Magic sparkle effects */}
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-accent to-primary opacity-50 blur-xl animate-[spin_3s_linear_infinite]" />
@@ -172,7 +172,7 @@ const AIChatbot = () => {
           </div>
           
           {/* AI label on hover */}
-          <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+          <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
             <div className="bg-foreground text-background px-3 py-1 rounded-lg text-sm font-medium shadow-lg">
               Ask AI Assistant ✨
             </div>
@@ -182,7 +182,7 @@ const AIChatbot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="fixed bottom-6 right-6 w-96 h-[600px] flex flex-col shadow-2xl z-[100] animate-scale-in relative bg-background">
+        <Card className="w-96 h-[600px] flex flex-col shadow-2xl animate-scale-in relative bg-background">
           {/* Glow effect around window */}
           <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-lg blur-lg -z-10 animate-[pulse_3s_ease-in-out_infinite]" />
           
@@ -265,7 +265,7 @@ const AIChatbot = () => {
           </form>
         </Card>
       )}
-    </>
+    </div>
   );
 };
 
