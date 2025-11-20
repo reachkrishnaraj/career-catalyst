@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -7,11 +8,26 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Award, TrendingUp } from "lucide-react";
+import { Award, TrendingUp, Maximize2 } from "lucide-react";
+import ImageLightbox from "@/components/ImageLightbox";
 import turoAtoProject from "@/assets/work_artifact/turo/turo_ato_project.png";
 import turoRuleEngine from "@/assets/work_artifact/turo/turo_rule_engine_project.png";
 import turoSearchImprovement from "@/assets/work_artifact/turo/turo_search_improvement_project.png";
 import turoYoungDriver from "@/assets/work_artifact/turo/turo_young_driver_project.png";
+
+// Netflix project images
+import paymentLifecycleFlow from "@/assets/work_artifact/netflix_semantic_images/payment_lifecycle_status_flow.png";
+import paymentOrderProcessing from "@/assets/work_artifact/netflix_semantic_images/payment_order_processing_flow.png";
+import reconciliationSystemOverview from "@/assets/work_artifact/netflix_semantic_images/reconciliation_system_overview.png";
+import reconciliationEventEquation from "@/assets/work_artifact/netflix_semantic_images/reconciliation_event_equation.png";
+import settlementBatchPipeline from "@/assets/work_artifact/netflix_semantic_images/settlement_batch_pipeline.png";
+import autoResetSequenceFlow from "@/assets/work_artifact/netflix_semantic_images/auto_reset_sequence_flow.png";
+import ddReturnDetailsFlow from "@/assets/work_artifact/netflix_semantic_images/dd_return_details_flow.png";
+import asyncRefundNotificationFlow from "@/assets/work_artifact/netflix_semantic_images/async_refund_notification_flow.png";
+import paymentsPlatformPhases from "@/assets/work_artifact/netflix_semantic_images/payments_platform_phases.png";
+import failoverRoutingOverview from "@/assets/work_artifact/netflix_semantic_images/failover_routing_overview.png";
+import circuitBreakerOpenState from "@/assets/work_artifact/netflix_semantic_images/circuit_breaker_open_state_graph.png";
+import processorFailoverDistribution from "@/assets/work_artifact/netflix_semantic_images/processor_failover_distribution_chart.png";
 
 interface Project {
   title: string;
@@ -20,9 +36,20 @@ interface Project {
   impact: string[];
   technologies: string[];
   architectureImage?: string;
+  architectureImages?: { src: string; alt: string }[];
 }
 
 const ProjectCarousel = () => {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImages, setLightboxImages] = useState<{ src: string; alt: string }[]>([]);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const openLightbox = (images: { src: string; alt: string }[], index: number = 0) => {
+    setLightboxImages(images);
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
   const projects: Project[] = [
     {
       title: "HIPAA-Compliant Healthcare Platform",
@@ -114,6 +141,93 @@ const ProjectCarousel = () => {
       ],
       technologies: ["Java", "Spring Boot", "Apache Solr", "MySQL", "Redis", "AWS"],
       architectureImage: turoRuleEngine
+    },
+    {
+      title: "Payment Reconciliation System",
+      company: "Netflix",
+      description: "Built a large-scale reconciliation system ensuring end-to-end accuracy of all subscription payments across Billing, Payments Platform, and Settlement files. Designed batch ingestion pipelines, emitted enriched settlement events, and enabled finance and analytics teams to reconcile millions of payment transactions reliably.",
+      impact: [
+        "Ensured full lifecycle matching of millions of subscription transactions",
+        "Improved month-end and quarter-end financial close accuracy",
+        "Delivered Kibana dashboards sourced from Elasticsearch for analytics",
+        "Built scalable Spring Batch + SQS distributed processing",
+        "Reduced manual reconciliation and anomaly investigation"
+      ],
+      technologies: ["Java", "Spring Batch", "AWS SQS", "Elasticsearch", "Kibana", "Keystone Data Pipeline", "Tableau"],
+      architectureImage: reconciliationSystemOverview,
+      architectureImages: [
+        { src: reconciliationSystemOverview, alt: "Reconciliation System Overview" },
+        { src: paymentLifecycleFlow, alt: "Payment Lifecycle Status Flow" },
+        { src: paymentOrderProcessing, alt: "Payment Order Processing Flow" },
+        { src: reconciliationEventEquation, alt: "Reconciliation Event Equation" },
+        { src: settlementBatchPipeline, alt: "Settlement Batch Pipeline" }
+      ]
+    },
+    {
+      title: "Auto-Reset File Sequence Number",
+      company: "Netflix",
+      description: "Resolved recurring failures in batch payment request submissions caused by incorrect file sequence numbers during SFTP uploads. Enhanced the sequencing logic to increment sequence numbers only after a successful file upload, preventing downstream rejections and manual interventions.",
+      impact: [
+        "Eliminated file-rejection incidents from misaligned sequence numbers",
+        "Removed manual sequence reset operations",
+        "Improved reliability of payment batch workflows"
+      ],
+      technologies: ["Java", "Spring Batch", "SFTP"],
+      architectureImage: autoResetSequenceFlow
+    },
+    {
+      title: "Direct Debit Return Details Integration",
+      company: "Netflix",
+      description: "Enhanced the Direct Debit batch processing system to ingest crucial return metadata (fee, return reason, returning bank) from processor response files and publish enriched events to downstream systems.",
+      impact: [
+        "Enabled accurate DD return metrics across multiple countries",
+        "Restored visibility for analytics and finance teams",
+        "Standardized return-event publishing into the existing pipeline"
+      ],
+      technologies: ["Java", "Spring Batch", "Data Pipeline"],
+      architectureImage: ddReturnDetailsFlow
+    },
+    {
+      title: "Optimized Business-Critical Batch Job Processing",
+      company: "Netflix",
+      description: "Improved throughput and parallelism of file-processing batch jobs by limiting how many files each scheduled run downloads and processes. Introduced a configurable max-file limit per schedule so concurrent runs can share workload efficiently.",
+      impact: [
+        "Increased batch parallelism and reduced processing latency",
+        "Prevented jobs from stalling with unprocessed files left in folders",
+        "Reduced manual cleanup when jobs halted or failed"
+      ],
+      technologies: ["Java", "Spring Batch", "Cron Scheduling"]
+    },
+    {
+      title: "Async Refund Notification Processing",
+      company: "Netflix",
+      description: "Added support for asynchronous refund notifications from a payment processor, ensuring final refund outcomes (status, reason codes, decline messages) were written to the Payments datastore and pushed to upstream systems.",
+      impact: [
+        "Ensured true final refund status in customer-service tools",
+        "Reduced refund-related investigation effort",
+        "Improved refund data freshness and accuracy across systems"
+      ],
+      technologies: ["Java", "Notification Consumer Service", "AWS SQS", "Event-Driven Pipeline"],
+      architectureImage: asyncRefundNotificationFlow
+    },
+    {
+      title: "Payment Processor Dynamic Failover Routing",
+      company: "Netflix",
+      description: "Designed and implemented a dynamic, health-aware routing layer across multiple payment processors using Netflix OSS Hystrix. Increased resiliency of sign-up and subscription renewal payments during processor outages and intermittent instability.",
+      impact: [
+        "Reduced payment failures during processor incidents",
+        "Protected sign-ups and renewals from third-party instability",
+        "Introduced standardized circuit-breaker-based resiliency pattern",
+        "Enabled monitoring of failure types and routing decisions"
+      ],
+      technologies: ["Java", "Netflix OSS Hystrix", "Spectator", "Microservices"],
+      architectureImage: failoverRoutingOverview,
+      architectureImages: [
+        { src: failoverRoutingOverview, alt: "Failover Routing Overview" },
+        { src: paymentsPlatformPhases, alt: "Payments Platform Phases" },
+        { src: circuitBreakerOpenState, alt: "Circuit Breaker Open State Graph" },
+        { src: processorFailoverDistribution, alt: "Processor Failover Distribution" }
+      ]
     }
   ];
 
@@ -141,12 +255,21 @@ const ProjectCarousel = () => {
                 
                 {/* Architecture/Project Image */}
                 {project.architectureImage && (
-                  <div className="rounded-lg overflow-hidden mb-6 border border-border/50">
+                  <div className="relative rounded-lg overflow-hidden mb-6 border border-border/50 group">
                     <img 
                       src={project.architectureImage} 
                       alt={`${project.title} architecture`}
                       className="w-full h-auto object-contain"
                     />
+                    {project.architectureImages && project.architectureImages.length > 1 && (
+                      <button
+                        onClick={() => openLightbox(project.architectureImages!, 0)}
+                        className="absolute top-2 right-2 bg-background/90 hover:bg-background p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"
+                        aria-label="View all diagrams"
+                      >
+                        <Maximize2 className="h-4 w-4" />
+                      </button>
+                    )}
                   </div>
                 )}
                 
@@ -183,6 +306,14 @@ const ProjectCarousel = () => {
       <p className="text-center text-muted-foreground mt-6 text-sm">
         💡 Tip: Use arrow keys or navigation buttons to explore different projects
       </p>
+
+      <ImageLightbox
+        images={lightboxImages}
+        currentIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        onNavigate={setLightboxIndex}
+      />
     </section>
   );
 };
