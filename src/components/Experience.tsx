@@ -1,6 +1,23 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Building2, Calendar, MapPin, Briefcase } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import linkedinLogo from "@/assets/company_icons/LinkedIn_Logo.svg.png";
+import paypalLogo from "@/assets/company_icons/PayPal_logo.png";
+import altimetrikLogo from "@/assets/company_icons/altimetrik_logo.webp";
+import netflixLogo from "@/assets/company_icons/netflix.png";
+import turoLogo from "@/assets/company_icons/turo-logo.png";
+import walmartLogo from "@/assets/company_icons/walmart_labs.png";
+import tbdHealthKit from "@/assets/work_artifact/tbd_health/tbd_health_kit.jpg";
+import tbdHealthKit2 from "@/assets/work_artifact/tbd_health/tbd_health_kit2.webp";
+import tbdClinicFront from "@/assets/work_artifact/tbd_health/tbd_las_vegas_clinic_front.jpg";
 
 interface ExperienceItemProps {
   company: string;
@@ -10,6 +27,7 @@ interface ExperienceItemProps {
   achievements: string[];
   technologies: string[];
   highlight?: boolean;
+  companyLogo?: string;
 }
 
 const ExperienceItem = ({ 
@@ -19,14 +37,19 @@ const ExperienceItem = ({
   location, 
   achievements, 
   technologies,
-  highlight 
+  highlight,
+  companyLogo 
 }: ExperienceItemProps) => {
   return (
     <Card className={`p-6 glass-card ${highlight ? 'border-l-4 border-l-accent glow' : ''}`}>
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
         <div className="flex-1">
-          <div className="flex items-center gap-2 mb-2">
-            <Building2 className="h-5 w-5 text-primary" />
+          <div className="flex items-center gap-3 mb-2">
+            {companyLogo ? (
+              <img src={companyLogo} alt={`${company} logo`} className="h-8 w-auto object-contain" />
+            ) : (
+              <Building2 className="h-5 w-5 text-primary" />
+            )}
             <h3 className="text-xl font-bold">{company}</h3>
           </div>
           <p className="text-lg font-semibold text-primary mb-2">{role}</p>
@@ -66,6 +89,12 @@ const ExperienceItem = ({
 };
 
 const Experience = () => {
+  const workArtifacts = [
+    { src: tbdHealthKit, alt: "TBD Health Kit" },
+    { src: tbdHealthKit2, alt: "TBD Health Kit 2" },
+    { src: tbdClinicFront, alt: "TBD Las Vegas Clinic" }
+  ];
+
   const experiences: ExperienceItemProps[] = [
     {
       company: "TBD Health",
@@ -83,7 +112,8 @@ const Experience = () => {
         "Team Leadership: Built and managed engineering team, conducted vendor selection, managed deliverables and sprint planning"
       ],
       technologies: ["Java", "Spring Boot", "React", "NextJS", "AWS", "DynamoDB", "Saleor", "Cal.com", "HIPAA", "Python"],
-      highlight: true
+      highlight: true,
+      companyLogo: linkedinLogo
     },
     {
       company: "Paysafe (via Altimetrik)",
@@ -96,7 +126,8 @@ const Experience = () => {
         "Compliance: Ensured PCI-DSS compliance and security standards across payment infrastructure"
       ],
       technologies: ["Java", "Spring Boot", "AWS", "Microservices", "Payment Gateway", "PCI-DSS"],
-      highlight: true
+      highlight: true,
+      companyLogo: altimetrikLogo
     },
     {
       company: "Turo",
@@ -112,7 +143,8 @@ const Experience = () => {
         "Technical Leadership: Mentored team on microservices patterns, refactored complex legacy code for maintainability and extensibility"
       ],
       technologies: ["Java", "Spring Boot", "MySQL", "Apache Solr", "AWS", "Kubernetes", "Microservices"],
-      highlight: true
+      highlight: true,
+      companyLogo: turoLogo
     },
     {
       company: "Netflix",
@@ -128,7 +160,8 @@ const Experience = () => {
         "Global Scale: Processed payments across multiple processors (Paymentech, Adyen, WorldPay, Vantiv) and regions (EMEA, Asia, LATAM, North America)"
       ],
       technologies: ["Java", "Spring Cloud", "Cassandra", "MySQL", "Kafka", "AWS", "gRPC", "Big Data"],
-      highlight: true
+      highlight: true,
+      companyLogo: netflixLogo
     },
     {
       company: "Walmart eCommerce Labs",
@@ -141,7 +174,8 @@ const Experience = () => {
         "Optimized catalog management and search functionality for improved product discovery",
         "Mentored team of engineers in best practices for large-scale distributed systems"
       ],
-      technologies: ["Java", "Spring", "MySQL", "Solr", "REST APIs", "Microservices"]
+      technologies: ["Java", "Spring", "MySQL", "Solr", "REST APIs", "Microservices"],
+      companyLogo: walmartLogo
     },
     {
       company: "PayPal",
@@ -155,24 +189,56 @@ const Experience = () => {
         "Risk & Global Payments: Worked on fraud detection and international payment processing systems",
         "Became Subject Matter Expert (SME) in payments processing, transaction lifecycle, and PCI compliance"
       ],
-      technologies: ["Java", "Payments", "Risk Management", "Testing", "PCI Compliance"]
+      technologies: ["Java", "Payments", "Risk Management", "Testing", "PCI Compliance"],
+      companyLogo: paypalLogo
     }
   ];
 
   return (
-    <section className="container mx-auto px-6 py-12 bg-gradient-to-b from-background to-secondary/30">
-      <h2 className="text-3xl font-bold mb-3 flex items-center gap-3">
-        <Briefcase className="h-8 w-8 text-primary" />
-        Professional Experience
-      </h2>
-      <p className="text-muted-foreground mb-8 text-lg">
-        19+ years of progressive experience across payments, healthcare, marketplace, and eCommerce domains
-      </p>
-      
-      <div className="space-y-6">
-        {experiences.map((exp, idx) => (
-          <ExperienceItem key={idx} {...exp} />
-        ))}
+    <section className="py-20 px-4 bg-gradient-to-b from-background to-background/50">
+      <div className="container mx-auto max-w-4xl">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+            Professional Experience
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            15+ years building scalable systems at top tech companies
+          </p>
+        </div>
+
+        {/* Work Artifacts Carousel */}
+        <div className="mb-12">
+          <h3 className="text-2xl font-semibold mb-6 text-center">Featured Work</h3>
+          <Carousel
+            opts={{ align: "start", loop: true }}
+            plugins={[Autoplay({ delay: 3000, stopOnInteraction: true })]}
+            className="w-full max-w-3xl mx-auto"
+          >
+            <CarouselContent>
+              {workArtifacts.map((artifact, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1">
+                    <Card className="overflow-hidden">
+                      <img
+                        src={artifact.src}
+                        alt={artifact.alt}
+                        className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
+        
+        <div className="space-y-6">
+          {experiences.map((exp, idx) => (
+            <ExperienceItem key={idx} {...exp} />
+          ))}
+        </div>
       </div>
     </section>
   );
