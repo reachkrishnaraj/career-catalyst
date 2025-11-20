@@ -9,12 +9,15 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import linkedinLogo from "@/assets/company_icons/LinkedIn_Logo.svg.png";
-import paypalLogo from "@/assets/company_icons/PayPal_logo.png";
+import { useState } from "react";
+import ImageLightbox from "./ImageLightbox";
+import linkedinLogo from "@/assets/company_icons/InBug-White.png";
+import paypalLogo from "@/assets/company_icons/PayPal-Logo-Black-RGB.png";
 import altimetrikLogo from "@/assets/company_icons/altimetrik_logo.webp";
-import netflixLogo from "@/assets/company_icons/netflix.png";
-import turoLogo from "@/assets/company_icons/turo-logo.png";
-import walmartLogo from "@/assets/company_icons/walmart_labs.png";
+import netflixLogo from "@/assets/company_icons/Netflix_Logo_PMS.png";
+import turoLogo from "@/assets/company_icons/logo-white.png";
+import walmartLogo from "@/assets/company_icons/walmart_labs.svg";
+import htcLogo from "@/assets/company_icons/htc_global_services.png";
 import tbdHealthKit from "@/assets/work_artifact/tbd_health/tbd_health_kit.jpg";
 import tbdHealthKit2 from "@/assets/work_artifact/tbd_health/tbd_health_kit2.webp";
 import tbdClinicFront from "@/assets/work_artifact/tbd_health/tbd_las_vegas_clinic_front.jpg";
@@ -89,11 +92,19 @@ const ExperienceItem = ({
 };
 
 const Experience = () => {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
   const workArtifacts = [
     { src: tbdHealthKit, alt: "TBD Health Kit" },
     { src: tbdHealthKit2, alt: "TBD Health Kit 2" },
     { src: tbdClinicFront, alt: "TBD Las Vegas Clinic" }
   ];
+
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
 
   const experiences: ExperienceItemProps[] = [
     {
@@ -191,11 +202,26 @@ const Experience = () => {
       ],
       technologies: ["Java", "Payments", "Risk Management", "Testing", "PCI Compliance"],
       companyLogo: paypalLogo
+    },
+    {
+      company: "Various Companies - Starting Software Engineer",
+      role: "Software Engineer",
+      period: "2003 - 2006",
+      location: "India & USA",
+      achievements: [
+        "Started career as a Software Engineer at HCL Technologies and HTC Global Services",
+        "Built foundation in software development, working on enterprise applications",
+        "Developed expertise in Java, J2EE, and web technologies",
+        "Contributed to multiple client projects across different industries",
+        "Learned software engineering best practices and agile methodologies"
+      ],
+      technologies: ["Java", "J2EE", "SQL", "Web Development", "Enterprise Applications"],
+      companyLogo: htcLogo
     }
   ];
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-background to-background/50">
+    <section id="experience" className="py-20 px-4 bg-gradient-to-b from-background to-background/50">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
@@ -218,7 +244,7 @@ const Experience = () => {
               {workArtifacts.map((artifact, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                   <div className="p-1">
-                    <Card className="overflow-hidden">
+                    <Card className="overflow-hidden cursor-pointer" onClick={() => openLightbox(index)}>
                       <img
                         src={artifact.src}
                         alt={artifact.alt}
@@ -240,6 +266,14 @@ const Experience = () => {
           ))}
         </div>
       </div>
+
+      <ImageLightbox
+        images={workArtifacts}
+        currentIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        onNavigate={setLightboxIndex}
+      />
     </section>
   );
 };

@@ -88,7 +88,7 @@ const ProjectCarousel = () => {
   ];
 
   return (
-    <section className="container mx-auto px-6 py-12 bg-secondary/30">
+    <section id="projects" className="container mx-auto px-6 py-12 bg-secondary/30">
       <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
         <Award className="h-8 w-8 text-primary" />
         Featured Projects & Architecture

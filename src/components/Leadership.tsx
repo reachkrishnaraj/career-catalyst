@@ -35,7 +35,7 @@ const Leadership = () => {
   ];
 
   return (
-    <section className="container mx-auto px-6 py-12">
+    <section id="leadership" className="container mx-auto px-6 py-12">
       <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
         <Users className="h-8 w-8 text-primary" />
         Leadership & Impact

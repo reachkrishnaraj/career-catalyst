@@ -49,7 +49,7 @@ const PaymentExpertise = () => {
   ];
 
   return (
-    <section className="container mx-auto px-6 py-12 bg-gradient-to-br from-primary/5 via-accent/5 to-primary/5">
+    <section id="expertise" className="container mx-auto px-6 py-12 bg-gradient-to-br from-primary/5 via-accent/5 to-primary/5">
       <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
         <CreditCard className="h-8 w-8 text-primary" />
         Payments & Financial Systems Expertise
