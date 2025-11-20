@@ -18,7 +18,15 @@ import {
   Settings,
   Zap
 } from "lucide-react";
+import javaIcon from "@/assets/icons/java.png";
+import typescriptIcon from "@/assets/icons/typescript.png";
+import pythonIcon from "@/assets/icons/python.png";
+import reactIcon from "@/assets/icons/react.png";
+import nodejsIcon from "@/assets/icons/nodejs.png";
+import dockerIcon from "@/assets/icons/docker.png";
 import awsIcon from "@/assets/icons/aws.png";
+import kubernetesIcon from "@/assets/icons/kubernetes.png";
+import bootstrapIcon from "@/assets/icons/bootstrap.png";
 
 interface SkillCategory {
   title: string;
@@ -104,15 +112,15 @@ const TechnicalSkills = () => {
   ];
 
   const techStackIcons = [
-    { name: "Java", icon: "/icons/tech/java.png" },
-    { name: "TypeScript", icon: "/icons/tech/typescript.png" },
-    { name: "Python", icon: "/icons/tech/python.png" },
-    { name: "React", icon: "/icons/tech/react.png" },
-    { name: "Node.js", icon: "/icons/tech/nodejs.png" },
-    { name: "Docker", icon: "/icons/tech/docker.png" },
-    { name: "AWS", icon: "/icons/tech/aws.png" },
-    { name: "Kubernetes", icon: "/icons/tech/kubernetes.png" },
-    { name: "Bootstrap", icon: "/icons/tech/bootstrap.png" }
+    { name: "Java", icon: javaIcon },
+    { name: "TypeScript", icon: typescriptIcon },
+    { name: "Python", icon: pythonIcon },
+    { name: "React", icon: reactIcon },
+    { name: "Node.js", icon: nodejsIcon },
+    { name: "Docker", icon: dockerIcon },
+    { name: "AWS", icon: awsIcon },
+    { name: "Kubernetes", icon: kubernetesIcon },
+    { name: "Bootstrap", icon: bootstrapIcon }
   ];
 
   const awsServices = [
