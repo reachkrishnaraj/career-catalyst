@@ -7,6 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 import { 
   Code2, 
   Database, 
@@ -18,15 +19,44 @@ import {
   Settings,
   Zap
 } from "lucide-react";
-import javaIcon from "@/assets/icons/java.png";
-import typescriptIcon from "@/assets/icons/typescript.png";
-import pythonIcon from "@/assets/icons/python.png";
-import reactIcon from "@/assets/icons/react.png";
-import nodejsIcon from "@/assets/icons/nodejs.png";
-import dockerIcon from "@/assets/icons/docker.png";
-import awsIcon from "@/assets/icons/aws.png";
-import kubernetesIcon from "@/assets/icons/kubernetes.png";
-import bootstrapIcon from "@/assets/icons/bootstrap.png";
+import javaTechIcon from "@/assets/tech_icons/Java.png";
+import javascriptTechIcon from "@/assets/tech_icons/JavaScript.png";
+import typescriptTechIcon from "@/assets/tech_icons/TypeScript.png";
+import reactTechIcon from "@/assets/tech_icons/React.png";
+import nextjsTechIcon from "@/assets/tech_icons/Next.js.png";
+import dockerTechIcon from "@/assets/tech_icons/Docker.png";
+import kubernetesTechIcon from "@/assets/tech_icons/kubernetes.svg";
+import springTechIcon from "@/assets/tech_icons/Spring.png";
+import mysqlTechIcon from "@/assets/tech_icons/MySQL.png";
+import postgresTechIcon from "@/assets/tech_icons/PostgresSQL.png";
+import mongoTechIcon from "@/assets/tech_icons/MongoDB.png";
+import redisTechIcon from "@/assets/tech_icons/Redis.png";
+import graphqlTechIcon from "@/assets/tech_icons/GraphQL.png";
+import kafkaTechIcon from "@/assets/tech_icons/Apache Kafka.png";
+import oauthTechIcon from "@/assets/tech_icons/oauth.svg";
+import awsCoreIcon from "@/assets/tech_icons/aws.svg";
+import apiGatewayIcon from "@/assets/aws_icons/API Gateway.png";
+import amplifyServiceIcon from "@/assets/aws_icons/Amplify.png";
+import cloudWatchIcon from "@/assets/aws_icons/CloudWatch.png";
+import cognitoServiceIcon from "@/assets/aws_icons/Cognito.png";
+import comprehendServiceIcon from "@/assets/aws_icons/Comprehend.png";
+import dynamoDbServiceIcon from "@/assets/aws_icons/DynamoDB.png";
+import ec2ServiceIcon from "@/assets/aws_icons/EC2.png";
+import eksServiceIcon from "@/assets/aws_icons/EKS Cloud.png";
+import eventBridgeServiceIcon from "@/assets/aws_icons/EventBridge.png";
+import fargateServiceIcon from "@/assets/aws_icons/Fargate.png";
+import glueServiceIcon from "@/assets/aws_icons/Glue.png";
+import healthLakeServiceIcon from "@/assets/aws_icons/HealthLake.png";
+import kmsServiceIcon from "@/assets/aws_icons/Key Management Service.png";
+import kinesisServiceIcon from "@/assets/aws_icons/Kinesis.png";
+import memoryDbServiceIcon from "@/assets/aws_icons/MemoryDB for Redis.png";
+import networkFirewallServiceIcon from "@/assets/aws_icons/Network Firewall.png";
+import quickSightServiceIcon from "@/assets/aws_icons/QuickSight.png";
+import rdsServiceIcon from "@/assets/aws_icons/RDS.png";
+import secretsManagerServiceIcon from "@/assets/aws_icons/Secrets Manager.png";
+import s3ServiceIcon from "@/assets/aws_icons/Simple Storage Service.png";
+import snsServiceIcon from "@/assets/aws_icons/Simple Notification Service.png";
+import sqsServiceIcon from "@/assets/aws_icons/Simple Queue Service.png";
 
 interface SkillCategory {
   title: string;
@@ -34,6 +64,14 @@ interface SkillCategory {
   skills: string[];
   color: string;
 }
+
+const chunkArray = <T,>(arr: T[], size: number): T[][] => {
+  const chunks: T[][] = [];
+  for (let i = 0; i < arr.length; i += size) {
+    chunks.push(arr.slice(i, i + size));
+  }
+  return chunks;
+};
 
 const TechnicalSkills = () => {
   const skillCategories: SkillCategory[] = [
@@ -112,31 +150,47 @@ const TechnicalSkills = () => {
   ];
 
   const techStackIcons = [
-    { name: "Java", icon: javaIcon },
-    { name: "TypeScript", icon: typescriptIcon },
-    { name: "Python", icon: pythonIcon },
-    { name: "React", icon: reactIcon },
-    { name: "Node.js", icon: nodejsIcon },
-    { name: "Docker", icon: dockerIcon },
-    { name: "AWS", icon: awsIcon },
-    { name: "Kubernetes", icon: kubernetesIcon },
-    { name: "Bootstrap", icon: bootstrapIcon }
+    { name: "Java", icon: javaTechIcon },
+    { name: "JavaScript", icon: javascriptTechIcon },
+    { name: "TypeScript", icon: typescriptTechIcon },
+    { name: "React", icon: reactTechIcon },
+    { name: "Next.js", icon: nextjsTechIcon },
+    { name: "Spring", icon: springTechIcon },
+    { name: "Docker", icon: dockerTechIcon },
+    { name: "Kubernetes", icon: kubernetesTechIcon },
+    { name: "MySQL", icon: mysqlTechIcon },
+    { name: "PostgreSQL", icon: postgresTechIcon },
+    { name: "MongoDB", icon: mongoTechIcon },
+    { name: "Redis", icon: redisTechIcon },
+    { name: "GraphQL", icon: graphqlTechIcon },
+    { name: "Kafka", icon: kafkaTechIcon },
+    { name: "OAuth2", icon: oauthTechIcon },
+    { name: "AWS", icon: awsCoreIcon },
   ];
 
   const awsServices = [
-    { name: "EC2", icon: "/icons/aws/ec2.svg" },
-    { name: "S3", icon: "/icons/aws/s3.svg" },
-    { name: "Lambda", icon: "/icons/aws/lambda.svg" },
-    { name: "DynamoDB", icon: "/icons/aws/dynamodb.svg" },
-    { name: "RDS", icon: "/icons/aws/rds.svg" },
-    { name: "SQS", icon: "/icons/aws/sqs.svg" },
-    { name: "SNS", icon: "/icons/aws/sns.svg" },
-    { name: "CloudFront", icon: "/icons/aws/cloudfront.svg" },
-    { name: "Route53", icon: "/icons/aws/route53.svg" },
-    { name: "ECS", icon: "/icons/aws/ecs.svg" },
-    { name: "Athena", icon: "/icons/aws/athena.svg" },
-    { name: "Glue", icon: "/icons/aws/glue.svg" },
-    { name: "Amplify", icon: "/icons/aws/amplify.svg" }
+    { name: "EC2", icon: ec2ServiceIcon },
+    { name: "Lambda (via Fargate)", icon: fargateServiceIcon },
+    { name: "RDS", icon: rdsServiceIcon },
+    { name: "SNS", icon: snsServiceIcon },
+    { name: "Kinesis", icon: kinesisServiceIcon },
+    { name: "Amplify", icon: amplifyServiceIcon },
+    { name: "S3", icon: s3ServiceIcon },
+    { name: "DynamoDB", icon: dynamoDbServiceIcon },
+    { name: "SQS", icon: sqsServiceIcon },
+    { name: "CloudWatch", icon: cloudWatchIcon },
+    { name: "API Gateway", icon: apiGatewayIcon },
+    { name: "Cognito", icon: cognitoServiceIcon },
+    { name: "Comprehend", icon: comprehendServiceIcon },
+    { name: "EKS", icon: eksServiceIcon },
+    { name: "EventBridge", icon: eventBridgeServiceIcon },
+    { name: "Glue", icon: glueServiceIcon },
+    { name: "HealthLake", icon: healthLakeServiceIcon },
+    { name: "KMS", icon: kmsServiceIcon },
+    { name: "MemoryDB for Redis", icon: memoryDbServiceIcon },
+    { name: "Network Firewall", icon: networkFirewallServiceIcon },
+    { name: "QuickSight", icon: quickSightServiceIcon },
+    { name: "Secrets Manager", icon: secretsManagerServiceIcon },
   ];
 
   const domainExpertise = [
@@ -147,8 +201,11 @@ const TechnicalSkills = () => {
     "eCommerce & Retail",
     "Fintech & Financial Services",
     "Cloud Architecture & Migration",
-    "Microservices Design Patterns"
+    "Microservices Design Patterns",
   ];
+
+  const techIconPairs = chunkArray(techStackIcons, 2);
+  const awsServicePairs = chunkArray(awsServices, 2);
 
   return (
     <section className="container mx-auto px-6 py-12 bg-secondary/20">
@@ -168,27 +225,38 @@ const TechnicalSkills = () => {
               align: "start",
               loop: true,
             }}
+            plugins={[
+              // Auto-scroll tech icons
+              Autoplay({ delay: 3500, stopOnInteraction: true }),
+            ]}
             className="w-full"
           >
             <CarouselContent className="-ml-4">
-              {techStackIcons.map((tech, index) => (
-                <CarouselItem key={index} className="pl-4 basis-1/3 sm:basis-1/4 md:basis-1/6 lg:basis-1/8">
-                  <div className="p-4 glass-card rounded-lg hover:shadow-lg transition-all hover:-translate-y-1 cursor-pointer group">
-                    <div className="flex flex-col items-center gap-2">
-                      <div className="w-16 h-16 flex items-center justify-center">
-                        <img 
-                          src={tech.icon} 
-                          alt={tech.name}
-                          className="w-full h-full object-contain transition-transform group-hover:scale-110"
-                          onError={(e) => {
-                            e.currentTarget.style.display = 'none';
-                          }}
-                        />
+              {techIconPairs.map((pair, pairIndex) => (
+                <CarouselItem
+                  key={pairIndex}
+                  className="pl-4 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6 xl:basis-1/8"
+                >
+                  <div className="flex flex-col gap-4">
+                    {pair.map((tech) => (
+                      <div
+                        key={tech.name}
+                        className="p-4 glass-card rounded-lg hover:shadow-lg transition-all hover:-translate-y-1 cursor-pointer group"
+                      >
+                        <div className="flex flex-col items-center gap-2">
+                          <div className="w-16 h-16 flex items-center justify-center">
+                            <img
+                              src={tech.icon}
+                              alt={tech.name}
+                              className="w-full h-full object-contain transition-transform group-hover:scale-110"
+                            />
+                          </div>
+                          <span className="text-xs font-medium text-center text-muted-foreground group-hover:text-foreground transition-colors">
+                            {tech.name}
+                          </span>
+                        </div>
                       </div>
-                      <span className="text-xs font-medium text-center text-muted-foreground group-hover:text-foreground transition-colors">
-                        {tech.name}
-                      </span>
-                    </div>
+                    ))}
                   </div>
                 </CarouselItem>
               ))}
@@ -262,27 +330,38 @@ const TechnicalSkills = () => {
             align: "start",
             loop: true,
           }}
+          plugins={[
+            // Auto-scroll AWS icons
+            Autoplay({ delay: 4000, stopOnInteraction: true }),
+          ]}
           className="w-full"
         >
           <CarouselContent className="-ml-3">
-            {awsServices.map((service, index) => (
-              <CarouselItem key={index} className="pl-3 basis-1/3 sm:basis-1/4 md:basis-1/6 lg:basis-1/8">
-                <div className="p-4 glass-card rounded-lg hover:shadow-lg transition-all hover:-translate-y-1 cursor-pointer group border border-border/50 hover:border-orange-500/50">
-                  <div className="flex flex-col items-center gap-2">
-                    <div className="w-12 h-12 flex items-center justify-center bg-background/50 rounded-lg">
-                      <img 
-                        src={service.icon} 
-                        alt={service.name}
-                        className="w-9 h-9 object-contain transition-transform group-hover:scale-110"
-                        onError={(e) => {
-                          e.currentTarget.src = awsIcon;
-                        }}
-                      />
+            {awsServicePairs.map((pair, pairIndex) => (
+              <CarouselItem
+                key={pairIndex}
+                className="pl-3 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6 xl:basis-1/8"
+              >
+                <div className="flex flex-col gap-4">
+                  {pair.map((service) => (
+                    <div
+                      key={service.name}
+                      className="p-4 glass-card rounded-lg hover:shadow-lg transition-all hover:-translate-y-1 cursor-pointer group border border-border/50 hover:border-orange-500/50"
+                    >
+                      <div className="flex flex-col items-center gap-2">
+                        <div className="w-12 h-12 flex items-center justify-center bg-background/50 rounded-lg">
+                          <img
+                            src={service.icon}
+                            alt={service.name}
+                            className="w-9 h-9 object-contain transition-transform group-hover:scale-110"
+                          />
+                        </div>
+                        <span className="text-xs font-medium text-center text-muted-foreground group-hover:text-foreground transition-colors">
+                          {service.name}
+                        </span>
+                      </div>
                     </div>
-                    <span className="text-xs font-medium text-center text-muted-foreground group-hover:text-foreground transition-colors">
-                      {service.name}
-                    </span>
-                  </div>
+                  ))}
                 </div>
               </CarouselItem>
             ))}
