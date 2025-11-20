@@ -56,7 +56,7 @@ const TechnicalSkills = () => {
     {
       title: "Cloud & DevOps",
       icon: <Cloud className="h-6 w-6" />,
-      skills: ["AWS (EC2, Lambda, S3, RDS, SQS, SNS, CloudFront)", "Kubernetes", "Docker", "Terraform"],
+      skills: ["Kubernetes", "Docker", "Terraform", "CI/CD Pipelines"],
       color: "text-orange-600"
     },
     {
@@ -101,6 +101,22 @@ const TechnicalSkills = () => {
       skills: ["OAuth2.0", "JWT", "SSL/TLS", "RSA", "HIPAA Compliance", "PCI Compliance", "Vanta"],
       color: "text-rose-600"
     }
+  ];
+
+  const awsServices = [
+    { name: "EC2", icon: "/icons/aws/ec2.svg" },
+    { name: "S3", icon: "/icons/aws/s3.svg" },
+    { name: "Lambda", icon: "/icons/aws/lambda.svg" },
+    { name: "DynamoDB", icon: "/icons/aws/dynamodb.svg" },
+    { name: "RDS", icon: "/icons/aws/rds.svg" },
+    { name: "SQS", icon: "/icons/aws/sqs.svg" },
+    { name: "SNS", icon: "/icons/aws/sns.svg" },
+    { name: "CloudFront", icon: "/icons/aws/cloudfront.svg" },
+    { name: "Route53", icon: "/icons/aws/route53.svg" },
+    { name: "ECS", icon: "/icons/aws/ecs.svg" },
+    { name: "Athena", icon: "/icons/aws/athena.svg" },
+    { name: "Glue", icon: "/icons/aws/glue.svg" },
+    { name: "Amplify", icon: "/icons/aws/amplify.svg" }
   ];
 
   const domainExpertise = [
@@ -186,6 +202,39 @@ const TechnicalSkills = () => {
                 </Badge>
               ))}
             </div>
+            
+            {/* AWS Services Section - Only for Cloud & DevOps */}
+            {category.title === "Cloud & DevOps" && (
+              <div className="mt-6 pt-6 border-t border-border">
+                <h4 className="font-semibold mb-4 text-sm flex items-center gap-2">
+                  <Cloud className="h-4 w-4" />
+                  AWS Services
+                </h4>
+                <div className="flex gap-3 overflow-x-auto pb-2 -mx-2 px-2 scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent">
+                  {awsServices.map((service, serviceIdx) => (
+                    <div 
+                      key={serviceIdx} 
+                      className="flex flex-col items-center gap-2 min-w-[60px] p-2 rounded-lg hover:bg-accent/10 transition-all hover:scale-105 cursor-pointer group"
+                      title={service.name}
+                    >
+                      <div className="w-10 h-10 flex items-center justify-center bg-background/50 rounded-lg border border-border/50 group-hover:border-primary/50 transition-colors">
+                        <img 
+                          src={service.icon} 
+                          alt={service.name}
+                          className="w-7 h-7 object-contain"
+                          onError={(e) => {
+                            e.currentTarget.src = awsIcon;
+                          }}
+                        />
+                      </div>
+                      <span className="text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors">
+                        {service.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </Card>
         ))}
       </div>
