@@ -9,7 +9,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import ImageLightbox from "./ImageLightbox";
 import linkedinLogo from "@/assets/company_icons/InBug-White.png";
 import paypalLogo from "@/assets/company_icons/PayPal-Logo-Black-RGB.png";
@@ -94,6 +94,36 @@ const ExperienceItem = ({
 const Experience = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [visibleNodes, setVisibleNodes] = useState<Set<number>>(new Set());
+  const nodeRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+    
+    nodeRefs.current.forEach((node, index) => {
+      if (node) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                setTimeout(() => {
+                  setVisibleNodes((prev) => new Set(prev).add(index));
+                }, index * 100); // Stagger animation by 100ms per node
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+        
+        observer.observe(node);
+        observers.push(observer);
+      }
+    });
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+  }, []);
 
   const workArtifacts = [
     { src: tbdHealthKit, alt: "TBD Health Kit" },
@@ -233,62 +263,95 @@ const Experience = () => {
         </div>
 
         {/* Work Artifacts Carousel */}
-        <div className="mb-12">
-          <h3 className="text-2xl font-semibold mb-6 text-center">Featured Work</h3>
+        <div className="mb-16">
+          <div className="text-center mb-8">
+            <h3 className="text-3xl font-bold mb-2 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+              Featured Work
+            </h3>
+            <p className="text-muted-foreground">Real products and systems I've built</p>
+          </div>
           <Carousel
             opts={{ align: "start", loop: true }}
-            plugins={[Autoplay({ delay: 3000, stopOnInteraction: true })]}
-            className="w-full max-w-3xl mx-auto"
+            plugins={[Autoplay({ delay: 4000, stopOnInteraction: true })]}
+            className="w-full max-w-4xl mx-auto"
           >
-            <CarouselContent>
+            <CarouselContent className="-ml-4">
               {workArtifacts.map((artifact, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <div className="p-1">
-                    <Card className="overflow-hidden cursor-pointer" onClick={() => openLightbox(index)}>
-                      <img
-                        src={artifact.src}
-                        alt={artifact.alt}
-                        className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
-                      />
+                <CarouselItem key={index} className="pl-4 md:basis-1/2">
+                  <div className="group relative">
+                    <Card 
+                      className="overflow-hidden cursor-pointer border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20" 
+                      onClick={() => openLightbox(index)}
+                    >
+                      <div className="relative overflow-hidden">
+                        <img
+                          src={artifact.src}
+                          alt={artifact.alt}
+                          className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                          <p className="font-semibold text-sm">{artifact.alt}</p>
+                        </div>
+                      </div>
                     </Card>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="left-0 -translate-x-12" />
+            <CarouselNext className="right-0 translate-x-12" />
           </Carousel>
         </div>
         
         <div className="relative">
           {experiences.map((exp, idx) => (
-            <div key={idx} className="relative pb-6 last:pb-0">
-              {/* Timeline rail - vertical line */}
+            <div 
+              key={idx} 
+              ref={(el) => (nodeRefs.current[idx] = el)}
+              className="relative pb-8 last:pb-0"
+            >
+              {/* Timeline rail - subtle vertical line */}
               {idx < experiences.length - 1 && (
-                <div className="absolute left-6 top-12 bottom-0 w-1 bg-gradient-to-b from-primary via-accent to-primary opacity-30" />
+                <div className="absolute left-6 top-12 bottom-0 w-px bg-gradient-to-b from-black/20 via-black/10 to-transparent dark:from-white/20 dark:via-white/10" />
               )}
               
-              {/* Timeline node - railroad stop */}
-              <div className="absolute left-0 top-6 flex items-center">
+              {/* Timeline node with scroll animation */}
+              <div 
+                className={`absolute left-0 top-6 flex items-center transition-all duration-700 ${
+                  visibleNodes.has(idx) 
+                    ? 'opacity-100 scale-100' 
+                    : 'opacity-0 scale-50'
+                }`}
+                style={{ transitionDelay: `${idx * 100}ms` }}
+              >
                 <div className="relative">
-                  {/* Outer ring */}
-                  <div className="w-12 h-12 rounded-full border-4 border-primary bg-background flex items-center justify-center shadow-lg shadow-primary/50">
-                    {/* Inner dot with pulse */}
-                    <div className="w-5 h-5 rounded-full bg-gradient-to-br from-primary to-accent animate-pulse" />
+                  {/* Minimalist outer ring */}
+                  <div className="w-12 h-12 rounded-full border-2 border-black/30 dark:border-white/30 bg-background flex items-center justify-center shadow-md">
+                    {/* Inner dot */}
+                    <div className="w-4 h-4 rounded-full bg-black dark:bg-white" />
                   </div>
-                  {/* Railroad tie effect */}
+                  
+                  {/* Subtle railroad ties */}
                   {idx < experiences.length - 1 && (
                     <>
-                      <div className="absolute top-16 left-1/2 -translate-x-1/2 w-0.5 h-4 bg-border opacity-50" />
-                      <div className="absolute top-24 left-1/2 -translate-x-1/2 w-0.5 h-4 bg-border opacity-50" />
-                      <div className="absolute top-32 left-1/2 -translate-x-1/2 w-0.5 h-4 bg-border opacity-50" />
+                      <div className="absolute top-16 left-1/2 -translate-x-1/2 w-px h-3 bg-black/15 dark:bg-white/15" />
+                      <div className="absolute top-24 left-1/2 -translate-x-1/2 w-px h-3 bg-black/10 dark:bg-white/10" />
+                      <div className="absolute top-32 left-1/2 -translate-x-1/2 w-px h-3 bg-black/5 dark:bg-white/5" />
                     </>
                   )}
                 </div>
               </div>
               
-              {/* Experience card with left margin for timeline */}
-              <div className="ml-20">
+              {/* Experience card with animation */}
+              <div 
+                className={`ml-20 transition-all duration-700 ${
+                  visibleNodes.has(idx)
+                    ? 'opacity-100 translate-x-0'
+                    : 'opacity-0 translate-x-8'
+                }`}
+                style={{ transitionDelay: `${idx * 100 + 200}ms` }}
+              >
                 <ExperienceItem {...exp} />
               </div>
             </div>
