@@ -204,187 +204,118 @@ const TechnicalSkills = () => {
     "Microservices Design Patterns",
   ];
 
-  const techIconPairs = chunkArray(techStackIcons, 2);
-  const awsServicePairs = chunkArray(awsServices, 2);
+  const chunkedTechStack = chunkArray(techStackIcons, 2);
+  const chunkedAwsServices = chunkArray(awsServices, 2);
 
   return (
-    <section className="container mx-auto px-6 py-12 bg-secondary/20">
-      <div className="mb-8">
-        <h2 className="text-3xl font-bold mb-3 flex items-center gap-3">
-          <Code2 className="h-8 w-8 text-primary" />
-          Technical Skills & Expertise
+    <section className="py-20 px-4 bg-gradient-to-b from-background/50 to-background">
+      <div className="container mx-auto max-w-6xl">
+        <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+          Technical Skills
         </h2>
-        <p className="text-muted-foreground text-lg mb-6">
-          Versatile expertise spanning Individual Contributor (IC) technical excellence and strategic leadership
-        </p>
         
-        {/* Tech Stack Icons Carousel */}
-        <div className="mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {skillCategories.map((category, idx) => (
+            <Card key={idx} className="p-6 glass-card hover:shadow-lg transition-shadow duration-300">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="text-primary">{category.icon}</div>
+                <h3 className="text-xl font-bold">{category.title}</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill, skillIdx) => (
+                  <Badge key={skillIdx} variant="secondary" className="text-sm">
+                    {skill}
+                  </Badge>
+                ))}
+              </div>
+            </Card>
+          ))}
+        </div>
+
+        {/* Technology Stack Section */}
+        <div className="mb-16">
+          <h3 className="text-3xl font-bold text-center mb-8">Core Technology Stack</h3>
           <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            plugins={[
-              // Auto-scroll tech icons
-              Autoplay({ delay: 3500, stopOnInteraction: true }),
-            ]}
-            className="w-full"
+            opts={{ align: "start", loop: true }}
+            plugins={[Autoplay({ delay: 2500, stopOnInteraction: true })]}
+            className="w-full max-w-5xl mx-auto"
           >
             <CarouselContent className="-ml-4">
-              {techIconPairs.map((pair, pairIndex) => (
-                <CarouselItem
-                  key={pairIndex}
-                  className="pl-4 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6 xl:basis-1/8"
-                >
-                  <div className="flex flex-col gap-4">
-                    {pair.map((tech) => (
-                      <div
-                        key={tech.name}
-                        className="p-4 glass-card rounded-lg hover:shadow-lg transition-all hover:-translate-y-1 cursor-pointer group"
-                      >
-                        <div className="flex flex-col items-center gap-2">
-                          <div className="w-16 h-16 flex items-center justify-center">
-                            <img
-                              src={tech.icon}
-                              alt={tech.name}
-                              className="w-full h-full object-contain transition-transform group-hover:scale-110"
-                            />
-                          </div>
-                          <span className="text-xs font-medium text-center text-muted-foreground group-hover:text-foreground transition-colors">
-                            {tech.name}
-                          </span>
+              {chunkedTechStack.map((chunk, idx) => (
+                <CarouselItem key={idx} className="pl-4 md:basis-1/3 lg:basis-1/4">
+                  <div className="flex flex-col gap-3">
+                    {chunk.map((tech, techIdx) => (
+                      <Card key={techIdx} className="p-4 glass-card flex items-center gap-4 hover:shadow-lg transition-all duration-300">
+                        <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
+                          <img 
+                            src={tech.icon} 
+                            alt={tech.name}
+                            className="max-h-12 max-w-12 object-contain"
+                          />
                         </div>
-                      </div>
+                        <span className="font-semibold text-sm">{tech.name}</span>
+                      </Card>
                     ))}
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex" />
-            <CarouselNext className="hidden md:flex" />
+            <CarouselPrevious className="left-0" />
+            <CarouselNext className="right-0" />
           </Carousel>
         </div>
-        
-        {/* Full Stack Highlight */}
-        <Card className="p-6 bg-gradient-to-r from-success/20 to-primary/20 border-success/30 mb-8 glow">
-          <div className="flex items-center gap-3 mb-3">
-            <Layers className="h-8 w-8 text-success" />
-            <h3 className="text-2xl font-bold">Full-Stack Infrastructure Expert</h3>
-          </div>
-          <p className="text-lg mb-4">
-            <strong>Built entire tech stacks from ground up</strong> - from infrastructure provisioning to application deployment
-          </p>
-          <div className="grid md:grid-cols-3 gap-4">
-            <div className="flex items-start gap-2">
-              <span className="text-success font-bold text-xl">✓</span>
-              <div>
-                <p className="font-semibold">Infrastructure as Code</p>
-                <p className="text-sm text-muted-foreground">Terraform, CloudFormation, Kubernetes configs</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-2">
-              <span className="text-success font-bold text-xl">✓</span>
-              <div>
-                <p className="font-semibold">End-to-End Configuration</p>
-                <p className="text-sm text-muted-foreground">CI/CD pipelines, monitoring, alerting, logging</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-2">
-              <span className="text-success font-bold text-xl">✓</span>
-              <div>
-                <p className="font-semibold">Cloud Native Architecture</p>
-                <p className="text-sm text-muted-foreground">Microservices, containers, serverless</p>
-              </div>
-            </div>
-          </div>
-        </Card>
-      </div>
-      
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-        {skillCategories.map((category, idx) => (
-          <Card key={idx} className="p-6 hover:shadow-xl transition-all hover:-translate-y-1 glass-card">
-            <div className="flex items-center gap-3 mb-4">
-              <div className={category.color}>{category.icon}</div>
-              <h3 className="font-bold text-lg">{category.title}</h3>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {category.skills.map((skill, skillIdx) => (
-                <Badge key={skillIdx} variant="outline" className="text-xs hover:bg-primary/10 transition-colors">
-                  {skill}
-                </Badge>
+
+        {/* AWS Services Section */}
+        <div>
+          <h3 className="text-3xl font-bold text-center mb-8">AWS Services Expertise</h3>
+          <Carousel
+            opts={{ align: "start", loop: true }}
+            plugins={[Autoplay({ delay: 3000, stopOnInteraction: true })]}
+            className="w-full max-w-5xl mx-auto"
+          >
+            <CarouselContent className="-ml-4">
+              {chunkedAwsServices.map((chunk, idx) => (
+                <CarouselItem key={idx} className="pl-4 md:basis-1/3 lg:basis-1/4">
+                  <div className="flex flex-col gap-3">
+                    {chunk.map((service, serviceIdx) => (
+                      <Card key={serviceIdx} className="p-4 glass-card flex items-center gap-4 hover:shadow-lg transition-all duration-300">
+                        <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
+                          <img 
+                            src={service.icon} 
+                            alt={service.name}
+                            className="max-h-12 max-w-12 object-contain"
+                          />
+                        </div>
+                        <span className="font-semibold text-sm">{service.name}</span>
+                      </Card>
+                    ))}
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-0" />
+            <CarouselNext className="right-0" />
+          </Carousel>
+        </div>
+
+        {/* Domain Expertise */}
+        <div className="mt-16">
+          <Card className="p-8 glass-card">
+            <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+              <Layers className="h-6 w-6 text-primary" />
+              Domain Expertise
+            </h3>
+            <div className="grid md:grid-cols-2 gap-3">
+              {domainExpertise.map((domain, idx) => (
+                <div key={idx} className="flex items-center gap-2">
+                  <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <span className="font-medium">{domain}</span>
+                </div>
               ))}
             </div>
           </Card>
-        ))}
+        </div>
       </div>
-      
-      {/* AWS Services Dedicated Section */}
-      <Card className="p-8 bg-gradient-to-r from-orange-500/10 to-amber-500/10 border-orange-500/20 mb-8">
-        <div className="flex items-center gap-3 mb-6">
-          <Cloud className="h-8 w-8 text-orange-600" />
-          <h3 className="text-2xl font-bold">AWS Cloud Services</h3>
-        </div>
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          plugins={[
-            // Auto-scroll AWS icons
-            Autoplay({ delay: 4000, stopOnInteraction: true }),
-          ]}
-          className="w-full"
-        >
-          <CarouselContent className="-ml-3">
-            {awsServicePairs.map((pair, pairIndex) => (
-              <CarouselItem
-                key={pairIndex}
-                className="pl-3 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6 xl:basis-1/8"
-              >
-                <div className="flex flex-col gap-4">
-                  {pair.map((service) => (
-                    <div
-                      key={service.name}
-                      className="p-4 glass-card rounded-lg hover:shadow-lg transition-all hover:-translate-y-1 cursor-pointer group border border-border/50 hover:border-orange-500/50"
-                    >
-                      <div className="flex flex-col items-center gap-2">
-                        <div className="w-12 h-12 flex items-center justify-center bg-background/50 rounded-lg">
-                          <img
-                            src={service.icon}
-                            alt={service.name}
-                            className="w-9 h-9 object-contain transition-transform group-hover:scale-110"
-                          />
-                        </div>
-                        <span className="text-xs font-medium text-center text-muted-foreground group-hover:text-foreground transition-colors">
-                          {service.name}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="hidden md:flex" />
-          <CarouselNext className="hidden md:flex" />
-        </Carousel>
-      </Card>
-
-      <Card className="p-8 bg-primary/5 border-primary/20">
-        <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
-          <Layers className="h-6 w-6 text-primary" />
-          Domain Expertise
-        </h3>
-        <div className="grid md:grid-cols-2 gap-3">
-          {domainExpertise.map((domain, idx) => (
-            <div key={idx} className="flex items-center gap-2">
-              <div className="h-2 w-2 rounded-full bg-accent"></div>
-              <span className="font-medium">{domain}</span>
-            </div>
-          ))}
-        </div>
-      </Card>
     </section>
   );
 };
