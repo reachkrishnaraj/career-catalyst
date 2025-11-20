@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Carousel,
   CarouselContent,
@@ -8,8 +9,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Award, TrendingUp, Maximize2 } from "lucide-react";
+import { Award, TrendingUp, Maximize2, ExternalLink } from "lucide-react";
 import ImageLightbox from "@/components/ImageLightbox";
+import Autoplay from "embla-carousel-autoplay";
+import netflixLogo from "@/assets/logos/netflix.png";
+import turoLogo from "@/assets/logos/turo.png";
 import turoAtoProject from "@/assets/work_artifact/turo/turo_ato_project.png";
 import turoRuleEngine from "@/assets/work_artifact/turo/turo_rule_engine_project.png";
 import turoSearchImprovement from "@/assets/work_artifact/turo/turo_search_improvement_project.png";
@@ -37,12 +41,15 @@ interface Project {
   technologies: string[];
   architectureImage?: string;
   architectureImages?: { src: string; alt: string }[];
+  mediumLink?: string;
+  companyLogo?: string;
 }
 
 const ProjectCarousel = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxImages, setLightboxImages] = useState<{ src: string; alt: string }[]>([]);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [selectedCompany, setSelectedCompany] = useState<string>("All");
 
   const openLightbox = (images: { src: string; alt: string }[], index: number = 0) => {
     setLightboxImages(images);
@@ -62,7 +69,8 @@ const ProjectCarousel = () => {
         "Improved booking conversion by 35%"
       ],
       technologies: ["ReactJS", "NextJS", "AWS", "Saleor", "DynamoDB", "Spring Boot"],
-      architectureImage: "/placeholder-architecture.jpg"
+      architectureImage: "/placeholder-architecture.jpg",
+      companyLogo: undefined
     },
     {
       title: "Netflix Payment Reconciliation System",
@@ -75,7 +83,8 @@ const ProjectCarousel = () => {
         "Improved payment routing resiliency by 25%"
       ],
       technologies: ["Java", "Cassandra", "Spring Boot", "Netflix OSS", "AWS"],
-      architectureImage: "/placeholder-architecture.jpg"
+      architectureImage: "/placeholder-architecture.jpg",
+      companyLogo: netflixLogo
     },
     {
       title: "Account Takeover Prevention System",
@@ -88,7 +97,8 @@ const ProjectCarousel = () => {
         "Improved user trust metrics by 45% through enhanced security"
       ],
       technologies: ["Java", "Spring Boot", "AWS", "Machine Learning", "Redis", "Datadog"],
-      architectureImage: turoAtoProject
+      architectureImage: turoAtoProject,
+      companyLogo: turoLogo
     },
     {
       title: "Young Driver Risk Assessment Platform",
@@ -101,7 +111,8 @@ const ProjectCarousel = () => {
         "Increased platform revenue by 12% through new market segment access"
       ],
       technologies: ["Java", "Spring Boot", "Python", "Scikit-learn", "AWS SageMaker", "PostgreSQL"],
-      architectureImage: turoYoungDriver
+      architectureImage: turoYoungDriver,
+      companyLogo: turoLogo
     },
     {
       title: "Search Ranking Optimization Engine",
@@ -114,7 +125,8 @@ const ProjectCarousel = () => {
         "Reduced search abandonment rate from 45% to 18%"
       ],
       technologies: ["Java", "Apache Solr", "Elasticsearch", "Python", "TensorFlow", "A/B Testing"],
-      architectureImage: turoSearchImprovement
+      architectureImage: turoSearchImprovement,
+      companyLogo: turoLogo
     },
     {
       title: "Payment Gateway Modernization",
@@ -127,7 +139,8 @@ const ProjectCarousel = () => {
         "Enabled support for modern payment methods"
       ],
       technologies: ["Architecture", "Cloud Migration", "Microservices", "API Design"],
-      architectureImage: "/placeholder-architecture.jpg"
+      architectureImage: "/placeholder-architecture.jpg",
+      companyLogo: undefined
     },
     {
       title: "Dynamic Pricing & Fee Engine",
@@ -140,7 +153,8 @@ const ProjectCarousel = () => {
         "Supported 200+ configurable fee types across different geographic markets"
       ],
       technologies: ["Java", "Spring Boot", "Apache Solr", "MySQL", "Redis", "AWS"],
-      architectureImage: turoRuleEngine
+      architectureImage: turoRuleEngine,
+      companyLogo: turoLogo
     },
     {
       title: "Payment Reconciliation System",
@@ -161,7 +175,9 @@ const ProjectCarousel = () => {
         { src: paymentOrderProcessing, alt: "Payment Order Processing Flow" },
         { src: reconciliationEventEquation, alt: "Reconciliation Event Equation" },
         { src: settlementBatchPipeline, alt: "Settlement Batch Pipeline" }
-      ]
+      ],
+      mediumLink: "https://medium.com/@reach.krishnaraj/payment-reconciliation-system-5e850665a12d",
+      companyLogo: netflixLogo
     },
     {
       title: "Auto-Reset File Sequence Number",
@@ -173,7 +189,9 @@ const ProjectCarousel = () => {
         "Improved reliability of payment batch workflows"
       ],
       technologies: ["Java", "Spring Batch", "SFTP"],
-      architectureImage: autoResetSequenceFlow
+      architectureImage: autoResetSequenceFlow,
+      mediumLink: "https://medium.com/@reach.krishnaraj/enhancement-auto-reset-request-file-sequence-number-cf3140b3671f",
+      companyLogo: netflixLogo
     },
     {
       title: "Direct Debit Return Details Integration",
@@ -185,7 +203,9 @@ const ProjectCarousel = () => {
         "Standardized return-event publishing into the existing pipeline"
       ],
       technologies: ["Java", "Spring Batch", "Data Pipeline"],
-      architectureImage: ddReturnDetailsFlow
+      architectureImage: ddReturnDetailsFlow,
+      mediumLink: "https://medium.com/@reach.krishnaraj/enhancement-consume-dd-return-details-6c520af406c1",
+      companyLogo: netflixLogo
     },
     {
       title: "Optimized Business-Critical Batch Job Processing",
@@ -196,7 +216,9 @@ const ProjectCarousel = () => {
         "Prevented jobs from stalling with unprocessed files left in folders",
         "Reduced manual cleanup when jobs halted or failed"
       ],
-      technologies: ["Java", "Spring Batch", "Cron Scheduling"]
+      technologies: ["Java", "Spring Batch", "Cron Scheduling"],
+      mediumLink: "https://medium.com/@reach.krishnaraj/optimize-business-critical-file-processing-batch-jobs-1e34e89c595a",
+      companyLogo: netflixLogo
     },
     {
       title: "Async Refund Notification Processing",
@@ -208,7 +230,9 @@ const ProjectCarousel = () => {
         "Improved refund data freshness and accuracy across systems"
       ],
       technologies: ["Java", "Notification Consumer Service", "AWS SQS", "Event-Driven Pipeline"],
-      architectureImage: asyncRefundNotificationFlow
+      architectureImage: asyncRefundNotificationFlow,
+      mediumLink: "https://medium.com/@reach.krishnaraj/enhancement-consume-async-notification-transaction-details-refund-1693fbb67545",
+      companyLogo: netflixLogo
     },
     {
       title: "Payment Processor Dynamic Failover Routing",
@@ -227,9 +251,16 @@ const ProjectCarousel = () => {
         { src: paymentsPlatformPhases, alt: "Payments Platform Phases" },
         { src: circuitBreakerOpenState, alt: "Circuit Breaker Open State Graph" },
         { src: processorFailoverDistribution, alt: "Processor Failover Distribution" }
-      ]
+      ],
+      mediumLink: "https://medium.com/@reach.krishnaraj/payment-processor-dynamic-failover-routing-8228cd94fb9d",
+      companyLogo: netflixLogo
     }
   ];
+
+  const companies = ["All", "Netflix", "Turo", "TBD Health", "Confidential Payment Gateway"];
+  const filteredProjects = selectedCompany === "All" 
+    ? projects 
+    : projects.filter(p => p.company === selectedCompany);
 
   return (
     <section id="projects" className="container mx-auto px-6 py-12 bg-secondary/30">
@@ -238,37 +269,98 @@ const ProjectCarousel = () => {
         Featured Projects & Architecture
       </h2>
       
-      <Carousel className="w-full max-w-5xl mx-auto">
-        <CarouselContent>
-          {projects.map((project, idx) => (
+      {/* Filter Buttons */}
+      <div className="flex flex-wrap gap-2 mb-8 justify-center">
+        {companies.map((company) => (
+          <Button
+            key={company}
+            variant={selectedCompany === company ? "default" : "outline"}
+            size="sm"
+            onClick={() => setSelectedCompany(company)}
+            className="transition-all animate-fade-in"
+          >
+            {company}
+          </Button>
+        ))}
+      </div>
+      
+      <Carousel 
+        className="w-full max-w-5xl mx-auto"
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+        plugins={[
+          Autoplay({
+            delay: 5000,
+            stopOnInteraction: true,
+          }),
+        ]}
+      >
+        <CarouselContent className="animate-fade-in">
+          {filteredProjects.map((project, idx) => (
             <CarouselItem key={idx}>
-              <Card className="p-8 glass-card hover:glow transition-all">
-                <div className="flex items-start gap-3 mb-4">
-                  <Award className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="text-2xl font-bold mb-1">{project.title}</h3>
-                    <p className="text-sm text-primary font-semibold mb-3">{project.company}</p>
+              <Card className="p-8 glass-card hover:glow transition-all animate-scale-in">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-start gap-3">
+                    <Award className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="text-2xl font-bold mb-1">{project.title}</h3>
+                      <p className="text-sm text-primary font-semibold mb-3">{project.company}</p>
+                    </div>
                   </div>
+                  {project.companyLogo && (
+                    <img 
+                      src={project.companyLogo} 
+                      alt={`${project.company} logo`}
+                      className="h-8 w-auto object-contain"
+                    />
+                  )}
                 </div>
                 
                 <p className="text-foreground mb-4 text-lg">{project.description}</p>
                 
                 {/* Architecture/Project Image */}
                 {project.architectureImage && (
-                  <div className="relative rounded-lg overflow-hidden mb-6 border border-border/50 group">
-                    <img 
-                      src={project.architectureImage} 
-                      alt={`${project.title} architecture`}
-                      className="w-full h-auto object-contain"
-                    />
+                  <div className="mb-6">
+                    <div className="relative rounded-lg overflow-hidden border border-border/50 group">
+                      <img 
+                        src={project.architectureImage} 
+                        alt={`${project.title} architecture`}
+                        className="w-full h-auto object-contain cursor-pointer"
+                        onClick={() => project.architectureImages && project.architectureImages.length > 1 
+                          ? openLightbox(project.architectureImages, 0)
+                          : null
+                        }
+                      />
+                      {project.architectureImages && project.architectureImages.length > 1 && (
+                        <button
+                          onClick={() => openLightbox(project.architectureImages!, 0)}
+                          className="absolute top-2 right-2 bg-background/90 hover:bg-background p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"
+                          aria-label="View all diagrams"
+                        >
+                          <Maximize2 className="h-4 w-4" />
+                        </button>
+                      )}
+                    </div>
+                    
+                    {/* Thumbnail Previews */}
                     {project.architectureImages && project.architectureImages.length > 1 && (
-                      <button
-                        onClick={() => openLightbox(project.architectureImages!, 0)}
-                        className="absolute top-2 right-2 bg-background/90 hover:bg-background p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"
-                        aria-label="View all diagrams"
-                      >
-                        <Maximize2 className="h-4 w-4" />
-                      </button>
+                      <div className="flex gap-2 mt-3 overflow-x-auto pb-2">
+                        {project.architectureImages.map((img, imgIdx) => (
+                          <button
+                            key={imgIdx}
+                            onClick={() => openLightbox(project.architectureImages!, imgIdx)}
+                            className="flex-shrink-0 w-20 h-20 rounded border-2 border-border hover:border-primary transition-all overflow-hidden"
+                          >
+                            <img 
+                              src={img.src} 
+                              alt={img.alt}
+                              className="w-full h-full object-cover"
+                            />
+                          </button>
+                        ))}
+                      </div>
                     )}
                   </div>
                 )}
@@ -288,19 +380,39 @@ const ProjectCarousel = () => {
                   </ul>
                 </div>
                 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, techIdx) => (
                     <Badge key={techIdx} variant="secondary" className="text-xs">
                       {tech}
                     </Badge>
                   ))}
                 </div>
+
+                {/* Medium Article Link */}
+                {project.mediumLink && (
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    asChild
+                    className="w-full"
+                  >
+                    <a 
+                      href={project.mediumLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                      Read Full Article on Medium
+                    </a>
+                  </Button>
+                )}
               </Card>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className="h-12 w-12 -left-6" />
+        <CarouselNext className="h-12 w-12 -right-6" />
       </Carousel>
       
       <p className="text-center text-muted-foreground mt-6 text-sm">
