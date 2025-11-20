@@ -7,6 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 import { 
   Code2, 
   Database, 
@@ -37,14 +38,25 @@ import awsCoreIcon from "@/assets/tech_icons/aws.svg";
 import apiGatewayIcon from "@/assets/aws_icons/API Gateway.png";
 import amplifyServiceIcon from "@/assets/aws_icons/Amplify.png";
 import cloudWatchIcon from "@/assets/aws_icons/CloudWatch.png";
+import cognitoServiceIcon from "@/assets/aws_icons/Cognito.png";
+import comprehendServiceIcon from "@/assets/aws_icons/Comprehend.png";
 import dynamoDbServiceIcon from "@/assets/aws_icons/DynamoDB.png";
 import ec2ServiceIcon from "@/assets/aws_icons/EC2.png";
+import eksServiceIcon from "@/assets/aws_icons/EKS Cloud.png";
+import eventBridgeServiceIcon from "@/assets/aws_icons/EventBridge.png";
+import fargateServiceIcon from "@/assets/aws_icons/Fargate.png";
+import glueServiceIcon from "@/assets/aws_icons/Glue.png";
+import healthLakeServiceIcon from "@/assets/aws_icons/HealthLake.png";
+import kmsServiceIcon from "@/assets/aws_icons/Key Management Service.png";
 import kinesisServiceIcon from "@/assets/aws_icons/Kinesis.png";
+import memoryDbServiceIcon from "@/assets/aws_icons/MemoryDB for Redis.png";
+import networkFirewallServiceIcon from "@/assets/aws_icons/Network Firewall.png";
+import quickSightServiceIcon from "@/assets/aws_icons/QuickSight.png";
 import rdsServiceIcon from "@/assets/aws_icons/RDS.png";
+import secretsManagerServiceIcon from "@/assets/aws_icons/Secrets Manager.png";
 import s3ServiceIcon from "@/assets/aws_icons/Simple Storage Service.png";
 import snsServiceIcon from "@/assets/aws_icons/Simple Notification Service.png";
 import sqsServiceIcon from "@/assets/aws_icons/Simple Queue Service.png";
-import glueServiceIcon from "@/assets/aws_icons/Glue.png";
 
 interface SkillCategory {
   title: string;
@@ -158,16 +170,27 @@ const TechnicalSkills = () => {
 
   const awsServices = [
     { name: "EC2", icon: ec2ServiceIcon },
-    { name: "S3", icon: s3ServiceIcon },
-    { name: "Lambda (via Fargate)", icon: glueServiceIcon },
-    { name: "DynamoDB", icon: dynamoDbServiceIcon },
+    { name: "Lambda (via Fargate)", icon: fargateServiceIcon },
     { name: "RDS", icon: rdsServiceIcon },
-    { name: "SQS", icon: sqsServiceIcon },
     { name: "SNS", icon: snsServiceIcon },
-    { name: "CloudWatch", icon: cloudWatchIcon },
     { name: "Kinesis", icon: kinesisServiceIcon },
-    { name: "API Gateway", icon: apiGatewayIcon },
     { name: "Amplify", icon: amplifyServiceIcon },
+    { name: "S3", icon: s3ServiceIcon },
+    { name: "DynamoDB", icon: dynamoDbServiceIcon },
+    { name: "SQS", icon: sqsServiceIcon },
+    { name: "CloudWatch", icon: cloudWatchIcon },
+    { name: "API Gateway", icon: apiGatewayIcon },
+    { name: "Cognito", icon: cognitoServiceIcon },
+    { name: "Comprehend", icon: comprehendServiceIcon },
+    { name: "EKS", icon: eksServiceIcon },
+    { name: "EventBridge", icon: eventBridgeServiceIcon },
+    { name: "Glue", icon: glueServiceIcon },
+    { name: "HealthLake", icon: healthLakeServiceIcon },
+    { name: "KMS", icon: kmsServiceIcon },
+    { name: "MemoryDB for Redis", icon: memoryDbServiceIcon },
+    { name: "Network Firewall", icon: networkFirewallServiceIcon },
+    { name: "QuickSight", icon: quickSightServiceIcon },
+    { name: "Secrets Manager", icon: secretsManagerServiceIcon },
   ];
 
   const domainExpertise = [
@@ -202,6 +225,10 @@ const TechnicalSkills = () => {
               align: "start",
               loop: true,
             }}
+            plugins={[
+              // Auto-scroll tech icons
+              Autoplay({ delay: 3500, stopOnInteraction: true }),
+            ]}
             className="w-full"
           >
             <CarouselContent className="-ml-4">
@@ -303,6 +330,10 @@ const TechnicalSkills = () => {
             align: "start",
             loop: true,
           }}
+          plugins={[
+            // Auto-scroll AWS icons
+            Autoplay({ delay: 4000, stopOnInteraction: true }),
+          ]}
           className="w-full"
         >
           <CarouselContent className="-ml-3">
