@@ -1,5 +1,12 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { 
   Code2, 
   Database, 
@@ -11,14 +18,7 @@ import {
   Settings,
   Zap
 } from "lucide-react";
-import javaIcon from "@/assets/icons/java.png";
-import typescriptIcon from "@/assets/icons/typescript.png";
-import pythonIcon from "@/assets/icons/python.png";
-import reactIcon from "@/assets/icons/react.png";
-import nodejsIcon from "@/assets/icons/nodejs.png";
-import dockerIcon from "@/assets/icons/docker.png";
 import awsIcon from "@/assets/icons/aws.png";
-import kubernetesIcon from "@/assets/icons/kubernetes.png";
 
 interface SkillCategory {
   title: string;
@@ -103,6 +103,18 @@ const TechnicalSkills = () => {
     }
   ];
 
+  const techStackIcons = [
+    { name: "Java", icon: "/icons/tech/java.png" },
+    { name: "TypeScript", icon: "/icons/tech/typescript.png" },
+    { name: "Python", icon: "/icons/tech/python.png" },
+    { name: "React", icon: "/icons/tech/react.png" },
+    { name: "Node.js", icon: "/icons/tech/nodejs.png" },
+    { name: "Docker", icon: "/icons/tech/docker.png" },
+    { name: "AWS", icon: "/icons/tech/aws.png" },
+    { name: "Kubernetes", icon: "/icons/tech/kubernetes.png" },
+    { name: "Bootstrap", icon: "/icons/tech/bootstrap.png" }
+  ];
+
   const awsServices = [
     { name: "EC2", icon: "/icons/aws/ec2.svg" },
     { name: "S3", icon: "/icons/aws/s3.svg" },
@@ -141,16 +153,41 @@ const TechnicalSkills = () => {
           Versatile expertise spanning Individual Contributor (IC) technical excellence and strategic leadership
         </p>
         
-        {/* Tech Stack Icons */}
-        <div className="flex flex-wrap justify-center gap-6 mb-8 p-6 glass-card rounded-lg">
-          <img src={javaIcon} alt="Java" className="tech-icon" title="Java" />
-          <img src={typescriptIcon} alt="TypeScript" className="tech-icon" title="TypeScript" />
-          <img src={pythonIcon} alt="Python" className="tech-icon" title="Python" />
-          <img src={reactIcon} alt="React" className="tech-icon" title="React" />
-          <img src={nodejsIcon} alt="Node.js" className="tech-icon" title="Node.js" />
-          <img src={dockerIcon} alt="Docker" className="tech-icon" title="Docker" />
-          <img src={awsIcon} alt="AWS" className="tech-icon" title="AWS" />
-          <img src={kubernetesIcon} alt="Kubernetes" className="tech-icon" title="Kubernetes" />
+        {/* Tech Stack Icons Carousel */}
+        <div className="mb-8">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {techStackIcons.map((tech, index) => (
+                <CarouselItem key={index} className="pl-4 basis-1/3 sm:basis-1/4 md:basis-1/6 lg:basis-1/8">
+                  <div className="p-4 glass-card rounded-lg hover:shadow-lg transition-all hover:-translate-y-1 cursor-pointer group">
+                    <div className="flex flex-col items-center gap-2">
+                      <div className="w-16 h-16 flex items-center justify-center">
+                        <img 
+                          src={tech.icon} 
+                          alt={tech.name}
+                          className="w-full h-full object-contain transition-transform group-hover:scale-110"
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                          }}
+                        />
+                      </div>
+                      <span className="text-xs font-medium text-center text-muted-foreground group-hover:text-foreground transition-colors">
+                        {tech.name}
+                      </span>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
+          </Carousel>
         </div>
         
         {/* Full Stack Highlight */}
@@ -202,43 +239,51 @@ const TechnicalSkills = () => {
                 </Badge>
               ))}
             </div>
-            
-            {/* AWS Services Section - Only for Cloud & DevOps */}
-            {category.title === "Cloud & DevOps" && (
-              <div className="mt-6 pt-6 border-t border-border">
-                <h4 className="font-semibold mb-4 text-sm flex items-center gap-2">
-                  <Cloud className="h-4 w-4" />
-                  AWS Services
-                </h4>
-                <div className="flex gap-3 overflow-x-auto pb-2 -mx-2 px-2 scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent">
-                  {awsServices.map((service, serviceIdx) => (
-                    <div 
-                      key={serviceIdx} 
-                      className="flex flex-col items-center gap-2 min-w-[60px] p-2 rounded-lg hover:bg-accent/10 transition-all hover:scale-105 cursor-pointer group"
-                      title={service.name}
-                    >
-                      <div className="w-10 h-10 flex items-center justify-center bg-background/50 rounded-lg border border-border/50 group-hover:border-primary/50 transition-colors">
-                        <img 
-                          src={service.icon} 
-                          alt={service.name}
-                          className="w-7 h-7 object-contain"
-                          onError={(e) => {
-                            e.currentTarget.src = awsIcon;
-                          }}
-                        />
-                      </div>
-                      <span className="text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors">
-                        {service.name}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
           </Card>
         ))}
       </div>
       
+      {/* AWS Services Dedicated Section */}
+      <Card className="p-8 bg-gradient-to-r from-orange-500/10 to-amber-500/10 border-orange-500/20 mb-8">
+        <div className="flex items-center gap-3 mb-6">
+          <Cloud className="h-8 w-8 text-orange-600" />
+          <h3 className="text-2xl font-bold">AWS Cloud Services</h3>
+        </div>
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-3">
+            {awsServices.map((service, index) => (
+              <CarouselItem key={index} className="pl-3 basis-1/3 sm:basis-1/4 md:basis-1/6 lg:basis-1/8">
+                <div className="p-4 glass-card rounded-lg hover:shadow-lg transition-all hover:-translate-y-1 cursor-pointer group border border-border/50 hover:border-orange-500/50">
+                  <div className="flex flex-col items-center gap-2">
+                    <div className="w-12 h-12 flex items-center justify-center bg-background/50 rounded-lg">
+                      <img 
+                        src={service.icon} 
+                        alt={service.name}
+                        className="w-9 h-9 object-contain transition-transform group-hover:scale-110"
+                        onError={(e) => {
+                          e.currentTarget.src = awsIcon;
+                        }}
+                      />
+                    </div>
+                    <span className="text-xs font-medium text-center text-muted-foreground group-hover:text-foreground transition-colors">
+                      {service.name}
+                    </span>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="hidden md:flex" />
+          <CarouselNext className="hidden md:flex" />
+        </Carousel>
+      </Card>
+
       <Card className="p-8 bg-primary/5 border-primary/20">
         <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
           <Layers className="h-6 w-6 text-primary" />
