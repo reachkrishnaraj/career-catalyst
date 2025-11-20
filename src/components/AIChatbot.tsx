@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { MessageCircle, X, Send } from "lucide-react";
+import { MessageCircle, X, Send, Bot } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface Message {
@@ -152,30 +152,60 @@ const AIChatbot = () => {
 
   return (
     <>
-      {/* Chat Toggle Button */}
+      {/* Chat Toggle Button with Magic Animation */}
       {!isOpen && (
-        <Button
+        <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg z-50"
-          size="icon"
+          className="fixed bottom-6 right-6 bg-primary text-primary-foreground rounded-full p-4 shadow-lg hover:scale-110 transition-all z-50 animate-pulse group relative overflow-hidden"
         >
-          <MessageCircle className="h-6 w-6" />
-        </Button>
+          {/* Magic sparkle effects */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-accent to-primary opacity-50 blur-xl animate-[spin_3s_linear_infinite]" />
+          <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-primary/60 via-accent/60 to-primary/60 opacity-75 blur-md animate-[pulse_2s_ease-in-out_infinite]" />
+          
+          {/* Icon with AI badge */}
+          <div className="relative">
+            <Bot className="h-7 w-7" />
+            <span className="absolute -top-1 -right-1 flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
+            </span>
+          </div>
+          
+          {/* AI label on hover */}
+          <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+            <div className="bg-foreground text-background px-3 py-1 rounded-lg text-sm font-medium shadow-lg">
+              Ask AI Assistant ✨
+            </div>
+          </div>
+        </button>
       )}
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="fixed bottom-6 right-6 w-96 h-[600px] flex flex-col shadow-2xl z-50">
+        <Card className="fixed bottom-6 right-6 w-96 h-[600px] flex flex-col shadow-2xl z-50 animate-scale-in relative">
+          {/* Glow effect around window */}
+          <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-lg blur-lg -z-10 animate-[pulse_3s_ease-in-out_infinite]" />
+          
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b">
-            <div className="flex items-center gap-2">
-              <MessageCircle className="h-5 w-5 text-primary" />
-              <h3 className="font-semibold">Ask about Krishna</h3>
+          <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-primary/10 via-accent/5 to-primary/10 relative overflow-hidden">
+            {/* Animated background pattern */}
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5 animate-[slide-in-right_3s_ease-in-out_infinite]" />
+            
+            <div className="flex items-center gap-2 relative">
+              <div className="relative">
+                <Bot className="h-5 w-5 text-primary animate-[pulse_2s_ease-in-out_infinite]" />
+                <span className="absolute -top-1 -right-1 flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+                </span>
+              </div>
+              <h3 className="font-semibold">AI Assistant ✨</h3>
             </div>
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(false)}
+              className="relative"
             >
               <X className="h-5 w-5" />
             </Button>

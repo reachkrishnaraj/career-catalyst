@@ -1,25 +1,29 @@
 import { Card } from "@/components/ui/card";
-import { Heart, Trophy, Telescope, Users } from "lucide-react";
+import { Sparkles } from "lucide-react";
+import shuttleIcon from "@/assets/icons/shuttle.png";
+import racingCarIcon from "@/assets/icons/racing-car.png";
+import planetOrbitsIcon from "@/assets/icons/planet-orbits.png";
+import homeSweetHomeIcon from "@/assets/icons/home-sweet-home.png";
 
 const PersonalInterests = () => {
   const interests = [
     {
-      icon: <Trophy className="h-6 w-6" />,
+      icon: <img src={shuttleIcon} alt="Badminton" className="h-8 w-8 object-contain" />,
       title: "Badminton Enthusiast",
       description: "Passionate about badminton, playing regularly to stay active and competitive."
     },
     {
-      icon: <Heart className="h-6 w-6" />,
+      icon: <img src={racingCarIcon} alt="Formula 1" className="h-8 w-8 object-contain" />,
       title: "Formula 1 Fan",
       description: "Avid follower of F1 racing, appreciating the engineering excellence and competitive strategy."
     },
     {
-      icon: <Telescope className="h-6 w-6" />,
+      icon: <img src={planetOrbitsIcon} alt="Science & Space" className="h-8 w-8 object-contain" />,
       title: "Science & Space",
       description: "Fascinated by cosmic and evolutionary sciences, exploring through documentaries and scientific literature."
     },
     {
-      icon: <Users className="h-6 w-6" />,
+      icon: <img src={homeSweetHomeIcon} alt="Family" className="h-8 w-8 object-contain" />,
       title: "Family Time",
       description: "Lives in Austin, Texas with wife and 4-year-old son. Values work-life balance and family activities."
     }
@@ -28,7 +32,7 @@ const PersonalInterests = () => {
   return (
     <section className="container mx-auto px-6 py-12 bg-secondary/30">
       <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-        <Heart className="h-8 w-8 text-primary" />
+        <Sparkles className="h-8 w-8 text-primary" />
         Beyond Work
       </h2>
       
