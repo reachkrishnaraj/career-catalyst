@@ -1,5 +1,6 @@
 import { Mail, Phone, Linkedin, FileText, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import AnchorLink from "@/components/AnchorLink";
 
 const Header = () => {
   return (
@@ -59,10 +60,23 @@ const Header = () => {
             19+ Years Experience
           </span>
           <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
-            US Citizen
+          US Citizen
           </span>
         </div>
       </div>
+
+      {/* Anchor Navigation */}
+      <nav className="border-t border-border mt-6 pt-4">
+        <div className="flex flex-wrap justify-center gap-4">
+          <AnchorLink href="#summary">Summary</AnchorLink>
+          <AnchorLink href="#skills">Skills</AnchorLink>
+          <AnchorLink href="#expertise">Expertise</AnchorLink>
+          <AnchorLink href="#experience">Experience</AnchorLink>
+          <AnchorLink href="#projects">Projects</AnchorLink>
+          <AnchorLink href="#leadership">Leadership</AnchorLink>
+          <AnchorLink href="#education">Education</AnchorLink>
+        </div>
+      </nav>
     </header>
   );
 };

@@ -3,7 +3,7 @@ import { Briefcase, Code2, Database, Cloud } from "lucide-react";
 
 const Summary = () => {
   return (
-    <section className="container mx-auto px-6 py-12">
+    <section id="summary" className="container mx-auto px-6 py-12">
       <Card className="p-8 border-l-4 border-l-primary shadow-lg">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
           <Briefcase className="h-8 w-8 text-primary" />
