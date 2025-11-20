@@ -1,8 +1,20 @@
-import { Mail, Phone, Linkedin, FileText, MapPin } from "lucide-react";
+import { Mail, Phone, Linkedin, FileText, MapPin, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AnchorLink from "@/components/AnchorLink";
+import { generateResumePDF } from "@/utils/resumeGenerator";
+import { useToast } from "@/hooks/use-toast";
 
 const Header = () => {
+  const { toast } = useToast();
+
+  const handleDownloadResume = () => {
+    generateResumePDF();
+    toast({
+      title: "Resume Downloaded",
+      description: "Krishna Raj's resume has been downloaded successfully.",
+    });
+  };
+
   return (
     <header className="border-b border-border bg-card">
       <div className="container mx-auto px-6 py-8">
@@ -48,6 +60,10 @@ const Header = () => {
                   Tech Blog
                 </a>
               </Button>
+              <Button variant="outline" size="sm" onClick={handleDownloadResume}>
+                <Download className="h-4 w-4 mr-2" />
+                Resume
+              </Button>
             </div>
           </div>
         </div>
@@ -75,6 +91,7 @@ const Header = () => {
           <AnchorLink href="#projects">Projects</AnchorLink>
           <AnchorLink href="#leadership">Leadership</AnchorLink>
           <AnchorLink href="#education">Education</AnchorLink>
+          <AnchorLink href="#contact">Contact</AnchorLink>
         </div>
       </nav>
     </header>
