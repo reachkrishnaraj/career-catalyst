@@ -33,11 +33,11 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-4">Connect & Learn More</h4>
             <div className="space-y-2">
-              <a href="https://linkedin.com/in/krishnaraj" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://www.linkedin.com/in/krajs/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                 <Linkedin className="h-4 w-4" />
                 LinkedIn Profile
               </a>
-              <a href="https://medium.com/@krishnaraj" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://medium.com/@reach.krishnaraj" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                 <FileText className="h-4 w-4" />
                 Tech Blog
               </a>

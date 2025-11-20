@@ -16,7 +16,7 @@ const AnchorLink = ({ href, children }: AnchorLinkProps) => {
     <a
       href={href}
       onClick={handleClick}
-      className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors px-3 py-2 rounded-md hover:bg-accent/10"
+      className="text-sm font-bold text-foreground hover:text-primary transition-all px-4 py-2 rounded-full bg-secondary/50 hover:bg-secondary border border-border hover:border-primary shadow-sm hover:shadow-md"
     >
       {children}
     </a>

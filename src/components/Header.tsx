@@ -49,13 +49,13 @@ const Header = () => {
             </div>
             <div className="flex flex-wrap gap-3">
               <Button variant="outline" size="sm" asChild>
-                <a href="https://linkedin.com/in/krishnaraj" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/krajs/" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="h-4 w-4 mr-2" />
                   LinkedIn
                 </a>
               </Button>
               <Button variant="outline" size="sm" asChild>
-                <a href="https://medium.com/@krishnaraj" target="_blank" rel="noopener noreferrer">
+                <a href="https://medium.com/@reach.krishnaraj" target="_blank" rel="noopener noreferrer">
                   <FileText className="h-4 w-4 mr-2" />
                   Tech Blog
                 </a>
