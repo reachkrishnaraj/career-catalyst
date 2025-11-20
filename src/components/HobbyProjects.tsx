@@ -10,7 +10,7 @@ const HobbyProjects = () => {
     <section className="py-20 px-4 bg-gradient-to-b from-background to-secondary/20">
       <div className="container max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4 text-gradient">Hobby Projects</h2>
+          <h2 className="text-4xl font-bold mb-4 text-gradient">Self-Directed Independent Projects</h2>
           <p className="text-muted-foreground text-lg">Exploring AI & Automation in Personal Time</p>
         </div>
 

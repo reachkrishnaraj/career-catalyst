@@ -20,12 +20,12 @@ const Index = () => {
       <TechnicalSkills />
       <PaymentExpertise />
       <AIExpertise />
+      <HobbyProjects />
       <Experience />
       <ProjectCarousel />
       <Leadership />
       <Testimonials />
       <Education />
-      <HobbyProjects />
       <PersonalInterests />
       <Footer />
     </div>
