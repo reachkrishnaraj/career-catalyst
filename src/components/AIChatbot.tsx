@@ -151,20 +151,20 @@ const AIChatbot = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[9999]">
+    <div className="fixed right-0 top-1/2 -translate-y-1/2 z-[9999] flex items-center">
       {/* Chat Toggle Button with Magic Animation */}
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-primary text-primary-foreground rounded-full p-4 shadow-lg hover:scale-110 transition-all animate-pulse group relative overflow-hidden"
+          className="bg-primary text-primary-foreground rounded-l-lg p-3 shadow-lg hover:scale-110 transition-all animate-pulse group relative overflow-hidden"
         >
           {/* Magic sparkle effects */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-accent to-primary opacity-50 blur-xl animate-[spin_3s_linear_infinite]" />
-          <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-primary/60 via-accent/60 to-primary/60 opacity-75 blur-md animate-[pulse_2s_ease-in-out_infinite]" />
+          <div className="absolute inset-0 rounded-l-lg bg-gradient-to-r from-primary via-accent to-primary opacity-50 blur-xl animate-[spin_3s_linear_infinite]" />
+          <div className="absolute -inset-1 rounded-l-lg bg-gradient-to-r from-primary/60 via-accent/60 to-primary/60 opacity-75 blur-md animate-[pulse_2s_ease-in-out_infinite]" />
           
           {/* Icon with AI badge */}
           <div className="relative">
-            <Bot className="h-7 w-7" />
+            <Bot className="h-5 w-5" />
             <span className="absolute -top-1 -right-1 flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
@@ -172,8 +172,8 @@ const AIChatbot = () => {
           </div>
           
           {/* AI label on hover */}
-          <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-            <div className="bg-foreground text-background px-3 py-1 rounded-lg text-sm font-medium shadow-lg">
+          <div className="absolute right-full mr-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+            <div className="bg-foreground text-background px-2 py-1 rounded-lg text-xs font-medium shadow-lg">
               Ask AI Assistant ✨
             </div>
           </div>
@@ -182,7 +182,7 @@ const AIChatbot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="w-96 h-[600px] flex flex-col shadow-2xl animate-scale-in relative bg-background">
+        <Card className="mr-0 w-96 h-[600px] flex flex-col shadow-2xl animate-scale-in relative bg-background rounded-l-lg">
           {/* Glow effect around window */}
           <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-lg blur-lg -z-10 animate-[pulse_3s_ease-in-out_infinite]" />
           
