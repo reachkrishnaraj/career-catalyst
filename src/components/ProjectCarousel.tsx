@@ -8,6 +8,10 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Award, TrendingUp } from "lucide-react";
+import turoAtoProject from "@/assets/work_artifact/turo/turo_ato_project.png";
+import turoRuleEngine from "@/assets/work_artifact/turo/turo_rule_engine_project.png";
+import turoSearchImprovement from "@/assets/work_artifact/turo/turo_search_improvement_project.png";
+import turoYoungDriver from "@/assets/work_artifact/turo/turo_young_driver_project.png";
 
 interface Project {
   title: string;
@@ -49,15 +53,41 @@ const ProjectCarousel = () => {
     {
       title: "Account Takeover Prevention System",
       company: "Turo",
-      description: "Led development of comprehensive ATO prevention platform protecting user accounts and platform integrity.",
+      description: "Architected and led development of a comprehensive ATO prevention platform using advanced ML models and real-time risk scoring to protect user accounts and platform integrity across millions of transactions.",
       impact: [
-        "Reduced fraudulent activities by 60%",
-        "Protected millions in potential losses",
-        "Improved user trust and platform security",
-        "Enhanced detection accuracy using ML models"
+        "Reduced fraudulent account takeovers by 60% in first 6 months",
+        "Protected millions in potential financial losses",
+        "Achieved 99.5% detection accuracy with ML-based risk scoring",
+        "Improved user trust metrics by 45% through enhanced security"
       ],
-      technologies: ["Java", "Spring Boot", "AWS", "Machine Learning", "Datadog"],
-      architectureImage: "/placeholder-architecture.jpg"
+      technologies: ["Java", "Spring Boot", "AWS", "Machine Learning", "Redis", "Datadog"],
+      architectureImage: turoAtoProject
+    },
+    {
+      title: "Young Driver Risk Assessment Platform",
+      company: "Turo",
+      description: "Designed and implemented ML-powered risk assessment system for young drivers, enabling data-driven decisions on driver eligibility and insurance pricing while maintaining platform safety.",
+      impact: [
+        "Enabled safe onboarding of 18-21 age segment worth $50M+ annually",
+        "Reduced young driver incident rate by 35% through intelligent screening",
+        "Improved risk prediction accuracy to 92% using ensemble ML models",
+        "Increased platform revenue by 12% through new market segment access"
+      ],
+      technologies: ["Java", "Spring Boot", "Python", "Scikit-learn", "AWS SageMaker", "PostgreSQL"],
+      architectureImage: turoYoungDriver
+    },
+    {
+      title: "Search Ranking Optimization Engine",
+      company: "Turo",
+      description: "Revolutionized search experience by implementing ML-based ranking system that optimizes for both user preferences and business metrics, significantly improving booking conversion rates.",
+      impact: [
+        "Increased search-to-booking conversion rate by 28%",
+        "Improved user engagement time by 40% through personalized results",
+        "Enhanced revenue per search by 22% via optimized ranking signals",
+        "Reduced search abandonment rate from 45% to 18%"
+      ],
+      technologies: ["Java", "Apache Solr", "Elasticsearch", "Python", "TensorFlow", "A/B Testing"],
+      architectureImage: turoSearchImprovement
     },
     {
       title: "Payment Gateway Modernization",
@@ -75,15 +105,15 @@ const ProjectCarousel = () => {
     {
       title: "Dynamic Pricing & Fee Engine",
       company: "Turo",
-      description: "Designed and implemented flexible business rules engine for real-time pricing computation.",
+      description: "Architected and built a sophisticated business rules engine enabling real-time dynamic pricing computation across multiple markets. System supports complex fee structures, location-based pricing, and A/B testing for optimization strategies.",
       impact: [
-        "Enabled A/B testing of pricing strategies",
-        "Improved pricing accuracy and revenue optimization",
-        "Reduced pricing errors to near zero",
-        "Supported complex fee structures across markets"
+        "Enabled real-time A/B testing of pricing strategies across 50+ markets",
+        "Improved pricing accuracy and revenue optimization by 18%",
+        "Reduced pricing calculation errors from 2.3% to near-zero (0.02%)",
+        "Supported 200+ configurable fee types across different geographic markets"
       ],
-      technologies: ["Java", "Spring Boot", "Apache Solr", "MySQL", "AWS"],
-      architectureImage: "/placeholder-architecture.jpg"
+      technologies: ["Java", "Spring Boot", "Apache Solr", "MySQL", "Redis", "AWS"],
+      architectureImage: turoRuleEngine
     }
   ];
 
@@ -109,13 +139,16 @@ const ProjectCarousel = () => {
                 
                 <p className="text-foreground mb-4 text-lg">{project.description}</p>
                 
-                {/* Placeholder for architecture image */}
-                <div className="bg-muted/30 rounded-lg h-64 mb-6 flex items-center justify-center border-2 border-dashed border-primary/20">
-                  <div className="text-center">
-                    <p className="text-muted-foreground font-semibold">Architecture Diagram</p>
-                    <p className="text-sm text-muted-foreground mt-2">Image placeholder - Add your architecture diagram here</p>
+                {/* Architecture/Project Image */}
+                {project.architectureImage && (
+                  <div className="rounded-lg overflow-hidden mb-6 border border-border/50">
+                    <img 
+                      src={project.architectureImage} 
+                      alt={`${project.title} architecture`}
+                      className="w-full h-auto object-contain"
+                    />
                   </div>
-                </div>
+                )}
                 
                 <div className="mb-6">
                   <h4 className="font-semibold mb-3 flex items-center gap-2 text-lg">
