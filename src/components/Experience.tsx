@@ -22,7 +22,7 @@ const ExperienceItem = ({
   highlight 
 }: ExperienceItemProps) => {
   return (
-    <Card className={`p-6 ${highlight ? 'border-l-4 border-l-accent shadow-md' : ''}`}>
+    <Card className={`p-6 glass-card ${highlight ? 'border-l-4 border-l-accent glow' : ''}`}>
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-2">
@@ -68,70 +68,72 @@ const ExperienceItem = ({
 const Experience = () => {
   const experiences: ExperienceItemProps[] = [
     {
-      company: "Confidential Payment Gateway (Canadian)",
-      role: "Consultant Architect",
-      period: "July 2024 - Sep 2024",
+      company: "TBD Health",
+      role: "Chief Technology Officer (CTO) / Architect",
+      period: "Apr 2022 - Jul 2024",
+      location: "Austin, TX",
       achievements: [
-        "Led tech platform modernization initiatives for major payment gateway",
-        "Designed scalable architecture solutions improving system reliability and compliance",
-        "Provided strategic technical guidance for platform evolution"
+        "Built Entire Tech Stack from Ground Up: Led complete technology transformation post-seed funding, building HIPAA-compliant platform serving thousands of patients. Managed engineering team, vendor relationships, and full-stack delivery on frugal budget",
+        "Platform Migration: Architected and executed migration from Shopify to self-hosted HIPAA-compliant eCommerce platform using Saleor headless CMS, NextJS frontend, and Spring Boot backend",
+        "EMR System: Developed in-house Electronic Medical Records system with ReactJS, integrated Photon Health e-prescription system in <2 weeks",
+        "AWS Infrastructure: Implemented complete cloud infrastructure including 3-tier architecture, load balancing, ECS, RDS, DynamoDB, SQS with HIPAA compliance and security standards",
+        "Payment Integration: Integrated multiple payment gateways (ApplePay, PayPal, Authorize.net, Square, CashApp, GooglePay) and subscription management for recurring billing",
+        "Automation & AI: Built contactless check-in flow, automated identity verification using AWS Rekognition, clinician transcription using AWS Transcribe, and automated test result release pipelines",
+        "Marketing & Analytics: Implemented SEO optimization, Amplitude analytics, abandoned cart recovery, email automation (Mailgun, AWS Pinpoint, Klaviyo), improving conversion rates by 40%",
+        "Team Leadership: Built and managed engineering team, conducted vendor selection, managed deliverables and sprint planning"
       ],
-      technologies: ["Architecture", "Payments", "Modernization", "Consulting"],
+      technologies: ["Java", "Spring Boot", "React", "NextJS", "AWS", "DynamoDB", "Saleor", "Cal.com", "HIPAA", "Python"],
       highlight: true
     },
     {
-      company: "TBD Health",
-      role: "Architect / CTO",
-      period: "April 2022 - July 2024",
-      location: "Austin, TX",
+      company: "Paysafe (via Altimetrik)",
+      role: "Consultant Architect",
+      period: "Jul 2024 - Sep 2024",
       achievements: [
-        "Built entire tech stack and engineering team from ground up on frugal seed funding budget",
-        "Architected and implemented HIPAA-compliant healthcare platform serving thousands of patients",
-        "Migrated from Shopify to self-hosted Saleor eCommerce platform for compliance and cost optimization",
-        "Designed and developed custom EMR system with ReactJS, Node, AWS Amplify, and OAuth2.0",
-        "Integrated multiple payment gateways (ApplePay, PayPal, Authorize.Net, Square) and lab providers",
-        "Implemented passwordless authentication using Magic Link (Cognito, Lambda, DynamoDB)",
-        "Built automated patient workflows: identity verification (AWS Rekognition), test result release, booking system",
-        "Delivered SEO optimization, analytics integration (Amplitude, Google Analytics), and marketing automation (Klaviyo)",
-        "Created innovative clinician transcribe solution using AWS Transcribe to optimize facility capacity"
+        "Led platform modernization for major Canadian payment gateway, designing scalable solutions to improve reliability, compliance, and transaction processing capabilities",
+        "Architectural Leadership: Designed and implemented modernization strategy for legacy payment processing systems",
+        "Scalability Solutions: Improved platform reliability and scalability for high-volume transaction processing",
+        "Compliance: Ensured PCI-DSS compliance and security standards across payment infrastructure"
       ],
-      technologies: ["Java", "ReactJS", "NextJS", "AWS", "Spring Boot", "DynamoDB", "Saleor", "Cal.com", "HIPAA", "OAuth2.0", "Python"],
+      technologies: ["Java", "Spring Boot", "AWS", "Microservices", "Payment Gateway", "PCI-DSS"],
       highlight: true
     },
     {
       company: "Turo",
-      role: "Staff Software Engineer / Architect",
-      period: "Oct 2018 - March 2020",
+      role: "Staff Software Engineer",
+      period: "Oct 2018 - Mar 2020",
       location: "San Francisco, CA",
       achievements: [
-        "Led Account Takeover (ATO) prevention initiative protecting platform from fraudulent activities",
-        "Architected and implemented payment optimization system improving transaction success rates",
-        "Enhanced search performance using Apache Solr, significantly improving user experience",
-        "Designed business rules engine for dynamic pricing and fee computation",
-        "Built robust insurance and payments platform processing millions in transactions"
+        "Protected Millions of Users & Expanded Revenue Streams: Led critical security and revenue expansion initiatives affecting millions of Turo customers and millions in incremental revenue",
+        "Account Takeover Prevention: Designed and implemented comprehensive ATO prevention system with anomaly detection, 2FA, and account freezing capabilities, protecting millions of customers from fraud",
+        "Revenue Expansion: Led initiative to expand rentals to 18-20 year old drivers, navigating complex legacy systems while balancing risk and time-to-market",
+        "Search Performance: Improved Apache Solr vehicle search performance by 30%, implemented dynamic failover to secondary, enhanced stability during bot attacks",
+        "Business Rules Engine: Architected Java Easy Rules-based engine for pricing logic (service fees, young driver fees, host rates), enabling data-driven configuration with zero-code deployments",
+        "Technical Leadership: Mentored team on microservices patterns, refactored complex legacy code for maintainability and extensibility"
       ],
-      technologies: ["Java", "Spring Boot", "MySQL", "Apache Solr", "AWS", "Kubernetes", "Hibernate", "Kinesis", "Datadog"],
+      technologies: ["Java", "Spring Boot", "MySQL", "Apache Solr", "AWS", "Kubernetes", "Microservices"],
       highlight: true
     },
     {
       company: "Netflix",
-      role: "Senior Software Engineer / Architect",
-      period: "March 2016 - May 2018",
+      role: "Senior Software Engineer",
+      period: "Mar 2016 - May 2018",
       location: "Los Gatos, CA",
       achievements: [
-        "Built Payment Reconciliation System - single source of truth for global payment reporting",
-        "Designed and implemented payment routing optimization for improved resiliency and success rates",
-        "Architected high-throughput platform processing millions of global transactions daily",
-        "Enhanced payment processing reliability and operational robustness for 100M+ subscribers",
-        "Contributed to Netflix OSS ecosystem with production-grade microservices"
+        "Built Systems Processing 150M+ Monthly Transactions: Architected and delivered mission-critical payment systems serving Netflix's global subscriber base, ensuring zero revenue leakage and maximum resilience",
+        "Payment Reconciliation System: Built single source of truth for 150M+ monthly orders, ensuring every authorized transaction is settled, detecting duplicate charges, maintaining integrity between billing and payments platforms",
+        "Dynamic Processor Failover: Architected intelligent routing logic with health monitoring and circuit breakers, achieving zero failures during processor outages for millions of daily transactions",
+        "Big Data Pipeline: Created ETL workflows, Kibana dashboards, Tableau visualizations for financial reporting, month/quarter closing, and anomaly detection",
+        "Production Excellence: Owned end-to-end delivery including sandbox testing, canary analysis, Hystrix tuning, production validation, and on-call support",
+        "Global Scale: Processed payments across multiple processors (Paymentech, Adyen, WorldPay, Vantiv) and regions (EMEA, Asia, LATAM, North America)"
       ],
-      technologies: ["Java", "Spring Boot", "Cassandra", "AWS", "Hystrix", "Eureka", "Zuul", "Archaius", "Netflix OSS"],
+      technologies: ["Java", "Spring Cloud", "Cassandra", "MySQL", "Kafka", "AWS", "gRPC", "Big Data"],
       highlight: true
     },
     {
       company: "Walmart eCommerce Labs",
       role: "Lead Engineer",
-      period: "June 2013 - March 2016",
+      period: "Jun 2013 - Mar 2016",
       location: "San Francisco, CA",
       achievements: [
         "Led development of critical eCommerce platform features serving millions of daily customers",
@@ -147,13 +149,13 @@ const Experience = () => {
       period: "Aug 2006 - Nov 2011",
       location: "San Jose, CA",
       achievements: [
-        "Developed core payment processing features handling billions in transaction volume",
-        "Contributed to Service API automation and payments platform refactoring",
-        "Built risk management and global payments services ensuring transaction security",
-        "Established expertise in fintech architecture and payment systems",
-        "Worked on critical compliance and regulatory requirements"
+        "Foundation in Payments & Fintech: Established deep expertise in payments architecture across multiple critical initiatives over 5+ years",
+        "Service API Automation: Built comprehensive test automation frameworks for payment APIs",
+        "Core Payments: Contributed to payments platform refactoring and migration initiatives",
+        "Risk & Global Payments: Worked on fraud detection and international payment processing systems",
+        "Became Subject Matter Expert (SME) in payments processing, transaction lifecycle, and PCI compliance"
       ],
-      technologies: ["Java", "Spring", "Oracle", "Web Services", "Security", "Payments"]
+      technologies: ["Java", "Payments", "Risk Management", "Testing", "PCI Compliance"]
     }
   ];
 
