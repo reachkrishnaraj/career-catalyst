@@ -260,9 +260,38 @@ const Experience = () => {
           </Carousel>
         </div>
         
-        <div className="space-y-6">
+        <div className="relative">
           {experiences.map((exp, idx) => (
-            <ExperienceItem key={idx} {...exp} />
+            <div key={idx} className="relative pb-6 last:pb-0">
+              {/* Timeline rail - vertical line */}
+              {idx < experiences.length - 1 && (
+                <div className="absolute left-6 top-12 bottom-0 w-1 bg-gradient-to-b from-primary via-accent to-primary opacity-30" />
+              )}
+              
+              {/* Timeline node - railroad stop */}
+              <div className="absolute left-0 top-6 flex items-center">
+                <div className="relative">
+                  {/* Outer ring */}
+                  <div className="w-12 h-12 rounded-full border-4 border-primary bg-background flex items-center justify-center shadow-lg shadow-primary/50">
+                    {/* Inner dot with pulse */}
+                    <div className="w-5 h-5 rounded-full bg-gradient-to-br from-primary to-accent animate-pulse" />
+                  </div>
+                  {/* Railroad tie effect */}
+                  {idx < experiences.length - 1 && (
+                    <>
+                      <div className="absolute top-16 left-1/2 -translate-x-1/2 w-0.5 h-4 bg-border opacity-50" />
+                      <div className="absolute top-24 left-1/2 -translate-x-1/2 w-0.5 h-4 bg-border opacity-50" />
+                      <div className="absolute top-32 left-1/2 -translate-x-1/2 w-0.5 h-4 bg-border opacity-50" />
+                    </>
+                  )}
+                </div>
+              </div>
+              
+              {/* Experience card with left margin for timeline */}
+              <div className="ml-20">
+                <ExperienceItem {...exp} />
+              </div>
+            </div>
           ))}
         </div>
       </div>
