@@ -12,6 +12,7 @@ import HobbyProjects from "@/components/HobbyProjects";
 import PersonalInterests from "@/components/PersonalInterests";
 import ContactForm from "@/components/ContactForm";
 import AIChatbot from "@/components/AIChatbot";
+import FloatingResumeDownload from "@/components/FloatingResumeDownload";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -31,6 +32,7 @@ const Index = () => {
       <PersonalInterests />
       <ContactForm />
       <Footer />
+      <FloatingResumeDownload />
       <AIChatbot />
     </div>
   );
