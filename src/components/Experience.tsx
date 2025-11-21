@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Building2, Calendar, MapPin } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import netflixLogo from "@/assets/company_icons/Netflix_Logo_PMS.png";
 import paypalLogo from "@/assets/company_icons/PayPal-Logo-Black-RGB.png";
 import walmartLogo from "@/assets/company_icons/walmart_labs.svg";
@@ -8,6 +9,8 @@ import altimetrikLogo from "@/assets/company_icons/altimetrik_logo.webp";
 import htcLogo from "@/assets/company_icons/htc_global_services.png";
 
 const Experience = () => {
+  const { ref, isVisible } = useScrollAnimation();
+  
   const experiences = [
     {
       company: "TBD Health",
@@ -112,9 +115,13 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="container mx-auto px-6 py-16 bg-secondary/30">
-      <h2 className="text-3xl font-bold mb-3 text-center text-foreground">Professional Experience</h2>
-      <p className="text-center text-muted-foreground mb-12 text-lg">19+ years of progressive experience across leading tech companies</p>
+    <section id="experience" ref={ref} className="container mx-auto px-6 py-16 bg-secondary/30">
+      <h2 className={`text-3xl font-bold mb-3 text-center text-foreground transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        Professional Experience
+      </h2>
+      <p className={`text-center text-muted-foreground mb-12 text-lg transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        19+ years of progressive experience across leading tech companies
+      </p>
       
       <div className="relative">
         {/* Timeline Rail */}
@@ -124,8 +131,8 @@ const Experience = () => {
           {experiences.map((exp, idx) => (
             <div 
               key={idx} 
-              className={`relative animate-fade-in ${idx % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}
-              style={{ animationDelay: `${idx * 0.1}s` }}
+              className={`relative transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} ${idx % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}
+              style={{ transitionDelay: `${idx * 0.15}s` }}
             >
               {/* Timeline Dot */}
               <div className="absolute left-8 md:left-1/2 top-8 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg transform -translate-x-1/2 hidden md:block z-10"></div>

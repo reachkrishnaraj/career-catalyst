@@ -76,7 +76,7 @@ const Header = () => {
             19+ Years Experience
           </span>
           <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
-          US Citizen
+            Work Status: US Citizen
           </span>
         </div>
       </div>

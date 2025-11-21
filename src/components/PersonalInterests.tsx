@@ -51,7 +51,7 @@ const PersonalInterests = () => {
       <Card className="mt-8 p-6 bg-primary/5 border-primary/20 text-center">
         <p className="text-foreground">
           <span className="font-bold">Location:</span> Austin, Texas | 
-          <span className="font-bold"> Status:</span> US Citizen, India OCI | 
+          <span className="font-bold"> Work Status:</span> US Citizen, India OCI | 
           <span className="font-bold"> Availability:</span> Open to new opportunities
         </p>
       </Card>

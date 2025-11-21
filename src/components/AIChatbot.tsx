@@ -161,13 +161,23 @@ const AIChatbot = () => {
           {/* Yellow glow effect */}
           <div className="absolute inset-0 rounded-l-lg bg-accent opacity-50 blur-xl animate-[pulse_2s_ease-in-out_infinite]" />
           
-          {/* Bot icon */}
+          {/* Bot icon with magic sparkles */}
           <div className="relative">
             <Bot className="h-7 w-7 drop-shadow-lg" strokeWidth={2.5} />
-              <span className="absolute -top-1 -right-1 flex h-4 w-4">
+            
+            {/* Pulsing indicator */}
+            <span className="absolute -top-1 -right-1 flex h-4 w-4">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
               <span className="relative inline-flex rounded-full h-4 w-4 bg-accent border-2 border-white"></span>
             </span>
+            
+            {/* Magic sparkle effects */}
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute top-0 right-0 w-1 h-1 bg-white rounded-full animate-ping"></div>
+              <div className="absolute top-2 right-2 w-0.5 h-0.5 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.3s' }}></div>
+              <div className="absolute bottom-1 left-1 w-1 h-1 bg-white rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
+              <div className="absolute bottom-3 right-0 w-0.5 h-0.5 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.7s' }}></div>
+            </div>
           </div>
           
           {/* AI label on hover */}

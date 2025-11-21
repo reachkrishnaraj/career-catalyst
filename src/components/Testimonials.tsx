@@ -83,7 +83,7 @@ const Testimonials = () => {
           <div className="border-t border-border pt-4">
             <p className="font-bold text-primary text-xl">{currentTestimonial.author}</p>
             <p className="text-sm text-muted-foreground">{currentTestimonial.role}</p>
-            <p className="text-sm font-semibold text-accent">{currentTestimonial.company}</p>
+            <p className="text-sm font-semibold text-primary">{currentTestimonial.company}</p>
           </div>
         </div>
         
