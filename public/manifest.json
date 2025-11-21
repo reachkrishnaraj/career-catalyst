@@ -1,0 +1,17 @@
+{
+  "name": "Krishna Raj - Full Stack Engineering Leader",
+  "short_name": "Krishna Raj",
+  "description": "Portfolio of Krishna Raj - Impact-driven Full Stack Engineering Leader with 19+ years experience",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

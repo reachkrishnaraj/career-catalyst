@@ -43,6 +43,7 @@ interface Project {
   architectureImages?: { src: string; alt: string }[];
   mediumLink?: string;
   companyLogo?: string;
+  featured?: boolean;
 }
 
 const ProjectCarousel = () => {
@@ -84,7 +85,8 @@ const ProjectCarousel = () => {
       ],
       technologies: ["Java", "Cassandra", "Spring Boot", "Netflix OSS", "AWS"],
       architectureImage: "/placeholder-architecture.jpg",
-      companyLogo: netflixLogo
+      companyLogo: netflixLogo,
+      featured: true
     },
     {
       title: "Account Takeover Prevention System",
@@ -98,6 +100,7 @@ const ProjectCarousel = () => {
       ],
       technologies: ["Java", "Spring Boot", "AWS", "Machine Learning", "Redis", "Datadog"],
       architectureImage: turoAtoProject,
+      featured: true,
       companyLogo: turoLogo
     },
     {
@@ -305,7 +308,14 @@ const ProjectCarousel = () => {
                   <div className="flex items-start gap-3">
                     <Award className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="text-2xl font-bold mb-1">{project.title}</h3>
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="text-2xl font-bold">{project.title}</h3>
+                        {project.featured && (
+                          <Badge className="bg-gradient-to-r from-amber-500 to-orange-500 text-white border-none">
+                            ⭐ Featured
+                          </Badge>
+                        )}
+                      </div>
                       <p className="text-sm text-primary font-semibold mb-3">{project.company}</p>
                     </div>
                   </div>

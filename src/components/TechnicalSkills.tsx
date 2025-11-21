@@ -245,12 +245,12 @@ const TechnicalSkills = () => {
                 <CarouselItem key={idx} className="pl-4 md:basis-1/3 lg:basis-1/4">
                   <div className="flex flex-col gap-3">
                     {chunk.map((tech, techIdx) => (
-                      <Card key={techIdx} className="p-4 glass-card flex items-center gap-4 hover:shadow-lg transition-all duration-300">
-                        <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
+                       <Card key={techIdx} className="p-4 glass-card flex items-center gap-4 hover:shadow-lg transition-all duration-300 group">
+                        <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                           <img 
                             src={tech.icon} 
                             alt={tech.name}
-                            className="max-h-12 max-w-12 object-contain"
+                            className="max-h-12 max-w-12 object-contain group-hover:drop-shadow-lg"
                           />
                         </div>
                         <span className="font-semibold text-sm">{tech.name}</span>
@@ -278,12 +278,12 @@ const TechnicalSkills = () => {
                 <CarouselItem key={idx} className="pl-4 md:basis-1/3 lg:basis-1/4">
                   <div className="flex flex-col gap-3">
                     {chunk.map((service, serviceIdx) => (
-                      <Card key={serviceIdx} className="p-4 glass-card flex items-center gap-4 hover:shadow-lg transition-all duration-300">
-                        <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
+                       <Card key={serviceIdx} className="p-4 glass-card flex items-center gap-4 hover:shadow-lg transition-all duration-300 group">
+                        <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                           <img 
                             src={service.icon} 
                             alt={service.name}
-                            className="max-h-12 max-w-12 object-contain"
+                            className="max-h-12 max-w-12 object-contain group-hover:drop-shadow-lg"
                           />
                         </div>
                         <span className="font-semibold text-sm">{service.name}</span>
