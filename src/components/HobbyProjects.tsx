@@ -27,7 +27,7 @@ const HobbyProjects = () => {
                 </CardDescription>
               </div>
               <Link to="/trading-project">
-                <Button variant="default" className="gap-2">
+                <Button className="gap-2 bg-accent hover:bg-accent/90 text-accent-foreground">
                   View Details <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>

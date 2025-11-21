@@ -28,7 +28,7 @@ const FloatingResumeDownload = () => {
     <div className="fixed left-0 top-1/2 -translate-y-1/2 z-[100] flex items-center">
       {/* Expandable Panel */}
       <div
-        className={`bg-primary text-primary-foreground shadow-xl transition-all duration-300 ease-in-out rounded-r-lg overflow-hidden ${
+        className={`bg-accent text-accent-foreground shadow-xl transition-all duration-300 ease-in-out rounded-r-lg overflow-hidden ${
           isExpanded ? "w-40" : "w-0"
         }`}
       >
@@ -57,10 +57,10 @@ const FloatingResumeDownload = () => {
       {/* Download Button */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="bg-primary text-primary-foreground p-2 rounded-r-lg shadow-lg hover:scale-110 transition-all duration-300 group relative"
+        className="bg-accent text-accent-foreground p-2 rounded-r-lg shadow-lg hover:scale-110 transition-all duration-300 group relative"
       >
         {/* Glow effect */}
-        <div className="absolute -inset-1 bg-gradient-to-r from-primary/60 via-accent/60 to-primary/60 opacity-75 blur-md rounded-r-lg -z-10 animate-[pulse_2s_ease-in-out_infinite]" />
+        <div className="absolute -inset-1 bg-accent/60 opacity-75 blur-md rounded-r-lg -z-10 animate-[pulse_2s_ease-in-out_infinite]" />
         
         <div className="relative">
           <FileDown className="h-4 w-4" />
