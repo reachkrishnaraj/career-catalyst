@@ -46,9 +46,9 @@ const Index = () => {
       <TechnicalSkills />
       <PaymentExpertise />
       <AIExpertise />
+      <ProjectCarousel />
       <HobbyProjects />
       <Experience />
-      <ProjectCarousel />
       <Leadership />
       <Testimonials />
       <Education />

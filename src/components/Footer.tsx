@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="container mx-auto px-6 py-12">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
-            <h3 className="text-2xl font-bold text-gradient mb-2">Krishna Raj</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-2">Krishna Raj</h3>
             <p className="text-muted-foreground mb-4">
               Architect | Principal Engineer | Engineering Lead
             </p>
@@ -17,7 +17,7 @@ const Footer = () => {
           </div>
           
           <div>
-            <h4 className="font-bold mb-4">Quick Contact</h4>
+            <h4 className="font-bold text-foreground mb-4">Quick Contact</h4>
             <div className="space-y-2">
               <a href="mailto:reach.krishnaraj@gmail.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                 <Mail className="h-4 w-4" />
@@ -31,7 +31,7 @@ const Footer = () => {
           </div>
           
           <div>
-            <h4 className="font-bold mb-4">Connect & Learn More</h4>
+            <h4 className="font-bold text-foreground mb-4">Connect & Learn More</h4>
             <div className="space-y-2">
               <a href="https://www.linkedin.com/in/krajs/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                 <Linkedin className="h-4 w-4" />

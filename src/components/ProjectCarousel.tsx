@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -47,6 +48,7 @@ interface Project {
 }
 
 const ProjectCarousel = () => {
+  const { ref, isVisible } = useScrollAnimation();
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxImages, setLightboxImages] = useState<{ src: string; alt: string }[]>([]);
   const [lightboxIndex, setLightboxIndex] = useState(0);
@@ -266,11 +268,13 @@ const ProjectCarousel = () => {
     : projects.filter(p => p.company === selectedCompany);
 
   return (
-    <section id="projects" className="container mx-auto px-6 py-12 bg-secondary/30">
-      <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-        <Award className="h-8 w-8 text-primary" />
-        ⭐ Projects & Architecture
+    <section id="projects" ref={ref} className="container mx-auto px-6 py-16 bg-secondary/30">
+      <h2 className={`text-3xl font-bold mb-3 text-center text-foreground transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        Featured Work
       </h2>
+      <p className={`text-center text-muted-foreground mb-12 text-lg transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        Notable projects and architectural contributions across leading tech companies
+      </p>
       
       {/* Filter Buttons */}
       <div className="flex flex-wrap gap-2 mb-8 justify-center">
