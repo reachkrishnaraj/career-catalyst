@@ -312,8 +312,8 @@ const ProjectCarousel = () => {
                       <div className="flex items-center gap-2 mb-1">
                         <h3 className="text-2xl font-bold">{project.title}</h3>
                         {project.featured && (
-                          <Badge className="bg-gradient-to-r from-amber-500 to-orange-500 text-white border-none">
-                            ⭐ Featured
+                          <Badge className="bg-gradient-to-r from-amber-500 to-orange-500 text-white border-none p-1.5">
+                            ⭐
                           </Badge>
                         )}
                       </div>
