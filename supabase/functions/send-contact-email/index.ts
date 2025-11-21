@@ -62,7 +62,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send notification to Krishna
     const notificationResponse = await resend.emails.send({
-      from: "Krishna Raj <hello@kraj.me>",
+      from: "Krishna Raj <hello@resume.kraj.me>",
       to: ["reach.krishnaraj@gmail.com"],
       replyTo: email,
       subject: `New Contact Form Submission from ${sanitizedName}`,
@@ -79,7 +79,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send confirmation to the user
     const confirmationResponse = await resend.emails.send({
-      from: "Krishna Raj <hello@kraj.me>",
+      from: "Krishna Raj <hello@resume.kraj.me>",
       to: [email],
       subject: "Thank you for contacting me!",
       html: `
