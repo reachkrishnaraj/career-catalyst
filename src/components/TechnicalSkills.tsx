@@ -240,9 +240,9 @@ const TechnicalSkills = () => {
             plugins={[Autoplay({ delay: 2500, stopOnInteraction: true, stopOnMouseEnter: true })]}
             className="w-full max-w-5xl mx-auto"
           >
-            <CarouselContent className="-ml-4">
+            <CarouselContent className="-ml-4 transition-all duration-500">
               {chunkedTechStack.map((chunk, idx) => (
-                <CarouselItem key={idx} className="pl-4 md:basis-1/3 lg:basis-1/4">
+                <CarouselItem key={idx} className="pl-4 md:basis-1/3 lg:basis-1/4 transition-transform duration-500">
                   <div className="flex flex-col gap-3">
                      {chunk.map((tech, techIdx) => (
                        <Card key={techIdx} className="p-4 glass-card flex items-center gap-4 hover:shadow-lg transition-all duration-300 group animate-fade-in hover:-translate-y-1">
@@ -273,9 +273,9 @@ const TechnicalSkills = () => {
             plugins={[Autoplay({ delay: 3000, stopOnInteraction: true, stopOnMouseEnter: true })]}
             className="w-full max-w-5xl mx-auto"
           >
-            <CarouselContent className="-ml-4">
+            <CarouselContent className="-ml-4 transition-all duration-500">
               {chunkedAwsServices.map((chunk, idx) => (
-                <CarouselItem key={idx} className="pl-4 md:basis-1/3 lg:basis-1/4">
+                <CarouselItem key={idx} className="pl-4 md:basis-1/3 lg:basis-1/4 transition-transform duration-500">
                   <div className="flex flex-col gap-3">
                      {chunk.map((service, serviceIdx) => (
                        <Card key={serviceIdx} className="p-4 glass-card flex items-center gap-4 hover:shadow-lg transition-all duration-300 group animate-fade-in hover:-translate-y-1">

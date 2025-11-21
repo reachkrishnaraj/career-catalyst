@@ -291,10 +291,10 @@ const ProjectCarousel = () => {
           }),
         ]}
       >
-        <CarouselContent className="animate-fade-in">
+        <CarouselContent className="animate-fade-in transition-all duration-500">
           {filteredProjects.map((project, idx) => (
-            <CarouselItem key={idx}>
-              <Card className="p-8 glass-card hover:glow transition-all animate-scale-in card-elevated shadow-lg hover:shadow-xl">
+            <CarouselItem key={idx} className="transition-transform duration-500">
+              <Card className="p-8 glass-card hover:glow transition-all duration-500 animate-scale-in card-elevated shadow-lg hover:shadow-xl hover:-translate-y-1">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-start gap-3">
                     <Award className="h-6 w-6 text-primary flex-shrink-0 mt-1" />

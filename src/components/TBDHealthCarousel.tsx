@@ -35,7 +35,7 @@ const TBDHealthCarousel = () => {
             delay: 3000,
           }),
         ]}
-        className="w-full max-w-3xl mx-auto"
+        className="w-full max-w-xl mx-auto"
       >
         <CarouselContent>
           {images.map((image, index) => (
