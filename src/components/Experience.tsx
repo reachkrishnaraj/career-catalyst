@@ -128,7 +128,7 @@ const Experience = () => {
                 
                 <div className="flex items-start gap-3 mb-3">
                   {exp.logo ? (
-                    <img src={exp.logo} alt={`${exp.company} logo`} className="h-8 w-8 object-contain mt-1 flex-shrink-0" />
+                    <img src={exp.logo} alt={`${exp.company} logo`} className="h-12 w-12 object-contain mt-1 flex-shrink-0" />
                   ) : (
                     <Building2 className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                   )}
