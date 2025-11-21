@@ -113,55 +113,65 @@ const Experience = () => {
 
   return (
     <section id="experience" className="container mx-auto px-6 py-16 bg-secondary/30">
-      <h2 className="text-3xl font-bold mb-3 text-center">Professional Experience</h2>
+      <h2 className="text-3xl font-bold mb-3 text-center text-foreground">Professional Experience</h2>
       <p className="text-center text-muted-foreground mb-12 text-lg">19+ years of progressive experience across leading tech companies</p>
       
-      <div className="space-y-6">
-        {experiences.map((exp, idx) => (
-          <Card key={idx} className="p-6 hover:shadow-xl transition-all duration-300 animate-fade-in">
-            <div className="flex flex-col md:flex-row md:items-start gap-4">
-              {/* Left side - Company & Role */}
-              <div className="flex-1">
-                <Badge variant="secondary" className="mb-3">
-                  {exp.period}
-                </Badge>
-                
-                <div className="flex items-start gap-3 mb-3">
-                  {exp.logo ? (
-                    <img src={exp.logo} alt={`${exp.company} logo`} className="h-12 w-12 object-contain mt-1 flex-shrink-0" />
-                  ) : (
-                    <Building2 className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                  )}
-                  <div>
-                    <h3 className="text-xl font-bold">{exp.company}</h3>
-                    <p className="text-primary font-semibold">{exp.role}</p>
-                    <p className="text-sm text-muted-foreground flex items-center gap-1 mt-1">
-                      <MapPin className="h-3 w-3" />
-                      {exp.location}
-                    </p>
-                  </div>
-                </div>
-                
-                <p className="text-sm text-muted-foreground italic mb-4">
-                  {exp.description}
-                </p>
-              </div>
+      <div className="relative">
+        {/* Timeline Rail */}
+        <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-primary/30 hidden md:block"></div>
+        
+        <div className="space-y-12">
+          {experiences.map((exp, idx) => (
+            <div 
+              key={idx} 
+              className={`relative animate-fade-in ${idx % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}
+              style={{ animationDelay: `${idx * 0.1}s` }}
+            >
+              {/* Timeline Dot */}
+              <div className="absolute left-8 md:left-1/2 top-8 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg transform -translate-x-1/2 hidden md:block z-10"></div>
               
-              {/* Right side - Achievements */}
-              <div className="flex-1">
-                <h4 className="font-semibold text-sm mb-3">Key Achievements:</h4>
-                <ul className="space-y-2">
-                  {exp.achievements.map((achievement, aIdx) => (
-                    <li key={aIdx} className="text-sm flex items-start gap-2">
-                      <span className="text-primary font-bold mt-0.5">•</span>
-                      <span>{achievement}</span>
-                    </li>
-                  ))}
-                </ul>
+              <div className={`md:w-1/2 ${idx % 2 === 0 ? 'md:ml-0' : 'md:ml-auto'}`}>
+                <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <Badge variant="secondary" className="mb-3">
+                    {exp.period}
+                  </Badge>
+                  
+                  <div className="flex items-start gap-3 mb-3">
+                    {exp.logo ? (
+                      <img src={exp.logo} alt={`${exp.company} logo`} className="h-12 w-12 object-contain mt-1 flex-shrink-0" />
+                    ) : (
+                      <Building2 className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                    )}
+                    <div>
+                      <h3 className="text-xl font-bold">{exp.company}</h3>
+                      <p className="text-primary font-semibold">{exp.role}</p>
+                      <p className="text-sm text-muted-foreground flex items-center gap-1 mt-1">
+                        <MapPin className="h-3 w-3" />
+                        {exp.location}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <p className="text-sm text-muted-foreground italic mb-4">
+                    {exp.description}
+                  </p>
+                  
+                  <div>
+                    <h4 className="font-semibold text-sm mb-3">Key Achievements:</h4>
+                    <ul className="space-y-2">
+                      {exp.achievements.map((achievement, aIdx) => (
+                        <li key={aIdx} className="text-sm flex items-start gap-2">
+                          <span className="text-primary font-bold mt-0.5">•</span>
+                          <span>{achievement}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </Card>
               </div>
             </div>
-          </Card>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

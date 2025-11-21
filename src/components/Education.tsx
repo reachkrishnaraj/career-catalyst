@@ -22,28 +22,28 @@ const Education = () => {
           <p className="text-sm text-muted-foreground">Graduated: 2003</p>
         </Card>
         
-        <Card className="p-6 border-l-4 border-l-accent">
+        <Card className="p-6 border-l-4 border-l-primary">
           <div className="flex items-center gap-3 mb-4">
-            <Award className="h-8 w-8 text-accent" />
+            <Award className="h-8 w-8 text-primary" />
             <div>
               <h3 className="text-xl font-bold">Certifications & Training</h3>
             </div>
           </div>
           <ul className="space-y-2">
             <li className="flex items-start gap-2">
-              <span className="text-accent font-bold">•</span>
+              <span className="text-primary font-bold">•</span>
               <span>AWS Certified Solutions Architect</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-accent font-bold">•</span>
+              <span className="text-primary font-bold">•</span>
               <span>Certified Spring Professional</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-accent font-bold">•</span>
+              <span className="text-primary font-bold">•</span>
               <span>HIPAA Compliance Training</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-accent font-bold">•</span>
+              <span className="text-primary font-bold">•</span>
               <span>PCI DSS Compliance</span>
             </li>
           </ul>
