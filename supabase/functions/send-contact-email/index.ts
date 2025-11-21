@@ -61,7 +61,7 @@ const handler = async (req: Request): Promise<Response> => {
     const sanitizedMessage = escapeHtml(message).replace(/\n/g, '<br>');
 
     // Send notification to Krishna
-    const emailResponse = await resend.emails.send({
+    const notificationResponse = await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>",
       to: ["reach.krishnaraj@gmail.com"],
       replyTo: email,
@@ -77,7 +77,25 @@ const handler = async (req: Request): Promise<Response> => {
       `,
     });
 
-    return new Response(JSON.stringify(emailResponse), {
+    // Send confirmation to the user
+    const confirmationResponse = await resend.emails.send({
+      from: "Portfolio Contact <onboarding@resend.dev>",
+      to: [email],
+      subject: "Thank you for contacting me!",
+      html: `
+        <h2>Thank you for reaching out, ${sanitizedName}!</h2>
+        <p>I've received your message and will get back to you as soon as possible.</p>
+        <p><strong>Your message:</strong></p>
+        <p>${sanitizedMessage}</p>
+        <hr>
+        <p style="color: #666; font-size: 12px;">This is an automated confirmation from the portfolio contact form.</p>
+      `,
+    });
+
+    return new Response(JSON.stringify({ 
+      notification: notificationResponse, 
+      confirmation: confirmationResponse 
+    }), {
       status: 200,
       headers: {
         "Content-Type": "application/json",
