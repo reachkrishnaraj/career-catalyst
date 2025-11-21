@@ -113,23 +113,6 @@ const Testimonials = () => {
           </Button>
         </div>
       </Card>
-
-      {/* All Testimonials Grid */}
-      <div className="grid md:grid-cols-2 gap-6">
-        {testimonials.map((testimonial, idx) => (
-          <Card key={idx} className="p-6 relative glass-card hover:glow transition-all hover:-translate-y-1">
-            <Quote className="h-12 w-12 text-primary/20 absolute top-4 right-4" />
-            <p className="text-foreground italic mb-4 relative z-10 text-base leading-relaxed">
-              "{testimonial.quote}"
-            </p>
-            <div className="border-t border-border pt-4 mt-4">
-              <p className="font-bold text-primary text-lg">{testimonial.author}</p>
-              <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-              <p className="text-sm font-semibold text-accent">{testimonial.company}</p>
-            </div>
-          </Card>
-        ))}
-      </div>
       
       <Card className="mt-8 p-6 bg-accent/10 border-accent/30">
         <p className="text-center text-foreground">

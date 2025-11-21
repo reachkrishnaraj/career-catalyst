@@ -297,6 +297,7 @@ const ProjectCarousel = () => {
           Autoplay({
             delay: 5000,
             stopOnInteraction: true,
+            stopOnMouseEnter: true,
           }),
         ]}
       >

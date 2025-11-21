@@ -4,13 +4,11 @@ import StatsOverview from "@/components/StatsOverview";
 import TechnicalSkills from "@/components/TechnicalSkills";
 import PaymentExpertise from "@/components/PaymentExpertise";
 import AIExpertise from "@/components/AIExpertise";
-import Experience from "@/components/Experience";
 import ProjectCarousel from "@/components/ProjectCarousel";
 import CareerTimeline from "@/components/CareerTimeline";
 import Leadership from "@/components/Leadership";
 import Testimonials from "@/components/Testimonials";
 import Education from "@/components/Education";
-import GitHubContributions from "@/components/GitHubContributions";
 import HobbyProjects from "@/components/HobbyProjects";
 import PersonalInterests from "@/components/PersonalInterests";
 import ContactForm from "@/components/ContactForm";
@@ -51,15 +49,11 @@ const Index = () => {
       <PaymentExpertise />
       <AIExpertise />
       <HobbyProjects />
-      <Experience />
       <CareerTimeline />
       <ProjectCarousel />
       <Leadership />
       <Testimonials />
       <Education />
-      <div className="container mx-auto px-6 py-12">
-        <GitHubContributions />
-      </div>
       <PersonalInterests />
       <ContactForm />
       <Footer />
