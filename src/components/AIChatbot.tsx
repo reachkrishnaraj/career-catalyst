@@ -156,24 +156,23 @@ const AIChatbot = () => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-gradient-to-br from-cyan-500 via-blue-500 to-purple-600 text-white rounded-l-lg p-4 shadow-2xl hover:scale-110 transition-all animate-pulse group relative overflow-hidden border-2 border-white/20"
+          className="bg-primary text-primary-foreground rounded-l-lg p-4 shadow-2xl hover:scale-110 transition-all group relative overflow-hidden border-2 border-primary/20"
         >
-          {/* Enhanced sparkle effects */}
-          <div className="absolute inset-0 rounded-l-lg bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 opacity-75 blur-2xl animate-[spin_3s_linear_infinite]" />
-          <div className="absolute -inset-1 rounded-l-lg bg-gradient-to-r from-cyan-300/80 via-blue-300/80 to-purple-400/80 opacity-90 blur-lg animate-[pulse_2s_ease-in-out_infinite]" />
+          {/* Yellow glow effect */}
+          <div className="absolute inset-0 rounded-l-lg bg-primary opacity-50 blur-xl animate-[pulse_2s_ease-in-out_infinite]" />
           
-          {/* Larger icon with AI badge */}
+          {/* Bot icon */}
           <div className="relative">
             <Bot className="h-7 w-7 drop-shadow-lg" strokeWidth={2.5} />
             <span className="absolute -top-1 -right-1 flex h-4 w-4">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-90"></span>
-              <span className="relative inline-flex rounded-full h-4 w-4 bg-yellow-400 border-2 border-white"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-4 w-4 bg-primary border-2 border-white"></span>
             </span>
           </div>
           
           {/* AI label on hover */}
           <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-            <div className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-2 rounded-lg text-sm font-bold shadow-2xl border border-white/30">
+            <div className="bg-primary text-primary-foreground px-3 py-2 rounded-lg text-sm font-bold shadow-2xl border border-primary/30">
               Ask AI Assistant ✨
             </div>
           </div>
@@ -182,30 +181,27 @@ const AIChatbot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="mr-0 w-96 h-[600px] flex flex-col shadow-2xl animate-scale-in relative bg-background rounded-l-lg">
+        <Card className="mr-0 w-96 h-[600px] flex flex-col shadow-2xl animate-scale-in relative bg-background rounded-l-lg border-primary/20">
           {/* Glow effect around window */}
-          <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-lg blur-lg -z-10 animate-[pulse_3s_ease-in-out_infinite]" />
+          <div className="absolute -inset-1 bg-primary/10 rounded-lg blur-lg -z-10" />
           
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-600/10 relative overflow-hidden border-b-cyan-500/20">
-            {/* Animated background pattern */}
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 via-transparent to-blue-500/10 animate-[slide-in-right_3s_ease-in-out_infinite]" />
-            
+          <div className="flex items-center justify-between p-4 border-b bg-primary/5 relative overflow-hidden">
             <div className="flex items-center gap-2 relative">
               <div className="relative">
-                <Bot className="h-6 w-6 text-cyan-500 animate-[pulse_2s_ease-in-out_infinite]" strokeWidth={2.5} />
+                <Bot className="h-6 w-6 text-primary" strokeWidth={2.5} />
                 <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-yellow-400"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
                 </span>
               </div>
-              <h3 className="font-bold bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">AI Assistant ✨</h3>
+              <h3 className="font-bold text-foreground">AI Assistant ✨</h3>
             </div>
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(false)}
-              className="relative hover:bg-cyan-500/10"
+              className="relative hover:bg-primary/10"
             >
               <X className="h-5 w-5" />
             </Button>
