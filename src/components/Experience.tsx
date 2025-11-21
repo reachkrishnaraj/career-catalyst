@@ -123,22 +123,21 @@ const Experience = () => {
         19+ years of progressive experience across leading tech companies
       </p>
       
-      <div className="relative">
+      <div className="relative max-w-4xl mx-auto">
         {/* Timeline Rail */}
-        <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-primary/30 hidden md:block"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-primary/30"></div>
         
         <div className="space-y-12">
           {experiences.map((exp, idx) => (
             <div 
               key={idx} 
-              className={`relative transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} ${idx % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}
+              className={`relative pl-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
               style={{ transitionDelay: `${idx * 0.15}s` }}
             >
               {/* Timeline Dot */}
-              <div className="absolute left-8 md:left-1/2 top-8 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg transform -translate-x-1/2 hidden md:block z-10"></div>
+              <div className="absolute left-0 top-8 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg transform -translate-x-1/2 z-10"></div>
               
-              <div className={`md:w-1/2 ${idx % 2 === 0 ? 'md:ml-0' : 'md:ml-auto'}`}>
-                <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <Badge variant="secondary" className="mb-3">
                     {exp.period}
                   </Badge>
@@ -175,7 +174,6 @@ const Experience = () => {
                     </ul>
                   </div>
                 </Card>
-              </div>
             </div>
           ))}
         </div>
