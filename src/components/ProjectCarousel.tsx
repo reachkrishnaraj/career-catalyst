@@ -307,7 +307,7 @@ const ProjectCarousel = () => {
               <Card className="p-8 glass-card hover:glow transition-all animate-scale-in card-elevated shadow-lg hover:shadow-xl">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-start gap-3">
-                    <Award className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
+                    <Award className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         <h3 className="text-2xl font-bold">{project.title}</h3>
