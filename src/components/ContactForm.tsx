@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, Linkedin, Send } from "lucide-react";
+import { Mail, Phone, Linkedin, Send, Copy, Check } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const ContactForm = () => {
@@ -13,6 +13,8 @@ const ContactForm = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -43,6 +45,29 @@ const ContactForm = () => {
     }
   };
 
+  const copyToClipboard = async (text: string, type: 'email' | 'phone') => {
+    try {
+      await navigator.clipboard.writeText(text);
+      if (type === 'email') {
+        setCopiedEmail(true);
+        setTimeout(() => setCopiedEmail(false), 2000);
+      } else {
+        setCopiedPhone(true);
+        setTimeout(() => setCopiedPhone(false), 2000);
+      }
+      toast({
+        title: "Copied!",
+        description: `${type === 'email' ? 'Email' : 'Phone number'} copied to clipboard`,
+      });
+    } catch (err) {
+      toast({
+        title: "Error",
+        description: "Failed to copy to clipboard",
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
     <section id="contact" className="py-20 px-4 bg-gradient-to-b from-background/50 to-background">
       <div className="container mx-auto max-w-4xl">
@@ -62,22 +87,38 @@ const ContactForm = () => {
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-primary" />
-                <div>
+                <div className="flex-1">
                   <p className="font-semibold">Email</p>
                   <a href="mailto:reach.krishnaraj@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
                     reach.krishnaraj@gmail.com
                   </a>
                 </div>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => copyToClipboard("reach.krishnaraj@gmail.com", 'email')}
+                  className="flex-shrink-0"
+                >
+                  {copiedEmail ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
+                </Button>
               </div>
 
               <div className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-primary" />
-                <div>
+                <div className="flex-1">
                   <p className="font-semibold">Phone</p>
                   <a href="tel:+14083486083" className="text-muted-foreground hover:text-primary transition-colors">
                     +1 (408) 348-6083
                   </a>
                 </div>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => copyToClipboard("+14083486083", 'phone')}
+                  className="flex-shrink-0"
+                >
+                  {copiedPhone ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
+                </Button>
               </div>
 
               <div className="flex items-center gap-3">
@@ -85,12 +126,12 @@ const ContactForm = () => {
                 <div>
                   <p className="font-semibold">LinkedIn</p>
                   <a 
-                    href="https://linkedin.com/in/krishnaraj" 
+                    href="https://www.linkedin.com/in/krajs/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    linkedin.com/in/krishnaraj
+                    linkedin.com/in/krajs
                   </a>
                 </div>
               </div>

@@ -1,5 +1,7 @@
+import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
-import { Quote } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Testimonial {
   quote: string;
@@ -36,6 +38,31 @@ const Testimonials = () => {
     }
   ];
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoRotating, setIsAutoRotating] = useState(true);
+
+  useEffect(() => {
+    if (!isAutoRotating) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isAutoRotating, testimonials.length]);
+
+  const goToPrevious = () => {
+    setIsAutoRotating(false);
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  const goToNext = () => {
+    setIsAutoRotating(false);
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const currentTestimonial = testimonials[currentIndex];
+
   return (
     <section className="container mx-auto px-6 py-12 bg-gradient-to-br from-primary/5 via-transparent to-accent/5">
       <h2 className="text-3xl font-bold mb-3 flex items-center gap-3">
@@ -46,6 +73,48 @@ const Testimonials = () => {
         What colleagues say about working with Krishna
       </p>
       
+      {/* Featured Testimonial Carousel */}
+      <Card className="p-8 mb-8 relative glass-card min-h-[250px]">
+        <Quote className="h-16 w-16 text-primary/20 absolute top-4 right-4" />
+        <div className="relative z-10 animate-fade-in" key={currentIndex}>
+          <p className="text-foreground italic mb-6 text-lg leading-relaxed">
+            "{currentTestimonial.quote}"
+          </p>
+          <div className="border-t border-border pt-4">
+            <p className="font-bold text-primary text-xl">{currentTestimonial.author}</p>
+            <p className="text-sm text-muted-foreground">{currentTestimonial.role}</p>
+            <p className="text-sm font-semibold text-accent">{currentTestimonial.company}</p>
+          </div>
+        </div>
+        
+        {/* Navigation */}
+        <div className="flex items-center justify-between mt-6">
+          <Button onClick={goToPrevious} variant="outline" size="icon">
+            <ChevronLeft className="h-5 w-5" />
+          </Button>
+          
+          <div className="flex gap-2">
+            {testimonials.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => {
+                  setIsAutoRotating(false);
+                  setCurrentIndex(idx);
+                }}
+                className={`h-2 rounded-full transition-all ${
+                  idx === currentIndex ? "w-8 bg-primary" : "w-2 bg-muted"
+                }`}
+              />
+            ))}
+          </div>
+          
+          <Button onClick={goToNext} variant="outline" size="icon">
+            <ChevronRight className="h-5 w-5" />
+          </Button>
+        </div>
+      </Card>
+
+      {/* All Testimonials Grid */}
       <div className="grid md:grid-cols-2 gap-6">
         {testimonials.map((testimonial, idx) => (
           <Card key={idx} className="p-6 relative glass-card hover:glow transition-all hover:-translate-y-1">
@@ -65,7 +134,7 @@ const Testimonials = () => {
       <Card className="mt-8 p-6 bg-accent/10 border-accent/30">
         <p className="text-center text-foreground">
           <span className="font-bold">Note:</span> Additional recommendations and detailed references available upon request. 
-          Connect on <a href="https://linkedin.com/in/krishnaraj" className="text-primary font-semibold underline" target="_blank" rel="noopener noreferrer">LinkedIn</a> for verified endorsements.
+          Connect on <a href="https://www.linkedin.com/in/krajs/" className="text-primary font-semibold underline" target="_blank" rel="noopener noreferrer">LinkedIn</a> for verified endorsements.
         </p>
       </Card>
     </section>

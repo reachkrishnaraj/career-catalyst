@@ -1,50 +1,85 @@
+import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Briefcase, Code2, Database, Cloud } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import spaceBanner from "@/assets/space-banner.jpg";
 
 const Summary = () => {
+  const [typedText, setTypedText] = useState("");
+  const fullText = "Impact-driven, passionate, and seasoned hands-on Full Stack Engineering Leader with expertise in Payments & Billing, Marketplace, eCommerce, Healthcare, and Retail domains with diverse and progressive industry experience spanning 19+ years.";
+  const { ref, isVisible } = useScrollAnimation();
+
+  useEffect(() => {
+    if (!isVisible) return;
+    
+    let currentIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setTypedText(fullText.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, 20);
+
+    return () => clearInterval(typingInterval);
+  }, [isVisible]);
+
   return (
-    <section id="summary" className="container mx-auto px-6 py-12">
-      <Card className="p-8 border-l-4 border-l-primary shadow-lg">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-          <Briefcase className="h-8 w-8 text-primary" />
-          Professional Summary
-        </h2>
-        <p className="text-lg text-foreground leading-relaxed mb-6">
-          Impact-driven, passionate, and seasoned hands-on Full Stack Engineering Leader with expertise in{" "}
-          <span className="font-semibold text-primary">Payments & Billing</span>,{" "}
-          <span className="font-semibold text-primary">Marketplace</span>,{" "}
-          <span className="font-semibold text-primary">eCommerce</span>,{" "}
-          <span className="font-semibold text-primary">Healthcare</span>, and{" "}
-          <span className="font-semibold text-primary">Retail</span> domains with diverse and progressive industry experience spanning{" "}
-          <span className="font-semibold text-primary">19+ years</span>.
-        </p>
-        
-        <div className="grid md:grid-cols-3 gap-4 mt-8">
-          <div className="flex items-start gap-3 p-4 bg-secondary rounded-lg">
-            <Code2 className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-            <div>
-              <h3 className="font-semibold mb-1">Full Stack Expert</h3>
-              <p className="text-sm text-muted-foreground">Java, JavaScript, Python, React, NextJS, Spring Boot</p>
-            </div>
-          </div>
+    <section 
+      id="summary" 
+      ref={ref}
+      className="relative overflow-hidden py-12"
+    >
+      {/* Parallax Background */}
+      <div 
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: `url(${spaceBanner})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+      />
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <Card className={`p-8 border-l-4 border-l-primary shadow-lg backdrop-blur-sm bg-background/95 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+            <Briefcase className="h-8 w-8 text-primary" />
+            Professional Summary
+          </h2>
+          <p className="text-lg text-foreground leading-relaxed mb-6 min-h-[6rem]">
+            {typedText}
+            <span className="inline-block w-0.5 h-6 bg-primary animate-pulse ml-1"></span>
+          </p>
           
-          <div className="flex items-start gap-3 p-4 bg-secondary rounded-lg">
-            <Database className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-            <div>
-              <h3 className="font-semibold mb-1">Data Architecture</h3>
-              <p className="text-sm text-muted-foreground">MySQL, DynamoDB, Cassandra, Big Data, Analytics</p>
+          <div className="grid md:grid-cols-3 gap-4 mt-8">
+            <div className="flex items-start gap-3 p-4 bg-secondary rounded-lg hover:scale-105 transition-transform duration-300">
+              <Code2 className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+              <div>
+                <h3 className="font-semibold mb-1">Full Stack Expert</h3>
+                <p className="text-sm text-muted-foreground">Java, JavaScript, Python, React, NextJS, Spring Boot</p>
+              </div>
+            </div>
+            
+            <div className="flex items-start gap-3 p-4 bg-secondary rounded-lg hover:scale-105 transition-transform duration-300">
+              <Database className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+              <div>
+                <h3 className="font-semibold mb-1">Data Architecture</h3>
+                <p className="text-sm text-muted-foreground">MySQL, DynamoDB, Cassandra, Big Data, Analytics</p>
+              </div>
+            </div>
+            
+            <div className="flex items-start gap-3 p-4 bg-secondary rounded-lg hover:scale-105 transition-transform duration-300">
+              <Cloud className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+              <div>
+                <h3 className="font-semibold mb-1">Cloud Native</h3>
+                <p className="text-sm text-muted-foreground">AWS, Kubernetes, Docker, Microservices, Serverless</p>
+              </div>
             </div>
           </div>
-          
-          <div className="flex items-start gap-3 p-4 bg-secondary rounded-lg">
-            <Cloud className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-            <div>
-              <h3 className="font-semibold mb-1">Cloud Native</h3>
-              <p className="text-sm text-muted-foreground">AWS, Kubernetes, Docker, Microservices, Serverless</p>
-            </div>
-          </div>
-        </div>
-      </Card>
+        </Card>
+      </div>
     </section>
   );
 };
