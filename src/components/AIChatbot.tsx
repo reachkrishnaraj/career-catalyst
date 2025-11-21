@@ -163,20 +163,22 @@ const AIChatbot = () => {
           
           {/* Bot icon with magic sparkles */}
           <div className="relative">
-            <Bot className="h-7 w-7 drop-shadow-lg" strokeWidth={2.5} />
+            <Bot className="h-7 w-7 drop-shadow-lg filter contrast-125 brightness-110" strokeWidth={2.5} />
             
             {/* Pulsing indicator */}
             <span className="absolute -top-1 -right-1 flex h-4 w-4">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-4 w-4 bg-accent border-2 border-white"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-background opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-4 w-4 bg-background border-2 border-accent"></span>
             </span>
             
-            {/* Magic sparkle effects */}
+            {/* Magic sparkle effects with better contrast */}
             <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute top-0 right-0 w-1 h-1 bg-white rounded-full animate-ping"></div>
-              <div className="absolute top-2 right-2 w-0.5 h-0.5 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.3s' }}></div>
-              <div className="absolute bottom-1 left-1 w-1 h-1 bg-white rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
-              <div className="absolute bottom-3 right-0 w-0.5 h-0.5 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.7s' }}></div>
+              <div className="absolute -top-1 -right-1 w-1.5 h-1.5 bg-background rounded-full animate-ping shadow-lg"></div>
+              <div className="absolute top-2 -right-1 w-1 h-1 bg-background/80 rounded-full animate-pulse shadow-md" style={{ animationDelay: '0.3s' }}></div>
+              <div className="absolute -bottom-1 left-0 w-1.5 h-1.5 bg-background rounded-full animate-ping shadow-lg" style={{ animationDelay: '0.5s' }}></div>
+              <div className="absolute bottom-2 right-1 w-1 h-1 bg-background/80 rounded-full animate-pulse shadow-md" style={{ animationDelay: '0.7s' }}></div>
+              <div className="absolute top-0 left-2 w-0.5 h-0.5 bg-background rounded-full animate-ping" style={{ animationDelay: '0.2s' }}></div>
+              <div className="absolute -top-2 left-0 w-1 h-1 bg-background/90 rounded-full animate-pulse shadow-md" style={{ animationDelay: '0.9s' }}></div>
             </div>
           </div>
           

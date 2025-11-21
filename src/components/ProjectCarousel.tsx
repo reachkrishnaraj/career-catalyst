@@ -134,20 +134,6 @@ const ProjectCarousel = () => {
       companyLogo: turoLogo
     },
     {
-      title: "Payment Gateway Modernization",
-      company: "Confidential Payment Gateway",
-      description: "Architected modernization strategy for legacy payment platform serving Canadian market.",
-      impact: [
-        "Improved system scalability by 3x",
-        "Reduced payment processing latency by 40%",
-        "Enhanced compliance and security posture",
-        "Enabled support for modern payment methods"
-      ],
-      technologies: ["Architecture", "Cloud Migration", "Microservices", "API Design"],
-      architectureImage: "/placeholder-architecture.jpg",
-      companyLogo: undefined
-    },
-    {
       title: "Dynamic Pricing & Fee Engine",
       company: "Turo",
       description: "Architected and built a sophisticated business rules engine enabling real-time dynamic pricing computation across multiple markets. System supports complex fee structures, location-based pricing, and A/B testing for optimization strategies.",
