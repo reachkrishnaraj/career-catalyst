@@ -1,6 +1,5 @@
 import Header from "@/components/Header";
 import Summary from "@/components/Summary";
-import StatsOverview from "@/components/StatsOverview";
 import TechnicalSkills from "@/components/TechnicalSkills";
 import PaymentExpertise from "@/components/PaymentExpertise";
 import AIExpertise from "@/components/AIExpertise";
@@ -44,7 +43,6 @@ const Index = () => {
       <ScrollProgress />
       <Header />
       <Summary />
-      <StatsOverview />
       <TechnicalSkills />
       <PaymentExpertise />
       <AIExpertise />

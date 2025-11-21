@@ -269,7 +269,7 @@ const ProjectCarousel = () => {
     <section id="projects" className="container mx-auto px-6 py-12 bg-secondary/30">
       <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
         <Award className="h-8 w-8 text-primary" />
-        Featured Projects & Architecture
+        ⭐ Projects & Architecture
       </h2>
       
       {/* Filter Buttons */}
@@ -295,7 +295,7 @@ const ProjectCarousel = () => {
         }}
         plugins={[
           Autoplay({
-            delay: 5000,
+            delay: 6000,
             stopOnInteraction: true,
             stopOnMouseEnter: true,
           }),
@@ -304,7 +304,7 @@ const ProjectCarousel = () => {
         <CarouselContent className="animate-fade-in">
           {filteredProjects.map((project, idx) => (
             <CarouselItem key={idx}>
-              <Card className="p-8 glass-card hover:glow transition-all animate-scale-in">
+              <Card className="p-8 glass-card hover:glow transition-all animate-scale-in card-elevated shadow-lg hover:shadow-xl">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-start gap-3">
                     <Award className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
@@ -422,8 +422,8 @@ const ProjectCarousel = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="h-12 w-12 -left-6" />
-        <CarouselNext className="h-12 w-12 -right-6" />
+        <CarouselPrevious className="h-16 w-16 -left-8 shadow-lg hover:scale-110 transition-all border-2" />
+        <CarouselNext className="h-16 w-16 -right-8 shadow-lg hover:scale-110 transition-all border-2" />
       </Carousel>
       
       <p className="text-center text-muted-foreground mt-6 text-sm">
