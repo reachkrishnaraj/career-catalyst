@@ -5,7 +5,7 @@ import TechnicalSkills from "@/components/TechnicalSkills";
 import PaymentExpertise from "@/components/PaymentExpertise";
 import AIExpertise from "@/components/AIExpertise";
 import ProjectCarousel from "@/components/ProjectCarousel";
-import CareerTimeline from "@/components/CareerTimeline";
+import Experience from "@/components/Experience";
 import Leadership from "@/components/Leadership";
 import Testimonials from "@/components/Testimonials";
 import Education from "@/components/Education";
@@ -49,7 +49,7 @@ const Index = () => {
       <PaymentExpertise />
       <AIExpertise />
       <HobbyProjects />
-      <CareerTimeline />
+      <Experience />
       <ProjectCarousel />
       <Leadership />
       <Testimonials />
