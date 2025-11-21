@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Building2, Calendar, MapPin } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import TBDHealthCarousel from "@/components/TBDHealthCarousel";
 import netflixLogo from "@/assets/company_icons/Netflix_Logo_PMS.png";
 import paypalLogo from "@/assets/company_icons/PayPal-Logo-Black-RGB.png";
 import walmartLogo from "@/assets/company_icons/walmart_labs.svg";
@@ -145,15 +146,15 @@ const Experience = () => {
         
         <div className="space-y-12">
           {experiences.map((exp, idx) => (
-            <div 
-              key={idx} 
-              className={`relative pl-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-              style={{ transitionDelay: `${idx * 0.15}s` }}
-            >
-              {/* Timeline Dot */}
-              <div className="absolute left-0 top-8 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg transform -translate-x-1/2 z-10"></div>
-              
-              <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div key={idx}>
+              <div 
+                className={`relative pl-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                style={{ transitionDelay: `${idx * 0.15}s` }}
+              >
+                {/* Timeline Dot */}
+                <div className="absolute left-0 top-8 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg transform -translate-x-1/2 z-10"></div>
+                
+                <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <Badge variant="secondary" className="mb-3">
                     {exp.period}
                   </Badge>
@@ -206,6 +207,14 @@ const Experience = () => {
                     </ul>
                   </div>
                 </Card>
+              </div>
+              
+              {/* TBD Health Carousel - show only for TBD Health experience */}
+              {exp.company === "TBD Health" && (
+                <div className="pl-12 mt-6">
+                  <TBDHealthCarousel />
+                </div>
+              )}
             </div>
           ))}
         </div>
