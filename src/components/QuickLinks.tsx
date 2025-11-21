@@ -48,7 +48,7 @@ const QuickLinks = () => {
       {/* Toggle Button */}
       <Button
         onClick={() => setIsOpen(!isOpen)}
-        className="rounded-full shadow-lg hover:scale-110 transition-all"
+        className="rounded-full shadow-lg hover:scale-110 transition-all bg-accent hover:bg-accent/90 text-accent-foreground"
         size="icon"
       >
         {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}

@@ -156,23 +156,23 @@ const AIChatbot = () => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-primary text-primary-foreground rounded-l-lg p-4 shadow-2xl hover:scale-110 transition-all group relative overflow-hidden border-2 border-primary/20"
+          className="bg-accent text-accent-foreground rounded-l-lg p-4 shadow-2xl hover:scale-110 transition-all group relative overflow-hidden border-2 border-accent/20"
         >
           {/* Yellow glow effect */}
-          <div className="absolute inset-0 rounded-l-lg bg-primary opacity-50 blur-xl animate-[pulse_2s_ease-in-out_infinite]" />
+          <div className="absolute inset-0 rounded-l-lg bg-accent opacity-50 blur-xl animate-[pulse_2s_ease-in-out_infinite]" />
           
           {/* Bot icon */}
           <div className="relative">
             <Bot className="h-7 w-7 drop-shadow-lg" strokeWidth={2.5} />
-            <span className="absolute -top-1 -right-1 flex h-4 w-4">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-4 w-4 bg-primary border-2 border-white"></span>
+              <span className="absolute -top-1 -right-1 flex h-4 w-4">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-4 w-4 bg-accent border-2 border-white"></span>
             </span>
           </div>
           
           {/* AI label on hover */}
           <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-            <div className="bg-primary text-primary-foreground px-3 py-2 rounded-lg text-sm font-bold shadow-2xl border border-primary/30">
+            <div className="bg-accent text-accent-foreground px-3 py-2 rounded-lg text-sm font-bold shadow-2xl border border-accent/30">
               Ask AI Assistant ✨
             </div>
           </div>
@@ -181,18 +181,18 @@ const AIChatbot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="mr-0 w-96 h-[600px] flex flex-col shadow-2xl animate-scale-in relative bg-background rounded-l-lg border-primary/20">
+        <Card className="mr-0 w-96 h-[600px] flex flex-col shadow-2xl animate-scale-in relative bg-background rounded-l-lg border-accent/20">
           {/* Glow effect around window */}
-          <div className="absolute -inset-1 bg-primary/10 rounded-lg blur-lg -z-10" />
+          <div className="absolute -inset-1 bg-accent/10 rounded-lg blur-lg -z-10" />
           
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b bg-primary/5 relative overflow-hidden">
+          <div className="flex items-center justify-between p-4 border-b bg-accent/5 relative overflow-hidden">
             <div className="flex items-center gap-2 relative">
               <div className="relative">
-                <Bot className="h-6 w-6 text-primary" strokeWidth={2.5} />
+                <Bot className="h-6 w-6 text-accent" strokeWidth={2.5} />
                 <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent"></span>
                 </span>
               </div>
               <h3 className="font-bold text-foreground">AI Assistant ✨</h3>
@@ -201,7 +201,7 @@ const AIChatbot = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(false)}
-              className="relative hover:bg-primary/10"
+              className="relative hover:bg-accent/10"
             >
               <X className="h-5 w-5" />
             </Button>
@@ -234,7 +234,7 @@ const AIChatbot = () => {
                 <div
                   className={`max-w-[80%] p-3 rounded-lg ${
                     message.role === "user"
-                      ? "bg-primary text-primary-foreground"
+                      ? "bg-accent text-accent-foreground"
                       : "bg-secondary"
                   }`}
                 >
