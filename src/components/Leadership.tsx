@@ -38,15 +38,15 @@ const Leadership = () => {
     <section id="leadership" className="container mx-auto px-6 py-12">
       <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
         <Users className="h-8 w-8 text-primary" />
-        Leadership & Impact
+        <span className="text-foreground">Leadership & Impact</span>
       </h2>
       
       <div className="grid md:grid-cols-2 gap-6 mb-8">
         {leadership.map((item, idx) => (
-          <Card key={idx} className="p-6 border-l-4 border-l-accent">
+          <Card key={idx} className="p-6 border-l-4 border-l-foreground">
             <div className="flex items-center gap-3 mb-3 text-primary">
               {item.icon}
-              <h3 className="font-bold text-lg">{item.title}</h3>
+              <h3 className="font-bold text-lg text-foreground">{item.title}</h3>
             </div>
             <p className="text-foreground">{item.description}</p>
           </Card>
@@ -54,11 +54,11 @@ const Leadership = () => {
       </div>
       
       <Card className="p-8 bg-primary/5 border-primary/20">
-        <h3 className="text-2xl font-bold mb-4">Key Leadership Achievements</h3>
+        <h3 className="text-2xl font-bold mb-4 text-foreground">Key Leadership Achievements</h3>
         <div className="grid md:grid-cols-2 gap-3">
           {achievements.map((achievement, idx) => (
             <div key={idx} className="flex items-start gap-2">
-              <span className="text-accent font-bold text-lg mt-0.5">★</span>
+              <span className="text-primary font-bold text-lg mt-0.5">★</span>
               <span className="font-medium">{achievement}</span>
             </div>
           ))}
