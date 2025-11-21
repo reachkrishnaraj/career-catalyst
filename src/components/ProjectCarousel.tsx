@@ -266,10 +266,10 @@ const ProjectCarousel = () => {
     : projects.filter(p => p.company === selectedCompany);
 
   return (
-    <section id="projects" className="container mx-auto px-6 py-20 md:py-32">
-      <h2 className="text-2xl md:text-3xl font-semibold mb-12 flex items-center gap-3">
-        <Award className="h-6 w-6 text-foreground stroke-[1.5]" />
-        ⭐ Projects & Architecture
+    <section id="projects" className="container mx-auto px-6 py-12 bg-secondary/30">
+      <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
+        <Award className="h-8 w-8 text-primary" />
+        Featured Projects & Architecture
       </h2>
       
       {/* Filter Buttons */}
@@ -280,7 +280,7 @@ const ProjectCarousel = () => {
             variant={selectedCompany === company ? "default" : "outline"}
             size="sm"
             onClick={() => setSelectedCompany(company)}
-            className="transition-all"
+            className="transition-all animate-fade-in"
           >
             {company}
           </Button>
@@ -304,17 +304,20 @@ const ProjectCarousel = () => {
         <CarouselContent className="animate-fade-in">
           {filteredProjects.map((project, idx) => (
             <CarouselItem key={idx}>
-              <Card className="p-10 md:p-12 border hover:shadow-md transition-all duration-300">
-                <div className="flex items-start justify-between mb-6">
-                  <div className="flex items-start gap-4">
+              <Card className="p-8 glass-card hover:glow transition-all animate-scale-in">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-start gap-3">
+                    <Award className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
                     <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <h3 className="text-xl font-semibold">{project.title}</h3>
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="text-2xl font-bold">{project.title}</h3>
                         {project.featured && (
-                          <span className="text-base">⭐</span>
+                          <Badge className="bg-gradient-to-r from-amber-500 to-orange-500 text-white border-none p-1.5">
+                            ⭐
+                          </Badge>
                         )}
                       </div>
-                      <p className="text-sm text-muted-foreground mb-2">{project.company}</p>
+                      <p className="text-sm text-primary font-semibold mb-3">{project.company}</p>
                     </div>
                   </div>
                   {project.companyLogo && (
@@ -326,12 +329,12 @@ const ProjectCarousel = () => {
                   )}
                 </div>
                 
-                <p className="text-foreground/80 mb-6 text-base leading-relaxed">{project.description}</p>
+                <p className="text-foreground mb-4 text-lg">{project.description}</p>
                 
                 {/* Architecture/Project Image */}
                 {project.architectureImage && (
                   <div className="mb-6">
-                    <div className="relative rounded overflow-hidden border group">
+                    <div className="relative rounded-lg overflow-hidden border border-border/50 group">
                       <img 
                         src={project.architectureImage} 
                         alt={`${project.title} architecture`}
@@ -344,10 +347,10 @@ const ProjectCarousel = () => {
                       {project.architectureImages && project.architectureImages.length > 1 && (
                         <button
                           onClick={() => openLightbox(project.architectureImages!, 0)}
-                          className="absolute top-3 right-3 bg-background/95 hover:bg-background p-2 rounded opacity-0 group-hover:opacity-100 transition-opacity"
+                          className="absolute top-2 right-2 bg-background/90 hover:bg-background p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"
                           aria-label="View all diagrams"
                         >
-                          <Maximize2 className="h-4 w-4 stroke-[1.5]" />
+                          <Maximize2 className="h-4 w-4" />
                         </button>
                       )}
                     </div>
@@ -374,23 +377,23 @@ const ProjectCarousel = () => {
                 )}
                 
                 <div className="mb-6">
-                  <h4 className="font-semibold mb-4 flex items-center gap-2 text-base">
-                    <TrendingUp className="h-4 w-4 text-foreground/60 stroke-[1.5]" />
+                  <h4 className="font-semibold mb-3 flex items-center gap-2 text-lg">
+                    <TrendingUp className="h-5 w-5 text-success" />
                     Impact & Results
                   </h4>
-                  <ul className="grid md:grid-cols-2 gap-3">
+                  <ul className="grid md:grid-cols-2 gap-2">
                     {project.impact.map((item, impactIdx) => (
                       <li key={impactIdx} className="flex items-start gap-2">
-                        <span className="text-foreground/60 text-xs mt-1">✓</span>
-                        <span className="text-sm text-foreground/80 leading-relaxed">{item}</span>
+                        <span className="text-success font-bold mt-0.5">✓</span>
+                        <span className="text-sm">{item}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
                 
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, techIdx) => (
-                    <Badge key={techIdx} variant="outline" className="text-xs">
+                    <Badge key={techIdx} variant="secondary" className="text-xs">
                       {tech}
                     </Badge>
                   ))}

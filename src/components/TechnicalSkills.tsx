@@ -62,6 +62,7 @@ interface SkillCategory {
   title: string;
   icon: React.ReactNode;
   skills: string[];
+  color: string;
 }
 
 const chunkArray = <T,>(arr: T[], size: number): T[][] => {
@@ -76,63 +77,75 @@ const TechnicalSkills = () => {
   const skillCategories: SkillCategory[] = [
     {
       title: "Languages",
-      icon: <Code2 className="h-5 w-5 stroke-[1.5]" />,
-      skills: ["Java", "JavaScript", "Python", "TypeScript"]
+      icon: <Code2 className="h-6 w-6" />,
+      skills: ["Java", "JavaScript", "Python", "TypeScript"],
+      color: "text-blue-600"
     },
     {
       title: "Backend Frameworks",
-      icon: <Layers className="h-5 w-5 stroke-[1.5]" />,
-      skills: ["Spring Boot", "Spring Cloud", "Spring Data", "Node.js", "Hibernate", "MyBatis"]
+      icon: <Layers className="h-6 w-6" />,
+      skills: ["Spring Boot", "Spring Cloud", "Spring Data", "Node.js", "Hibernate", "MyBatis"],
+      color: "text-green-600"
     },
     {
       title: "Frontend",
-      icon: <Zap className="h-5 w-5 stroke-[1.5]" />,
-      skills: ["ReactJS", "NextJS", "Bootstrap", "Tailwind CSS", "Redux"]
+      icon: <Zap className="h-6 w-6" />,
+      skills: ["ReactJS", "NextJS", "Bootstrap", "Tailwind CSS", "Redux"],
+      color: "text-cyan-600"
     },
     {
       title: "Databases",
-      icon: <Database className="h-5 w-5 stroke-[1.5]" />,
-      skills: ["MySQL", "PostgreSQL", "DynamoDB", "Cassandra", "MongoDB", "Oracle"]
+      icon: <Database className="h-6 w-6" />,
+      skills: ["MySQL", "PostgreSQL", "DynamoDB", "Cassandra", "MongoDB", "Oracle"],
+      color: "text-purple-600"
     },
     {
       title: "Cloud & DevOps",
-      icon: <Cloud className="h-5 w-5 stroke-[1.5]" />,
-      skills: ["Kubernetes", "Docker", "Terraform", "CI/CD Pipelines"]
+      icon: <Cloud className="h-6 w-6" />,
+      skills: ["Kubernetes", "Docker", "Terraform", "CI/CD Pipelines"],
+      color: "text-orange-600"
     },
     {
       title: "Big Data & Analytics",
-      icon: <Network className="h-5 w-5 stroke-[1.5]" />,
-      skills: ["Spark", "Hive", "Presto", "Kafka", "Kinesis", "Tableau", "AWS QuickSight", "Amplitude"]
+      icon: <Network className="h-6 w-6" />,
+      skills: ["Spark", "Hive", "Presto", "Kafka", "Kinesis", "Tableau", "AWS QuickSight", "Amplitude"],
+      color: "text-amber-600"
     },
     {
       title: "Microservices & APIs",
-      icon: <Settings className="h-5 w-5 stroke-[1.5]" />,
-      skills: ["gRPC", "REST", "GraphQL", "Swagger/OpenAPI", "Apache Camel", "Netflix OSS (Hystrix, Eureka, Zuul)"]
+      icon: <Settings className="h-6 w-6" />,
+      skills: ["gRPC", "REST", "GraphQL", "Swagger/OpenAPI", "Apache Camel", "Netflix OSS (Hystrix, Eureka, Zuul)"],
+      color: "text-indigo-600"
     },
     {
       title: "Testing & Quality",
-      icon: <Shield className="h-5 w-5 stroke-[1.5]" />,
-      skills: ["JUnit", "Mockito", "Selenium", "TestNG", "Cucumber", "Appium", "PowerMock"]
+      icon: <Shield className="h-6 w-6" />,
+      skills: ["JUnit", "Mockito", "Selenium", "TestNG", "Cucumber", "Appium", "PowerMock"],
+      color: "text-red-600"
     },
     {
       title: "CI/CD & Tools",
-      icon: <Terminal className="h-5 w-5 stroke-[1.5]" />,
-      skills: ["Gradle", "CircleCI", "Jenkins", "GitHub Actions", "Spinnaker", "TeamCity", "Harness"]
+      icon: <Terminal className="h-6 w-6" />,
+      skills: ["Gradle", "CircleCI", "Jenkins", "GitHub Actions", "Spinnaker", "TeamCity", "Harness"],
+      color: "text-teal-600"
     },
     {
       title: "Monitoring & Observability",
-      icon: <Zap className="h-5 w-5 stroke-[1.5]" />,
-      skills: ["New Relic", "Datadog", "Sumologic", "Sentry", "Google Analytics", "CloudWatch"]
+      icon: <Zap className="h-6 w-6" />,
+      skills: ["New Relic", "Datadog", "Sumologic", "Sentry", "Google Analytics", "CloudWatch"],
+      color: "text-pink-600"
     },
     {
       title: "Search & Caching",
-      icon: <Network className="h-5 w-5 stroke-[1.5]" />,
-      skills: ["Elasticsearch", "Apache Solr", "Redis", "Memcached"]
+      icon: <Network className="h-6 w-6" />,
+      skills: ["Elasticsearch", "Apache Solr", "Redis", "Memcached"],
+      color: "text-lime-600"
     },
     {
       title: "Security & Compliance",
-      icon: <Shield className="h-5 w-5 stroke-[1.5]" />,
-      skills: ["OAuth2.0", "JWT", "SSL/TLS", "RSA", "HIPAA Compliance", "PCI Compliance", "Vanta"]
+      icon: <Shield className="h-6 w-6" />,
+      skills: ["OAuth2.0", "JWT", "SSL/TLS", "RSA", "HIPAA Compliance", "PCI Compliance", "Vanta"],
+      color: "text-rose-600"
     }
   ];
 
@@ -195,22 +208,22 @@ const TechnicalSkills = () => {
   const chunkedAwsServices = chunkArray(awsServices, 2);
 
   return (
-    <section className="py-20 md:py-32 px-4">
+    <section className="py-20 px-4 bg-gradient-to-b from-background/50 to-background">
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-2xl md:text-3xl font-semibold text-center mb-16">
+        <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
           Technical Skills
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {skillCategories.map((category, idx) => (
-            <Card key={idx} className="p-8 hover:shadow-md transition-all duration-300">
-              <div className="flex items-center gap-3 mb-4 text-foreground/60">
-                {category.icon}
-                <h3 className="text-base font-semibold">{category.title}</h3>
+            <Card key={idx} className="p-6 glass-card hover:shadow-lg transition-shadow duration-300">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="text-primary">{category.icon}</div>
+                <h3 className="text-xl font-bold">{category.title}</h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill, skillIdx) => (
-                  <Badge key={skillIdx} variant="outline" className="text-xs">
+                  <Badge key={skillIdx} variant="secondary" className="text-sm">
                     {skill}
                   </Badge>
                 ))}
@@ -220,8 +233,8 @@ const TechnicalSkills = () => {
         </div>
 
         {/* Technology Stack Section */}
-        <div className="mb-20">
-          <h3 className="text-xl font-semibold text-center mb-12">Core Technology Stack</h3>
+        <div className="mb-16">
+          <h3 className="text-3xl font-bold text-center mb-8">Core Technology Stack</h3>
           <Carousel
             opts={{ align: "start", loop: true }}
             plugins={[Autoplay({ delay: 2500, stopOnInteraction: true, stopOnMouseEnter: true })]}
@@ -232,15 +245,15 @@ const TechnicalSkills = () => {
                 <CarouselItem key={idx} className="pl-4 md:basis-1/3 lg:basis-1/4">
                   <div className="flex flex-col gap-3">
                     {chunk.map((tech, techIdx) => (
-                       <Card key={techIdx} className="p-4 flex items-center gap-4 hover:shadow-sm transition-all duration-300 group">
-                        <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                       <Card key={techIdx} className="p-4 glass-card flex items-center gap-4 hover:shadow-lg transition-all duration-300 group">
+                        <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                           <img 
                             src={tech.icon} 
                             alt={tech.name}
-                            className="max-h-6 max-w-6 object-contain opacity-70"
+                            className="max-h-12 max-w-12 object-contain group-hover:drop-shadow-lg"
                           />
                         </div>
-                        <span className="font-medium text-sm">{tech.name}</span>
+                        <span className="font-semibold text-sm">{tech.name}</span>
                       </Card>
                     ))}
                   </div>
@@ -253,8 +266,8 @@ const TechnicalSkills = () => {
         </div>
 
         {/* AWS Services Section */}
-        <div className="mb-20">
-          <h3 className="text-xl font-semibold text-center mb-12">AWS Services Expertise</h3>
+        <div>
+          <h3 className="text-3xl font-bold text-center mb-8">AWS Services Expertise</h3>
           <Carousel
             opts={{ align: "start", loop: true }}
             plugins={[Autoplay({ delay: 3000, stopOnInteraction: true, stopOnMouseEnter: true })]}
@@ -265,15 +278,15 @@ const TechnicalSkills = () => {
                 <CarouselItem key={idx} className="pl-4 md:basis-1/3 lg:basis-1/4">
                   <div className="flex flex-col gap-3">
                     {chunk.map((service, serviceIdx) => (
-                       <Card key={serviceIdx} className="p-4 flex items-center gap-4 hover:shadow-sm transition-all duration-300 group">
-                        <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                       <Card key={serviceIdx} className="p-4 glass-card flex items-center gap-4 hover:shadow-lg transition-all duration-300 group">
+                        <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                           <img 
                             src={service.icon} 
                             alt={service.name}
-                            className="max-h-6 max-w-6 object-contain opacity-70"
+                            className="max-h-12 max-w-12 object-contain group-hover:drop-shadow-lg"
                           />
                         </div>
-                        <span className="font-medium text-sm">{service.name}</span>
+                        <span className="font-semibold text-sm">{service.name}</span>
                       </Card>
                     ))}
                   </div>
@@ -286,17 +299,17 @@ const TechnicalSkills = () => {
         </div>
 
         {/* Domain Expertise */}
-        <div>
-          <Card className="p-8 border">
-            <h3 className="text-lg font-semibold mb-6 flex items-center gap-3">
-              <Layers className="h-5 w-5 text-foreground/60 stroke-[1.5]" />
+        <div className="mt-16">
+          <Card className="p-8 glass-card">
+            <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+              <Layers className="h-6 w-6 text-primary" />
               Domain Expertise
             </h3>
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-2 gap-3">
               {domainExpertise.map((domain, idx) => (
-                <div key={idx} className="flex items-center gap-3">
-                  <div className="h-1.5 w-1.5 rounded-full bg-foreground/40"></div>
-                  <span className="font-normal text-sm">{domain}</span>
+                <div key={idx} className="flex items-center gap-2">
+                  <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <span className="font-medium">{domain}</span>
                 </div>
               ))}
             </div>

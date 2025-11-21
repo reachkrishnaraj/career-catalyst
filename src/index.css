@@ -8,99 +8,99 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 98%;
-    --foreground: 0 0% 11%;
+    --background: 0 0% 99%;
+    --foreground: 220 20% 20%;
     
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 11%;
+    --card-foreground: 220 20% 20%;
     
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 11%;
+    --popover-foreground: 220 20% 20%;
     
-    --primary: 215 100% 50%;
+    --primary: 180 85% 45%;
     --primary-foreground: 0 0% 100%;
     
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 11%;
+    --secondary: 220 15% 96%;
+    --secondary-foreground: 220 20% 20%;
     
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 33%;
+    --muted: 220 15% 96%;
+    --muted-foreground: 220 10% 50%;
     
-    --accent: 215 100% 50%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 45 95% 55%;
+    --accent-foreground: 220 20% 20%;
     
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 215 100% 50%;
+    --border: 220 13% 90%;
+    --input: 220 13% 90%;
+    --ring: 180 85% 45%;
     
-    --radius: 0.25rem;
+    --radius: 0.75rem;
     
     --success: 142 71% 45%;
     --success-foreground: 0 0% 100%;
     
-    /* Gradient colors - removed for minimal design */
-    --gradient-start: 215 100% 50%;
-    --gradient-mid: 215 100% 50%;
-    --gradient-end: 215 100% 50%;
+    /* Gradient colors */
+    --gradient-start: 180 85% 45%;
+    --gradient-mid: 270 80% 60%;
+    --gradient-end: 45 95% 55%;
     
     /* Glassmorphism */
     --glass-bg: 0 0% 100%;
-    --glass-border: 0 0% 90%;
+    --glass-border: 220 13% 88%;
     
     /* Accent variations */
-    --accent-glow: 215 100% 50%;
-    --accent-dark: 215 100% 40%;
+    --accent-glow: 180 90% 60%;
+    --accent-dark: 180 85% 35%;
     
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 0 0% 11%;
-    --sidebar-primary: 215 100% 50%;
+    --sidebar-foreground: 220 20% 20%;
+    --sidebar-primary: 180 85% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 96%;
-    --sidebar-accent-foreground: 0 0% 11%;
-    --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 215 100% 50%;
+    --sidebar-accent: 220 15% 96%;
+    --sidebar-accent-foreground: 220 20% 20%;
+    --sidebar-border: 220 13% 90%;
+    --sidebar-ring: 180 85% 45%;
   }
 
   .dark {
-    --background: 0 0% 11%;
-    --foreground: 0 0% 98%;
+    --background: 220 20% 12%;
+    --foreground: 0 0% 95%;
     
-    --card: 0 0% 15%;
-    --card-foreground: 0 0% 98%;
+    --card: 220 18% 16%;
+    --card-foreground: 0 0% 95%;
     
-    --popover: 0 0% 15%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 220 18% 16%;
+    --popover-foreground: 0 0% 95%;
     
-    --primary: 215 100% 50%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 180 85% 50%;
+    --primary-foreground: 220 20% 12%;
     
-    --secondary: 0 0% 20%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 220 18% 22%;
+    --secondary-foreground: 0 0% 95%;
     
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 220 18% 22%;
+    --muted-foreground: 220 10% 65%;
     
-    --accent: 215 100% 50%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 45 95% 60%;
+    --accent-foreground: 220 20% 12%;
     
     --destructive: 0 62% 30%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 0 0% 95%;
     
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 215 100% 50%;
+    --border: 220 18% 22%;
+    --input: 220 18% 22%;
+    --ring: 180 85% 50%;
     
-    --sidebar-background: 0 0% 11%;
-    --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 215 100% 50%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 18%;
-    --sidebar-accent-foreground: 0 0% 90%;
-    --sidebar-border: 0 0% 20%;
-    --sidebar-ring: 215 100% 50%;
+    --sidebar-background: 220 20% 12%;
+    --sidebar-foreground: 0 0% 85%;
+    --sidebar-primary: 180 85% 50%;
+    --sidebar-primary-foreground: 220 20% 12%;
+    --sidebar-accent: 220 18% 18%;
+    --sidebar-accent-foreground: 0 0% 85%;
+    --sidebar-border: 220 18% 22%;
+    --sidebar-ring: 180 85% 50%;
   }
 }
 
@@ -111,49 +111,44 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground antialiased;
-    letter-spacing: -0.011em;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold tracking-tight;
-    letter-spacing: -0.022em;
+    @apply font-bold tracking-tight;
   }
   
   h1 {
     @apply text-4xl md:text-5xl lg:text-6xl;
-    font-weight: 600;
   }
   
   h2 {
-    @apply text-2xl md:text-3xl;
-    font-weight: 600;
+    @apply text-3xl md:text-4xl;
   }
   
   h3 {
-    @apply text-lg md:text-xl;
-    font-weight: 600;
+    @apply text-2xl md:text-3xl;
   }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply text-primary;
+    @apply bg-gradient-to-r from-[hsl(var(--gradient-start))] via-[hsl(var(--gradient-mid))] to-[hsl(var(--gradient-end))] bg-clip-text text-transparent;
   }
   
   .border-gradient {
-    @apply border-border;
+    border-image: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-end))) 1;
   }
   
   .glass-card {
-    @apply bg-card border-border;
+    @apply bg-[hsl(var(--glass-bg))]/60 backdrop-blur-xl border-[hsl(var(--glass-border))];
   }
   
   .glow {
-    box-shadow: 0 2px 8px hsl(0 0% 0% / 0.04);
+    box-shadow: 0 0 30px hsl(var(--accent-glow) / 0.3);
   }
   
   .tech-icon {
-    @apply w-6 h-6 object-contain transition-transform hover:scale-110 opacity-70;
+    @apply w-8 h-8 object-contain transition-transform hover:scale-110;
   }
   
   .scrollbar-thin {
@@ -214,8 +209,10 @@ All colors MUST be HSL.
     transform: translateY(0);
   }
   
-  /* Icon hover effect */
+  /* Icon hover glow effect */
   .icon-glow-hover:hover {
-    transform: scale(1.1);
+    filter: drop-shadow(0 0 8px hsl(var(--primary) / 0.6));
+    transform: scale(1.1) rotate(5deg);
   }
 }
+
