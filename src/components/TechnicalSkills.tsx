@@ -210,7 +210,7 @@ const TechnicalSkills = () => {
   return (
     <section className="py-20 px-4 bg-gradient-to-b from-background/50 to-background">
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+        <h2 className="text-4xl font-bold text-center mb-12 text-foreground">
           Technical Skills
         </h2>
         
@@ -308,7 +308,7 @@ const TechnicalSkills = () => {
             <div className="grid md:grid-cols-2 gap-3">
               {domainExpertise.map((domain, idx) => (
                 <div key={idx} className="flex items-center gap-2">
-                  <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <div className="h-2 w-2 rounded-full bg-primary"></div>
                   <span className="font-medium">{domain}</span>
                 </div>
               ))}

@@ -72,7 +72,7 @@ const ContactForm = () => {
     <section id="contact" className="py-20 px-4 bg-gradient-to-b from-background/50 to-background">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold mb-4 text-foreground">
             Get In Touch
           </h2>
           <p className="text-lg text-muted-foreground">

@@ -37,8 +37,8 @@ const AIExpertise = () => {
       
       <div className="relative z-10">
         <h2 className="text-3xl font-bold mb-3 flex items-center gap-3">
-          <Brain className="h-8 w-8 text-gradient" />
-          <span className="text-gradient">Artificial Intelligence & ML Expertise</span>
+          <Brain className="h-8 w-8 text-primary" />
+          <span className="text-foreground">Artificial Intelligence & ML Expertise</span>
         </h2>
         <p className="text-muted-foreground mb-8 text-lg">
           Building next-generation AI solutions with cutting-edge technologies

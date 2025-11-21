@@ -20,7 +20,7 @@ const Header = () => {
       <div className="container mx-auto px-6 py-8">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gradient mb-2">
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-2">
               Krishna Raj
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground font-medium mb-2">
