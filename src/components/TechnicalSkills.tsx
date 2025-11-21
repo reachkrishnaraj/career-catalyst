@@ -237,7 +237,7 @@ const TechnicalSkills = () => {
           <h3 className="text-3xl font-bold text-center mb-8">Core Technology Stack</h3>
           <Carousel
             opts={{ align: "start", loop: true }}
-            plugins={[Autoplay({ delay: 2500, stopOnInteraction: true })]}
+            plugins={[Autoplay({ delay: 2500, stopOnInteraction: true, stopOnMouseEnter: true })]}
             className="w-full max-w-5xl mx-auto"
           >
             <CarouselContent className="-ml-4">
@@ -270,7 +270,7 @@ const TechnicalSkills = () => {
           <h3 className="text-3xl font-bold text-center mb-8">AWS Services Expertise</h3>
           <Carousel
             opts={{ align: "start", loop: true }}
-            plugins={[Autoplay({ delay: 3000, stopOnInteraction: true })]}
+            plugins={[Autoplay({ delay: 3000, stopOnInteraction: true, stopOnMouseEnter: true })]}
             className="w-full max-w-5xl mx-auto"
           >
             <CarouselContent className="-ml-4">
