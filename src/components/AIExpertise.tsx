@@ -5,25 +5,25 @@ import { Brain, Workflow, Bot, Sparkles } from "lucide-react";
 const AIExpertise = () => {
   const aiSkills = [
     {
-      icon: <Brain className="h-6 w-6" />,
+      icon: <Brain className="h-5 w-5 stroke-[1.5]" />,
       title: "AI-Powered Solutions",
       description: "Building intelligent systems leveraging LLMs and machine learning",
       highlights: ["GPT-4/5 Integration", "Claude API", "Gemini"]
     },
     {
-      icon: <Workflow className="h-6 w-6" />,
+      icon: <Workflow className="h-5 w-5 stroke-[1.5]" />,
       title: "MCP Servers & Clients",
       description: "Model Context Protocol implementations for AI agent ecosystems",
       highlights: ["Custom MCP Servers", "Tool Integration", "Context Management"]
     },
     {
-      icon: <Bot className="h-6 w-6" />,
+      icon: <Bot className="h-5 w-5 stroke-[1.5]" />,
       title: "Agentic Pipelines",
       description: "Autonomous AI agents and multi-step reasoning workflows",
       highlights: ["Agent Orchestration", "Tool Calling", "RAG Systems"]
     },
     {
-      icon: <Sparkles className="h-6 w-6" />,
+      icon: <Sparkles className="h-5 w-5 stroke-[1.5]" />,
       title: "AI Application Development",
       description: "Full-stack AI applications from prototype to production",
       highlights: ["Vector Databases", "Embedding Models", "Prompt Engineering"]
@@ -31,65 +31,60 @@ const AIExpertise = () => {
   ];
 
   return (
-    <section className="container mx-auto px-6 py-12 relative overflow-hidden">
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-blue-500/10 animate-pulse"></div>
+    <section className="container mx-auto px-6 py-20 md:py-32">
+      <h2 className="text-2xl md:text-3xl font-semibold mb-3 flex items-center gap-3">
+        <Brain className="h-6 w-6 text-foreground stroke-[1.5]" />
+        Artificial Intelligence & ML Expertise
+      </h2>
+      <p className="text-muted-foreground mb-12 text-base">
+        Building next-generation AI solutions with cutting-edge technologies
+      </p>
       
-      <div className="relative z-10">
-        <h2 className="text-3xl font-bold mb-3 flex items-center gap-3">
-          <Brain className="h-8 w-8 text-gradient" />
-          <span className="text-gradient">Artificial Intelligence & ML Expertise</span>
-        </h2>
-        <p className="text-muted-foreground mb-8 text-lg">
-          Building next-generation AI solutions with cutting-edge technologies
-        </p>
-        
-        <div className="grid md:grid-cols-2 gap-6">
-          {aiSkills.map((skill, idx) => (
-            <Card key={idx} className="p-6 glass-card hover:glow transition-all hover:-translate-y-1">
-              <div className="flex items-center gap-3 mb-3 text-gradient">
-                {skill.icon}
-                <h3 className="font-bold text-lg">{skill.title}</h3>
-              </div>
-              <p className="text-foreground mb-4">{skill.description}</p>
-              <div className="flex flex-wrap gap-2">
-                {skill.highlights.map((highlight, hIdx) => (
-                  <Badge key={hIdx} variant="outline" className="text-xs border-primary/50 bg-primary/5">
-                    {highlight}
-                  </Badge>
-                ))}
-              </div>
-            </Card>
-          ))}
-        </div>
-        
-        <Card className="mt-8 p-6 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-blue-500/20 border-purple-500/30 glow">
-          <h3 className="text-xl font-bold mb-3 text-gradient">Featured AI Implementations</h3>
-          <div className="grid md:grid-cols-3 gap-4">
-            <div className="flex items-start gap-2">
-              <Sparkles className="h-5 w-5 text-purple-500 flex-shrink-0 mt-1" />
-              <div>
-                <p className="font-semibold">Intelligent Document Processing</p>
-                <p className="text-sm text-muted-foreground">AI-powered data extraction and analysis</p>
-              </div>
+      <div className="grid md:grid-cols-2 gap-6">
+        {aiSkills.map((skill, idx) => (
+          <Card key={idx} className="p-8 hover:shadow-md transition-all duration-300">
+            <div className="flex items-center gap-3 mb-4 text-foreground/60">
+              {skill.icon}
+              <h3 className="font-semibold text-base">{skill.title}</h3>
             </div>
-            <div className="flex items-start gap-2">
-              <Sparkles className="h-5 w-5 text-pink-500 flex-shrink-0 mt-1" />
-              <div>
-                <p className="font-semibold">Conversational AI Agents</p>
-                <p className="text-sm text-muted-foreground">Multi-turn dialogues with context retention</p>
-              </div>
+            <p className="text-foreground/80 mb-6 text-sm leading-relaxed">{skill.description}</p>
+            <div className="flex flex-wrap gap-2">
+              {skill.highlights.map((highlight, hIdx) => (
+                <Badge key={hIdx} variant="outline">
+                  {highlight}
+                </Badge>
+              ))}
             </div>
-            <div className="flex items-start gap-2">
-              <Sparkles className="h-5 w-5 text-blue-500 flex-shrink-0 mt-1" />
-              <div>
-                <p className="font-semibold">Automated Code Generation</p>
-                <p className="text-sm text-muted-foreground">AI-assisted development workflows</p>
-              </div>
+          </Card>
+        ))}
+      </div>
+      
+      <Card className="mt-8 p-8 border">
+        <h3 className="text-lg font-semibold mb-6">Featured AI Implementations</h3>
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="flex items-start gap-3">
+            <Sparkles className="h-5 w-5 text-foreground/60 flex-shrink-0 mt-0.5 stroke-[1.5]" />
+            <div>
+              <p className="font-semibold text-sm mb-1">Intelligent Document Processing</p>
+              <p className="text-sm text-muted-foreground">AI-powered data extraction and analysis</p>
             </div>
           </div>
-        </Card>
-      </div>
+          <div className="flex items-start gap-3">
+            <Sparkles className="h-5 w-5 text-foreground/60 flex-shrink-0 mt-0.5 stroke-[1.5]" />
+            <div>
+              <p className="font-semibold text-sm mb-1">Conversational AI Agents</p>
+              <p className="text-sm text-muted-foreground">Multi-turn dialogues with context retention</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <Sparkles className="h-5 w-5 text-foreground/60 flex-shrink-0 mt-0.5 stroke-[1.5]" />
+            <div>
+              <p className="font-semibold text-sm mb-1">Automated Code Generation</p>
+              <p className="text-sm text-muted-foreground">AI-assisted development workflows</p>
+            </div>
+          </div>
+        </div>
+      </Card>
     </section>
   );
 };

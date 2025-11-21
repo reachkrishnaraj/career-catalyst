@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Briefcase, Code2, Database, Cloud } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import spaceBanner from "@/assets/space-banner.jpg";
 
 const Summary = () => {
   const [typedText, setTypedText] = useState("");
@@ -29,52 +28,41 @@ const Summary = () => {
     <section 
       id="summary" 
       ref={ref}
-      className="relative overflow-hidden py-12"
+      className="py-20 md:py-32"
     >
-      {/* Parallax Background */}
-      <div 
-        className="absolute inset-0 opacity-20"
-        style={{
-          backgroundImage: `url(${spaceBanner})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-        }}
-      />
-      
-      <div className="container mx-auto px-6 relative z-10">
-        <Card className={`p-8 border-l-4 border-l-primary shadow-lg backdrop-blur-sm bg-background/95 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-            <Briefcase className="h-8 w-8 text-primary" />
+      <div className="container mx-auto px-6">
+        <Card className={`p-10 md:p-12 border transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-2xl md:text-3xl font-semibold mb-8 flex items-center gap-3">
+            <Briefcase className="h-6 w-6 text-foreground stroke-[1.5]" />
             Professional Summary
           </h2>
-          <p className="text-lg text-foreground leading-relaxed mb-6 min-h-[6rem]">
+          <p className="text-base md:text-lg text-foreground/80 leading-relaxed mb-8 min-h-[6rem] font-normal">
             {typedText}
-            <span className="inline-block w-0.5 h-6 bg-primary animate-pulse ml-1"></span>
+            <span className="inline-block w-0.5 h-5 bg-primary animate-pulse ml-1"></span>
           </p>
           
-          <div className="grid md:grid-cols-3 gap-4 mt-8">
-            <div className="flex items-start gap-3 p-4 bg-secondary rounded-lg hover:scale-105 transition-transform duration-300">
-              <Code2 className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
+            <div className="flex items-start gap-4 p-6 border rounded hover:shadow-sm transition-all duration-300">
+              <Code2 className="h-5 w-5 text-foreground/60 flex-shrink-0 mt-1 stroke-[1.5]" />
               <div>
-                <h3 className="font-semibold mb-1">Full Stack Expert</h3>
-                <p className="text-sm text-muted-foreground">Java, JavaScript, Python, React, NextJS, Spring Boot</p>
+                <h3 className="font-semibold text-base mb-2">Full Stack Expert</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">Java, JavaScript, Python, React, NextJS, Spring Boot</p>
               </div>
             </div>
             
-            <div className="flex items-start gap-3 p-4 bg-secondary rounded-lg hover:scale-105 transition-transform duration-300">
-              <Database className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+            <div className="flex items-start gap-4 p-6 border rounded hover:shadow-sm transition-all duration-300">
+              <Database className="h-5 w-5 text-foreground/60 flex-shrink-0 mt-1 stroke-[1.5]" />
               <div>
-                <h3 className="font-semibold mb-1">Data Architecture</h3>
-                <p className="text-sm text-muted-foreground">MySQL, DynamoDB, Cassandra, Big Data, Analytics</p>
+                <h3 className="font-semibold text-base mb-2">Data Architecture</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">MySQL, DynamoDB, Cassandra, Big Data, Analytics</p>
               </div>
             </div>
             
-            <div className="flex items-start gap-3 p-4 bg-secondary rounded-lg hover:scale-105 transition-transform duration-300">
-              <Cloud className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+            <div className="flex items-start gap-4 p-6 border rounded hover:shadow-sm transition-all duration-300">
+              <Cloud className="h-5 w-5 text-foreground/60 flex-shrink-0 mt-1 stroke-[1.5]" />
               <div>
-                <h3 className="font-semibold mb-1">Cloud Native</h3>
-                <p className="text-sm text-muted-foreground">AWS, Kubernetes, Docker, Microservices, Serverless</p>
+                <h3 className="font-semibold text-base mb-2">Cloud Native</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">AWS, Kubernetes, Docker, Microservices, Serverless</p>
               </div>
             </div>
           </div>

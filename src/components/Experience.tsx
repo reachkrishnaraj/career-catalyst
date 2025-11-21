@@ -112,48 +112,48 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="container mx-auto px-6 py-16 bg-secondary/30">
-      <h2 className="text-3xl font-bold mb-3 text-center">Professional Experience</h2>
-      <p className="text-center text-muted-foreground mb-12 text-lg">19+ years of progressive experience across leading tech companies</p>
+    <section id="experience" className="container mx-auto px-6 py-20 md:py-32">
+      <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-center">Professional Experience</h2>
+      <p className="text-center text-muted-foreground mb-16 text-base">19+ years of progressive experience across leading tech companies</p>
       
-      <div className="space-y-6">
+      <div className="space-y-8">
         {experiences.map((exp, idx) => (
-          <Card key={idx} className="p-6 hover:shadow-xl transition-all duration-300 animate-fade-in">
-            <div className="flex flex-col md:flex-row md:items-start gap-4">
+          <Card key={idx} className="p-8 md:p-10 hover:shadow-md transition-all duration-300">
+            <div className="flex flex-col md:flex-row md:items-start gap-6">
               {/* Left side - Company & Role */}
               <div className="flex-1">
-                <Badge variant="secondary" className="mb-3">
+                <Badge variant="outline" className="mb-4">
                   {exp.period}
                 </Badge>
                 
-                <div className="flex items-start gap-3 mb-3">
+                <div className="flex items-start gap-4 mb-4">
                   {exp.logo ? (
-                    <img src={exp.logo} alt={`${exp.company} logo`} className="h-12 w-12 object-contain mt-1 flex-shrink-0" />
+                    <img src={exp.logo} alt={`${exp.company} logo`} className="h-12 w-12 object-contain mt-1 flex-shrink-0 opacity-80" />
                   ) : (
-                    <Building2 className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                    <Building2 className="h-5 w-5 text-foreground/60 mt-1 flex-shrink-0 stroke-[1.5]" />
                   )}
                   <div>
-                    <h3 className="text-xl font-bold">{exp.company}</h3>
-                    <p className="text-primary font-semibold">{exp.role}</p>
-                    <p className="text-sm text-muted-foreground flex items-center gap-1 mt-1">
-                      <MapPin className="h-3 w-3" />
+                    <h3 className="text-lg font-semibold mb-1">{exp.company}</h3>
+                    <p className="text-foreground/80 font-medium text-sm mb-2">{exp.role}</p>
+                    <p className="text-sm text-muted-foreground flex items-center gap-1.5">
+                      <MapPin className="h-3.5 w-3.5 stroke-[1.5]" />
                       {exp.location}
                     </p>
                   </div>
                 </div>
                 
-                <p className="text-sm text-muted-foreground italic mb-4">
+                <p className="text-sm text-muted-foreground leading-relaxed mb-6">
                   {exp.description}
                 </p>
               </div>
               
               {/* Right side - Achievements */}
               <div className="flex-1">
-                <h4 className="font-semibold text-sm mb-3">Key Achievements:</h4>
-                <ul className="space-y-2">
+                <h4 className="font-semibold text-sm mb-4 text-foreground/80">Key Achievements:</h4>
+                <ul className="space-y-2.5">
                   {exp.achievements.map((achievement, aIdx) => (
-                    <li key={aIdx} className="text-sm flex items-start gap-2">
-                      <span className="text-primary font-bold mt-0.5">•</span>
+                    <li key={aIdx} className="text-sm flex items-start gap-2.5 text-foreground/80 leading-relaxed">
+                      <span className="text-foreground/40 text-xs mt-1">•</span>
                       <span>{achievement}</span>
                     </li>
                   ))}
