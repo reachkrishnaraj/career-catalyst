@@ -6,6 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Mail, Phone, Linkedin, Send, Copy, Check } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { z } from "zod";
+
+// Client-side validation schema
+const contactFormSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  message: z.string().trim().min(10, "Message must be at least 10 characters").max(2000, "Message must be less than 2000 characters"),
+});
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -16,26 +24,42 @@ const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrors({});
+    
+    // Validate form data
+    const validationResult = contactFormSchema.safeParse(formData);
+    
+    if (!validationResult.success) {
+      const validationErrors: Record<string, string> = {};
+      validationResult.error.errors.forEach((err) => {
+        if (err.path[0]) {
+          validationErrors[err.path[0] as string] = err.message;
+        }
+      });
+      setErrors(validationErrors);
+      toast({
+        variant: "destructive",
+        title: "Validation Error",
+        description: "Please check the form for errors.",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
       const { data, error } = await supabase.functions.invoke('send-contact-email', {
-        body: {
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        },
+        body: validationResult.data,
       });
 
       if (error) {
         throw error;
       }
-
-      console.log("Email sent successfully:", data);
       
       toast({
         title: "Message sent!",
@@ -44,7 +68,6 @@ const ContactForm = () => {
       
       setFormData({ name: "", email: "", message: "" });
     } catch (error: any) {
-      console.error("Error sending email:", error);
       toast({
         title: "Error",
         description: "Failed to send message. Please try again.",
@@ -156,9 +179,15 @@ const ContactForm = () => {
                 <Input
                   placeholder="Your Name"
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, name: e.target.value });
+                    setErrors({ ...errors, name: "" });
+                  }}
                   required
+                  maxLength={100}
+                  className={errors.name ? 'border-red-500' : ''}
                 />
+                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
               </div>
 
               <div>
@@ -166,19 +195,32 @@ const ContactForm = () => {
                   type="email"
                   placeholder="Your Email"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, email: e.target.value });
+                    setErrors({ ...errors, email: "" });
+                  }}
                   required
+                  maxLength={255}
+                  className={errors.email ? 'border-red-500' : ''}
                 />
+                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
               </div>
 
               <div>
                 <Textarea
                   placeholder="Your Message"
                   value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, message: e.target.value });
+                    setErrors({ ...errors, message: "" });
+                  }}
                   rows={5}
                   required
+                  minLength={10}
+                  maxLength={2000}
+                  className={errors.message ? 'border-red-500 resize-none' : 'resize-none'}
                 />
+                {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
               </div>
 
               <Button type="submit" className="w-full" disabled={isSubmitting}>
