@@ -8,6 +8,7 @@ import walmartLogo from "@/assets/company_icons/walmart_labs.svg";
 import altimetrikLogo from "@/assets/company_icons/altimetrik_logo.webp";
 import htcLogo from "@/assets/company_icons/htc_global_services.png";
 import turoLogo from "@/assets/company_icons/turo_logo.png";
+import tbdHealthLogo from "@/assets/company_icons/tbd_health_logo.svg";
 
 const Experience = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -18,7 +19,8 @@ const Experience = () => {
       role: "Chief Technology Officer (CTO) / Architect",
       period: "Apr 2022 - Jul 2024",
       location: "Austin, TX",
-      logo: null,
+      logo: tbdHealthLogo,
+      website: "https://www.tbd.health",
       description: "Led complete technology transformation of healthcare startup post-seed funding, building entire tech infrastructure from ground up.",
       technologies: ["NextJS", "ReactJS", "Saleor", "AWS ECS", "AWS RDS", "Stripe", "AWS Rekognition", "HIPAA"],
       achievements: [
@@ -163,7 +165,13 @@ const Experience = () => {
                       <Building2 className="h-8 w-8 text-primary mt-1 flex-shrink-0" />
                     )}
                     <div>
-                      <h3 className="text-xl font-bold text-foreground">{exp.company}</h3>
+                      {exp.website ? (
+                        <a href={exp.website} target="_blank" rel="noopener noreferrer" className="text-xl font-bold text-foreground hover:text-primary transition-colors underline-offset-4 hover:underline">
+                          {exp.company}
+                        </a>
+                      ) : (
+                        <h3 className="text-xl font-bold text-foreground">{exp.company}</h3>
+                      )}
                       <p className="text-primary font-semibold">{exp.role}</p>
                       <p className="text-sm text-muted-foreground flex items-center gap-1 mt-1">
                         <MapPin className="h-3 w-3" />
